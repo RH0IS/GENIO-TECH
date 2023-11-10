@@ -1,18 +1,520 @@
-body{
-    background-color: beige;
-    color: black;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
+:root {
+    --variable-collection-colour-secondary: white;
+    --variable-collection-colour-grey-1: beige;
+}
+.instructor-profile {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
 
-h1{
-    color: #336699;
-    font-size: 24px;
-    font-style: italic;
-    position: relative;
+.instructor-profile .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 3102px;
+  position: relative;
 }
 
-.hbar1 {
-    display: inline;
-    margin: 15px;
+.instructor-profile .socials-bar {
+  position: absolute;
+  width: 1440px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  background-color: #283d5a;
+}
+
+.instructor-profile .mdi-phone {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 34px;
+  left: 128px;
+}
+
+.instructor-profile .TEL {
+  position: absolute;
+  top: 39px;
+  left: 170px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.instructor-profile .socials-box {
+  position: absolute;
+  width: 236px;
+  height: 32px;
+  top: 34px;
+  left: 857px;
+}
+
+.instructor-profile .frame {
+  position: absolute;
+  width: 111px;
+  height: 27px;
+  top: 36px;
+  left: 1113px;
+}
+
+.instructor-profile .text-wrapper {
+  position: absolute;
+  top: 4px;
+  left: 61px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.instructor-profile .vector {
+  position: absolute;
+  width: 29px;
+  height: 25px;
+  top: 2px;
+  left: 11px;
+}
+
+.instructor-profile .navbar {
+  display: flex;
+  width: 1097px;
+  align-items: center;
+  gap: 60px;
+  position: absolute;
+  top: 140px;
+  left: 100px;
+}
+
+.instructor-profile .image {
+  position: relative;
+  width: 259.72px;
+  height: 114px;
+  object-fit: cover;
+}
+
+.instructor-profile .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #283d5a;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.instructor-profile .ellipse {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  top: 465px;
+  left: 211px;
+}
+
+.instructor-profile .text-wrapper-3 {
+  position: absolute;
+  top: 295px;
+  left: 211px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.instructor-profile .text-wrapper-4 {
+  position: absolute;
+  top: 390px;
+  left: 211px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-grey-1);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.instructor-profile .text-wrapper-5 {
+  position: absolute;
+  top: 347px;
+  left: 211px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-decoration: underline;
+}
+
+.instructor-profile .material-symbols {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 472px;
+  left: 471px;
+}
+
+.instructor-profile .img {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  top: 877px;
+  left: 203px;
+}
+
+.instructor-profile .ion-ribbon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 520px;
+  left: 471px;
+}
+
+.instructor-profile .ic-baseline-people {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 568px;
+  left: 471px;
+}
+
+.instructor-profile .mingcute-video-fill {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 616px;
+  left: 471px;
+}
+
+.instructor-profile .text-wrapper-6 {
+  position: absolute;
+  top: 477px;
+  left: 517px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.instructor-profile .text-wrapper-7 {
+  position: absolute;
+  top: 882px;
+  left: 289px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.instructor-profile .more-courses-by-dr {
+  position: absolute;
+  top: 1842px;
+  left: 242px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.instructor-profile .span {
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #313e5c;
+  font-size: 32px;
+  letter-spacing: 0;
+}
+
+.instructor-profile .text-wrapper-8 {
+  text-decoration: underline;
+}
+
+.instructor-profile .text-wrapper-9 {
+  position: absolute;
+  top: 525px;
+  left: 517px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.instructor-profile .text-wrapper-10 {
+  position: absolute;
+  top: 882px;
+  left: 663px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.instructor-profile .text-wrapper-11 {
+  position: absolute;
+  top: 573px;
+  left: 517px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.instructor-profile .text-wrapper-12 {
+  position: absolute;
+  top: 621px;
+  left: 517px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-secondary);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.instructor-profile .lorem-ipsum-dolor {
+  position: absolute;
+  width: 625px;
+  top: 710px;
+  left: 211px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-colour-grey-1);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.instructor-profile .ellipse-2 {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 899px;
+  left: 619px;
+  background-color: var(--variable-collection-colour-secondary);
+  border-radius: 5px;
+}
+
+.instructor-profile .image-2 {
+  position: absolute;
+  width: 931px;
+  height: 787px;
+  top: 977px;
+  left: 203px;
+}
+
+.instructor-profile .course-box {
+  position: absolute;
+  width: 292px;
+  height: 484px;
+  top: 1920px;
+  left: 242px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #00000033;
+}
+
+.instructor-profile .rectangle {
+  position: absolute;
+  width: 292px;
+  height: 292px;
+  top: 0;
+  left: 0;
+}
+
+.instructor-profile .p {
+  position: absolute;
+  width: 242px;
+  top: 298px;
+  left: 24px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 17.6px;
+}
+
+.instructor-profile .text-wrapper-13 {
+  color: #aa082abf;
+}
+
+.instructor-profile .text-wrapper-14 {
+  font-weight: 700;
+  color: #aa082a;
+  font-size: 18px;
+  line-height: 28.8px;
+}
+
+.instructor-profile .rating-box {
+  position: absolute;
+  width: 225px;
+  height: 20px;
+  top: 427px;
+  left: 24px;
+}
+
+.instructor-profile .text-wrapper-15 {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #aa082a;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.instructor-profile .star {
+  position: absolute;
+  width: 15px;
+  height: 14px;
+  top: 3px;
+  left: 22px;
+}
+
+.instructor-profile .text-wrapper-16 {
+  position: absolute;
+  top: 3px;
+  left: 41px;
+  font-family: "Inter", Helvetica;
+  font-weight: 200;
+  color: #aa082a;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.instructor-profile .meta {
+  position: absolute;
+  width: 34px;
+  height: 15px;
+  top: 458px;
+  left: 24px;
+}
+
+.instructor-profile .text-wrapper-17 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #83001c;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.instructor-profile .text-wrapper-18 {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #83001c;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.instructor-profile .ellipse-3 {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  top: 6px;
+  left: 14px;
+  background-color: #aa082a;
+  border-radius: 1.25px;
+}
+
+.instructor-profile .course-box-2 {
+  left: 562px;
+  position: absolute;
+  width: 292px;
+  height: 484px;
+  top: 1920px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #00000033;
+}
+
+.instructor-profile .meta-2 {
+  position: absolute;
+  width: 36px;
+  height: 15px;
+  top: 458px;
+  left: 24px;
+}
+
+.instructor-profile .course-box-3 {
+  left: 882px;
+  position: absolute;
+  width: 292px;
+  height: 484px;
+  top: 1920px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #00000033;
+}
+
+.instructor-profile .ryley-geir-daelman {
+  position: absolute;
+  width: 242px;
+  top: 298px;
+  left: 24px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 17.6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+
+.instructor-profile .image-3 {
+  position: absolute;
+  width: 1440px;
+  height: 613px;
+  top: 2489px;
+  left: 0;
+  object-fit: cover;
 }
