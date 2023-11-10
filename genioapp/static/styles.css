@@ -1,6 +1,6 @@
 :root {
     --variable-collection-colour-secondary: white;
-    --variable-collection-colour-grey-1: beige;
+    --variable-collection-colour-grey-1: grey;
 }
 .instructor-profile {
     background-color: #ffffff;
@@ -152,7 +152,7 @@
   left: 211px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-secondary);
+  color: grey;
   font-size: 24px;
   letter-spacing: 0;
   line-height: normal;
@@ -205,7 +205,7 @@
   left: 517px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-secondary);
+  color: grey;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
@@ -218,7 +218,7 @@
   left: 289px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-secondary);
+  color: grey;
   font-size: 32px;
   letter-spacing: 0;
   line-height: normal;
@@ -230,7 +230,7 @@
   left: 242px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-secondary);
+  color: grey;
   font-size: 32px;
   letter-spacing: 0;
   line-height: normal;
@@ -254,7 +254,7 @@
   left: 517px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-secondary);
+  color: grey;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
@@ -267,7 +267,7 @@
   left: 663px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-secondary);
+  color: grey;
   font-size: 32px;
   letter-spacing: 0;
   line-height: normal;
@@ -279,7 +279,7 @@
   left: 517px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-secondary);
+  color: grey;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
@@ -292,7 +292,7 @@
   left: 517px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-secondary);
+  color: grey;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
@@ -306,7 +306,7 @@
   left: 211px;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: var(--variable-collection-colour-grey-1);
+  color: rgb(192, 192, 192);
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
