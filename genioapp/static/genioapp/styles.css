@@ -1,0 +1,668 @@
+.landing-page {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.landing-page .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 3785px;
+  position: relative;
+}
+
+.landing-page .frame {
+  position: absolute;
+  width: 1440px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  background-color: #283d5a;
+  overflow: hidden;
+}
+
+.landing-page .mdi-phone {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 34px;
+  left: 128px;
+}
+
+.landing-page .TEL {
+  position: absolute;
+  top: 39px;
+  left: 170px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .socials-box {
+  position: absolute;
+  width: 236px;
+  height: 32px;
+  top: 34px;
+  left: 857px;
+}
+
+.landing-page .frame-2 {
+  position: absolute;
+  width: 111px;
+  height: 27px;
+  top: 36px;
+  left: 1113px;
+}
+
+.landing-page .text-wrapper {
+  position: absolute;
+  top: 4px;
+  left: 61px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .vector {
+  position: absolute;
+  width: 29px;
+  height: 25px;
+  top: 2px;
+  left: 11px;
+}
+
+.landing-page .navbar {
+  position: absolute;
+  width: 1440px;
+  height: 196px;
+  top: 100px;
+  left: 0;
+}
+
+.landing-page .overlap-group {
+  position: absolute;
+  width: 1440px;
+  height: 649px;
+  top: 312px;
+  left: 0;
+  background-image: url(https://c.animaapp.com/TPZdvj18/img/image-13.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.landing-page .INTRODUCE-YOUR-KID-wrapper {
+  position: relative;
+  width: 661px;
+  height: 293px;
+  top: 185px;
+  left: 137px;
+  background-color: #aa082a;
+}
+
+.landing-page .INTRODUCE-YOUR-KID {
+  position: absolute;
+  width: 647px;
+  top: 75px;
+  left: 14px;
+  font-family: "Black Han Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 56px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.landing-page .text-wrapper-2 {
+  position: absolute;
+  top: 1517px;
+  left: 113px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #aa082a;
+  font-size: 45px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .text-wrapper-3 {
+  position: absolute;
+  top: 1031px;
+  left: 620px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #aa082a;
+  font-size: 45px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .course-catalogue {
+  position: absolute;
+  width: 1236px;
+  height: 569px;
+  top: 1642px;
+  left: 112px;
+}
+
+.landing-page .tabs {
+  position: absolute;
+  width: 1236px;
+  height: 61px;
+  top: 0;
+  left: 0;
+}
+
+.landing-page .div-wrapper {
+  position: absolute;
+  width: 247px;
+  height: 61px;
+  top: 0;
+  left: 0;
+  background-color: #aa082a;
+  border-radius: 25px 25px 0px 0px;
+  overflow: hidden;
+}
+
+.landing-page .text-wrapper-4 {
+  position: absolute;
+  top: 18px;
+  left: 52px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .frame-3 {
+  position: absolute;
+  width: 247px;
+  height: 61px;
+  top: 0;
+  left: 247px;
+  background-color: #e4e1dd;
+  border-radius: 25px 25px 0px 0px;
+  overflow: hidden;
+}
+
+.landing-page .text-wrapper-5 {
+  position: absolute;
+  top: 18px;
+  left: 39px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #83001c99;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .frame-4 {
+  position: absolute;
+  width: 248px;
+  height: 61px;
+  top: 0;
+  left: 494px;
+  background-color: #e4e1dd;
+  border-radius: 25px 25px 0px 0px;
+  overflow: hidden;
+}
+
+.landing-page .text-wrapper-6 {
+  position: absolute;
+  top: 18px;
+  left: 55px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #83001c99;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .frame-5 {
+  position: absolute;
+  width: 247px;
+  height: 61px;
+  top: 0;
+  left: 742px;
+  background-color: #e4e1dd;
+  border-radius: 25px 25px 0px 0px;
+  overflow: hidden;
+}
+
+.landing-page .text-wrapper-7 {
+  position: absolute;
+  top: 18px;
+  left: 95px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #83001c99;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .frame-6 {
+  position: absolute;
+  width: 247px;
+  height: 61px;
+  top: 0;
+  left: 989px;
+  background-color: #e4e1dd;
+  border-radius: 25px 25px 0px 0px;
+  overflow: hidden;
+}
+
+.landing-page .text-wrapper-8 {
+  position: absolute;
+  top: 18px;
+  left: 23px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #83001c99;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .course-box {
+  position: absolute;
+  width: 292px;
+  height: 484px;
+  top: 85px;
+  left: 4px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #00000033;
+}
+
+.landing-page .rectangle {
+  position: absolute;
+  width: 292px;
+  height: 292px;
+  top: 0;
+  left: 0;
+}
+
+.landing-page .p {
+  position: absolute;
+  width: 242px;
+  top: 298px;
+  left: 24px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 17.6px;
+}
+
+.landing-page .span {
+  color: #aa082abf;
+  text-decoration: underline;
+}
+
+.landing-page .text-wrapper-9 {
+  font-weight: 700;
+  color: #aa082a;
+  font-size: 18px;
+  line-height: 28.8px;
+}
+
+.landing-page .text-wrapper-10 {
+  color: #aa082abf;
+}
+
+.landing-page .rating-box {
+  position: absolute;
+  width: 225px;
+  height: 20px;
+  top: 427px;
+  left: 24px;
+}
+
+.landing-page .text-wrapper-11 {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #aa082a;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.landing-page .star {
+  position: absolute;
+  width: 15px;
+  height: 14px;
+  top: 3px;
+  left: 22px;
+}
+
+.landing-page .text-wrapper-12 {
+  position: absolute;
+  top: 3px;
+  left: 41px;
+  font-family: "Inter", Helvetica;
+  font-weight: 200;
+  color: #aa082a;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.landing-page .meta {
+  position: absolute;
+  width: 34px;
+  height: 15px;
+  top: 458px;
+  left: 24px;
+}
+
+.landing-page .text-wrapper-13 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #83001c;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.landing-page .text-wrapper-14 {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #83001c;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
+.landing-page .ellipse {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  top: 6px;
+  left: 14px;
+  background-color: #aa082a;
+  border-radius: 1.25px;
+}
+
+.landing-page .course-box-2 {
+  left: 324px;
+  position: absolute;
+  width: 292px;
+  height: 484px;
+  top: 85px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #00000033;
+}
+
+.landing-page .meta-2 {
+  position: absolute;
+  width: 36px;
+  height: 15px;
+  top: 458px;
+  left: 24px;
+}
+
+.landing-page .course-box-3 {
+  left: 644px;
+  position: absolute;
+  width: 292px;
+  height: 484px;
+  top: 85px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #00000033;
+}
+
+.landing-page .ryley-geir-daelman {
+  position: absolute;
+  width: 242px;
+  top: 298px;
+  left: 24px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 17.6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+
+.landing-page .genio-tech-is-an {
+  position: absolute;
+  width: 1240px;
+  top: 1183px;
+  left: 100px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #919191;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.landing-page .image {
+  position: absolute;
+  width: 1440px;
+  height: 613px;
+  top: 3172px;
+  left: 0;
+  object-fit: cover;
+}
+
+.landing-page .how-to-enroll-your {
+  position: absolute;
+  top: 2377px;
+  left: 345px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #aa082a;
+  font-size: 42px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.landing-page .overlap {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  top: 2471px;
+  left: 657px;
+  border-radius: 62.5px;
+}
+
+.landing-page .ellipse-2 {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  top: 0;
+  left: 0;
+  background-color: #83001c;
+  border-radius: 62.5px;
+}
+
+.landing-page .apply-now {
+  position: absolute;
+  top: 52px;
+  left: 15px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .gallery-container {
+  display: flex;
+  width: 1440px;
+  align-items: flex-start;
+  position: absolute;
+  top: 2648px;
+  left: 0;
+  background-color: #9e6565;
+}
+
+.landing-page .frame-7 {
+  position: relative;
+  width: 360px;
+  height: 363.97px;
+  background-image: url(https://c.animaapp.com/TPZdvj18/img/frame-9-1.svg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.landing-page .frame-8 {
+  position: relative;
+  width: 360px;
+  height: 363.97px;
+  background-image: url(https://c.animaapp.com/TPZdvj18/img/frame-10.svg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.landing-page .frame-9 {
+  position: relative;
+  width: 360px;
+  height: 363.97px;
+  background-image: url(https://c.animaapp.com/TPZdvj18/img/frame-11.svg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.landing-page .frame-10 {
+  position: relative;
+  width: 360px;
+  height: 363.97px;
+  background-image: url(https://c.animaapp.com/TPZdvj18/img/frame-12.svg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.landing-page .navbar-2 {
+  display: flex;
+  width: 1097px;
+  align-items: center;
+  gap: 60px;
+  position: absolute;
+  top: 140px;
+  left: 100px;
+}
+
+.landing-page .img {
+  position: relative;
+  width: 259.72px;
+  height: 114px;
+  object-fit: cover;
+}
+
+.landing-page .text-wrapper-15 {
+  position: relative;
+  width: fit-content;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #283d5a;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.landing-page .btn-primary {
+  position: absolute;
+  width: 292px;
+  height: 72px;
+  top: 2232px;
+  left: 756px;
+  background-color: var(--variable-collection-colour-primary);
+  border-radius: 8.13px;
+  overflow: hidden;
+  all: unset;
+  box-sizing: border-box;
+}
+
+.landing-page .text-wrapper-16 {
+  position: absolute;
+  top: 19px;
+  left: 105px;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 19.5px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 31.2px;
+  white-space: nowrap;
+}
+
+.landing-page .button {
+  left: 435px;
+  position: absolute;
+  width: 292px;
+  height: 72px;
+  top: 2232px;
+  background-color: var(--variable-collection-colour-primary);
+  border-radius: 8.13px;
+  overflow: hidden;
+  all: unset;
+  box-sizing: border-box;
+}
+
+.landing-page .btn-primary-2 {
+  left: 116px;
+  position: absolute;
+  width: 292px;
+  height: 72px;
+  top: 2232px;
+  background-color: var(--variable-collection-colour-primary);
+  border-radius: 8.13px;
+  overflow: hidden;
+  all: unset;
+  box-sizing: border-box;
+}

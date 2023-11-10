@@ -1,4 +1,6 @@
+from decimal import Decimal
 from django.db import models
+from django_countries.fields import CountryField
 
 # Create your models here.
 class Student(models.Model):
@@ -31,10 +33,13 @@ class Course(models.Model):
     instructor = models.ForeignKey('Instructor', on_delete=models.SET_NULL, null=True, related_name='courses_teaching')
     categories = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     students = models.ManyToManyField(Student, blank=True)
+    image = models.ImageField(upload_to='images/',default='default_image.jpg')
     start_date = models.DateField()
     end_date = models.DateField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     interested = models.PositiveIntegerField(default=0)
+    video = models.FileField(upload_to='videos/',default='default_image.jpg')
+
 
     # level choices in Course
 
@@ -51,9 +56,14 @@ class Course(models.Model):
 
 
 class Instructor(models.Model):
+    username = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=254, unique=True, default=None)
+    country = CountryField()
     bio = models.TextField()
+    language = models.CharField(max_length=100, default='none')
+    image = models.ImageField(upload_to='images/',default='default_image.jpg')
     students = models.ManyToManyField(Student, blank=True, related_name='instructors')
 
     def __str__(self):
