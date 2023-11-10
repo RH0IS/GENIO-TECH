@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}"/>
+    <title>E-Learning WebApp - {% block title %}Welcome!{% endblock %}</title>
+</head>
+<body>
+    <div>
+        <h1>{% block myhdg %}Hello User{% endblock %}</h1>
+        {% block body_block %}***{% endblock %}
+    </div>
+    <hr />
+    <div>
+        <ul>
+            <li class="hbar1"><a href="/about/">Find out about our E-Learning site</a></li>
+            <li class="hbar1"><a href="{% url 'genioapp:index' %}">Click here to return to the main page</a></li>
+            <li class="hbar1"><a href="{% url 'genioapp:courses' %}">View Courses</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'genioapp/base.html' %}
+{% block myhdg %}Hello User, Welcome to Course List{% endblock %}
+
+{% block body_block %}
+
+
+<body>
+    <h2>Available Courses</h2>
+    <ul>
+        {% for course in courlist %}
+            <li>{{ course.title }} - {{ course.description }}</li>
+        {% empty %}
+            <li>No courses available</li>
+        {% endfor %}
+    </ul>
+{#<p><a href="{% url 'myappF23:place_order' %}">Place a New Order</a></p>#}
+
+</body>
+
+
+{% endblock %}
