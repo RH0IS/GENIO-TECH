@@ -424,6 +424,19 @@
   left: 24px;
 }
 
+.landing-page .button {
+  left: 435px;
+  position: absolute;
+  width: 292px;
+  height: 72px;
+  top: 2232px;
+  background-color: var(--variable-collection-colour-primary);
+  border-radius: 8.13px;
+  overflow: hidden;
+  all: unset;
+  box-sizing: border-box;
+}
+
 .instructor-profile .text-wrapper-17 {
   position: absolute;
   top: 0;
