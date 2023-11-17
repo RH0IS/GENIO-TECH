@@ -1,0 +1,9 @@
+{
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "editor.defaultFoldingRangeProvider": "ms-python.python",
+    "python.linting.pylintArgs": [
+        "--init-hook",
+        "import sys; sys.path.append('/usr/local/bin/python3.12')"
+    ]
+}

@@ -53,6 +53,14 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
+class InstructorProfile(models.Model):
+    
+    username= models.OneToOneField('auth.User',on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=True)  # Optional field
+    email = models.EmailField(unique=True)
+    # Additional fields
+    field2 = models.CharField(max_length=50, blank=True)  # Optional field
+    
 
 class Instructor(models.Model):
     username = models.CharField(max_length=100)
