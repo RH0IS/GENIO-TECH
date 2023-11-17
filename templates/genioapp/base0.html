@@ -35,11 +35,24 @@
             </a>
           </button></div>
           <div class="text-wrapper-15">
-          <button>
+{#          <ul class="navbar-nav">#}
+            {% if user.is_authenticated %}
+            <span class="navbar-text">Logged in as {{user.username}} | </span>
+                <button>
             <a href="{% url 'genioapp:instructorsignup' %}">
               Instructor Enroll
             </a>
           </button>
+{#            <li class="nav-item">#}
+{#              <a class="nav-link" href="/logout">Logout</a>#}
+{#            </li>#}
+            {% else %}
+                <span class="navbar-text">Please login to access this feature | </span>
+{#            <li class="nav-item">#}
+{#              <a class="nav-link" href="/login">Login</a>#}
+{#            </li>#}
+            {% endif %}
+          </ul>
         </div>
         
       </div>
