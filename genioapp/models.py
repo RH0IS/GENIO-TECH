@@ -40,6 +40,7 @@ class Course(models.Model):
     video = models.FileField(upload_to='videos/',default='default_image.jpg')
 
 
+    
     # level choices in Course
 
     COURSE_LEVEL_CHOICES = [
@@ -55,7 +56,7 @@ class Course(models.Model):
 
 class InstructorProfile(models.Model):
     
-    username= models.OneToOneField('auth.User',on_delete=models.CASCADE)
+    user= models.OneToOneField('auth.User',on_delete=models.CASCADE)
     name = models.CharField(max_length=50, blank=True)  # Optional field
     email = models.EmailField(unique=True)
     # Additional fields
