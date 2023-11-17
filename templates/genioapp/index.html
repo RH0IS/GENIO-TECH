@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{#<!DOCTYPE html>#}
+{% extends 'genioapp/base.html' %}
 {% load static %}
 <html>
   <head>
@@ -11,6 +12,7 @@
   {% bootstrap_css %}
   {% bootstrap_javascript %}
   </head>
+  {% block content %}
   <body>
     <div class="landing-page">
       <div class="div">
@@ -127,8 +129,8 @@
         </div>
         <div class="navbar-2">
           <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
-          <div class="text-wrapper-15">HOME</div>
-          <div class="text-wrapper-15">ABOUT US</div>
+          <div class="text-wrapper-15"><a href="index.html">HOME</a></div>
+          <div class="text-wrapper-15"><a href="/about">ABOUT US</a></div>
           <div class="text-wrapper-15">AGE 6-11</div>
           <div class="text-wrapper-15">AGE11-16</div>
           <div class="text-wrapper-15">AGE16+</div>
@@ -138,6 +140,7 @@
       </div>
     </div>
   </body>
+{% endblock %}
 </html>
 
 

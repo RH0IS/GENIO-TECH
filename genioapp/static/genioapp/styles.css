@@ -1,3 +1,9 @@
+/*========landing page============*/
+
+.navbar{
+  width: 100%;
+}
+
 .landing-page {
   background-color: #ffffff;
   display: flex;
@@ -44,13 +50,13 @@
   white-space: nowrap;
 }
 
-.landing-page .socials-box {
-  position: absolute;
-  width: 236px;
-  height: 32px;
-  top: 34px;
-  left: 857px;
-}
+/*.landing-page .socials-box {*/
+/*  position: absolute;*/
+/*  width: 236px;*/
+/*  height: 32px;*/
+/*  top: 34px;*/
+/*  left: 857px;*/
+/*}*/
 
 .landing-page .frame-2 {
   position: absolute;
