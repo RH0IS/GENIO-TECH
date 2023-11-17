@@ -8,13 +8,52 @@
     <link rel="stylesheet" href="{% static 'genioapp/globals.css' %}" />
     <link rel="stylesheet" href="{% static 'genioapp/styles.css' %}" />
     <link rel="stylesheet" href="{% static 'genioapp/styleguide.css' %}" />
-      {% load bootstrap5 %}
+      <!-- {% load bootstrap5 %}
   {% bootstrap_css %}
-  {% bootstrap_javascript %}
+  {% bootstrap_javascript %} -->
   </head>
   {% block content %}
   <body>
-    <div class="landing-page">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Kodu software</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Scratch software</button>
+      </li> 
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">EV 3 Robotics</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><div class="card">
+        <div class="card__side card__side--front">
+          <div class="card__picture card__picture--1"><img src="https://images.unsplash.com/photo-1585857188938-2f7ae5afb6f8?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/></div>
+                      
+            
+          
+                <div class="card__details">
+                  <span class="instructor">Claudia Watts</span>
+                  <h4 class="card__heading">
+                  <span class="card__heading-span card__heading-span--1">
+                    Video games
+                  </span>
+                </h4>
+                  <p>
+                    In this course kids will learn the concepts of game design, they
+                    will build their 3D world, create the characters and program them
+                    to follow their rules
+                  </p>
+                  <span class="rating">4.5 stars &#9733;</span>
+                  <span class="reviews">(2.5k reviews)</span>
+                  <p>Jr &bull; L1</p>
+                </div>
+              </div>
+      </div></div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Some text</div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Some text</div>
+    </div>
+    <!-- <div class="landing-page">
       <div class="div">
         <div class="frame">
           <img class="mdi-phone" src="https://c.animaapp.com/TPZdvj18/img/mdi-phone.svg" />
@@ -138,9 +177,9 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
   </body>
-{% endblock %}
+  {% endblock %}
 </html>
 
 

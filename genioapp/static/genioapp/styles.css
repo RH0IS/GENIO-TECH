@@ -608,12 +608,14 @@
   object-fit: cover;
 }
 
-.landing-page .text-wrapper-15 {
+.text-wrapper-15, .text-wrapper-15 a {
+  list-style: none;
+  text-decoration: none;
   position: relative;
   width: fit-content;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: #283d5a;
+  color: #193257;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
@@ -671,4 +673,34 @@
   overflow: hidden;
   all: unset;
   box-sizing: border-box;
+}
+
+/* =======course card======== */
+.card{
+  width: 20rem;
+  color: #AA082A;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.card__details{
+  padding: .6rem 2rem;
+}
+
+.card__heading-span{
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.instructor{
+  text-decoration: underline;
+}
+
+.card__picture--1 img{
+  width:100%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.rating{
+  font-weight: 900;
 }
