@@ -25,6 +25,7 @@
           <div class="INTRODUCE-YOUR-KID-wrapper">
             <p class="INTRODUCE-YOUR-KID">INTRODUCE YOUR KID<br />TO THE FUTURE<br />GENIO - TECH</p>
           </div>
+          <div class="content">{% block content %}{% endblock %}</div>
         </div>
         <div class="text-wrapper-2">Explore all our courses</div>
         <div class="text-wrapper-3">About us</div>
@@ -123,11 +124,29 @@
         <div class="navbar-2">
           <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
           <div class="text-wrapper-15">HOME</div>
-          <div class="text-wrapper-15">ABOUT US</div>
+          <div class="text-wrapper-15">Enroll Instructor</div>
           <div class="text-wrapper-15">AGE 6-11</div>
-          <div class="text-wrapper-15">AGE11-16</div>
-          <div class="text-wrapper-15">AGE16+</div>
-          <div class="text-wrapper-15">COURSES</div>
+          <div class="text-wrapper-15">AGE 11-16</div>
+          <div class="text-wrapper-15"><button>
+            <a href="{% url 'genioapp:courseregistration' %}">
+              Course Registration
+            </a>
+          </button></div>
+          <div class="text-wrapper-15">
+          <button>
+            <a href="{% url 'genioapp:instructorsignup' %}">
+              Instructor Enroll
+            </a>
+          </button>
+        </div>
+            
+            <div class="text-wrapper-16">Button</div>
+
+          
+          <div class="btn">
+            
+            
+          </div>
         </div>
         <button class="btn-primary"><div class="text-wrapper-16">Register</div></button>
         <button class="button"><div class="text-wrapper-16">Register</div></button>
