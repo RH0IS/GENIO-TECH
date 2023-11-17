@@ -679,7 +679,7 @@
 .section--course-catalogue{
   display: flex;
   flex-direction: column;
-  margin: 2.5rem 5rem;
+  margin: 2.5rem 4rem;
 }
 
 /* ==========course tabs========= */
@@ -693,7 +693,8 @@
 
 .nav-tabs .nav-link{
   border-radius: 25px 25px 0 0 !important;
-  padding: 1rem;
+  padding: 1rem 2rem;
+  font-weight: 900;
 }
 
 .nav-tabs .nav-link.active {
@@ -727,7 +728,7 @@
 }
 
 .card__heading-span{
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 900;
 }
 
