@@ -11,6 +11,8 @@ urlpatterns = [
     path('instructorsignup/',views.instructorsignup, name='instructorsignup'),
     path('courseregistration/',views.courseregistration, name='courseregistration'),
     path('login/',views.ins_login, name='ins_login'),
-    path('login/redirect/',views.instructorsignup, name='login/redirect/')
+    path('login/redirect/',views.instructorsignup, name='login/redirect/'),
+    path('logout/', views.custom_logout, name='logout'),
+    path('instructor_profile/', views.instructor_profile, name = 'instructor_profile'),
 
 ]
