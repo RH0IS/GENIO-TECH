@@ -4,7 +4,7 @@ from .models import Category, Course, Student, InstructorProfile
 from django.shortcuts import get_object_or_404
 from .forms import InstructorSignUpForm, CourseForm, LoginForm
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 def courseregistration(request):
     form= CourseForm(request.POST)
@@ -28,11 +28,13 @@ def ins_login(request):
                 # Example: return redirect('home')
                 print(username)
                 print(password)
-                return redirect('index')  # Redirect to the desired URL after successful login
+                return render(request,'genioapp/index.html')  # Redirect to the desired URL after successful login
     else:
         form = LoginForm()
 
     return render(request, 'genioapp/login.html', {'form': form})
+
+#@login_required(login_url="/login")
 def instructorsignup(request):
     if request.method == 'POST':
         form = InstructorSignUpForm(request.POST)
@@ -52,6 +54,7 @@ def instructorsignup(request):
         form = InstructorSignUpForm()
     
     return render(request, 'genioapp/InstructorSignup.html', {'form': form})
+
 
 def index(request):
     # Retrieve the list of categories from the database and order them by ID

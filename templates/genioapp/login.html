@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <body>
-    <form method="POST">
+    <form method="post">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Login</button>
