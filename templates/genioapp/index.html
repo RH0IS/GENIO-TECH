@@ -14,43 +14,45 @@
   </head>
   {% block content %}
   <body>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Kodu software</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Scratch software</button>
-      </li> 
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">EV 3 Robotics</button>
-      </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="card">
-        <div class="card__side card__side--front">
-          <div class="card__picture card__picture--1"><img src="{% static 'genioapp/img/video-games_jr_l1.png' %}"/></div>
-              <div class="card__details">
-                  <span class="instructor">Claudia Watts</span>
-                  <h4 class="card__heading">
-                  <span class="card__heading-span card__heading-span--1">
-                    Video games
-                  </span>
-                </h4>
-                  <p>
-                    In this course kids will learn the concepts of game design, they
-                    will build their 3D world, create the characters and program them
-                    to follow their rules
-                  </p>
-                  <span class="rating">4.5 stars &#9733;</span>
-                  <span class="reviews">(2.5k reviews)</span>
-                  <p>Jr &bull; L1</p>
+    <section class="section--course-catalogue">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Kodu software</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Scratch software</button>
+        </li> 
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">EV 3 Robotics</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="card">
+          <div class="card__side card__side--front">
+            <div class="card__picture card__picture--1"><img src="{% static 'genioapp/img/video-games_jr_l1.png' %}"/></div>
+                <div class="card__details">
+                    <span class="instructor">Claudia Watts</span>
+                    <h4 class="card__heading">
+                    <span class="card__heading-span card__heading-span--1">
+                      Video games
+                    </span>
+                  </h4>
+                    <p>
+                      In this course kids will learn the concepts of game design, they
+                      will build their 3D world, create the characters and program them
+                      to follow their rules
+                    </p>
+                    <span class="rating">4.5 stars &#9733;</span>
+                    <span class="reviews">(2.5k reviews)</span>
+                    <p>Jr &bull; L1</p>
+                  </div>
                 </div>
-              </div>
-      </div></div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Some text</div>
-      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Some text</div>
-    </div>
+        </div></div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Some text</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Some text</div>
+      </div>
+    </section>
     <!-- <div class="landing-page">
       <div class="div">
         <div class="frame">

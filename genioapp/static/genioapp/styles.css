@@ -675,6 +675,13 @@
   box-sizing: border-box;
 }
 
+/* ========SECTION: COURSE CATALOGUE======== */
+.section--course-catalogue{
+  display: flex;
+  flex-direction: column;
+  margin: 2.5rem 5rem;
+}
+
 /* ==========course tabs========= */
 #myTab{
   margin-bottom: 1rem;
