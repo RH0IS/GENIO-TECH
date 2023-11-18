@@ -36,9 +36,17 @@
             <div class="text-wrapper-15">ABOUT US</div>
 
           <div class="text-wrapper-15">
-              <a href="{% url 'genioapp:instructorsignup' %}">
-                    ENROLL INSTRUCTOR
-              </a>
+            {% if user.is_authenticated %}
+            <span class="navbar-text">Logged in as {{user.username}} | </span>
+                <button>
+            <a href="{% url 'genioapp:instructorsignup' %}">
+              Instructor Enroll
+            </a>
+          </button>
+            {% else %}
+                <span class="navbar-text">Please login to access this feature | </span>
+            {% endif %}
+          </ul>
           </div>
 
           <div class="text-wrapper-15">
