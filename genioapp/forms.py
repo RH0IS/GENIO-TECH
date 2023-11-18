@@ -3,12 +3,17 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
-from genioapp.models import Course
+from genioapp.models import Course, CourseLevels
 
 class LoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+
+class CourseLevelForm(forms.ModelForm):
+    class Meta:
+        model=CourseLevels
+        fields='__all__'
 
 class InstructorSignUpForm(UserCreationForm):
     email=forms.EmailField(required=True)

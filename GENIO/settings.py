@@ -40,9 +40,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'genioapp.apps.GenioappConfig',
-    'django_bootstrap5',
-
-
 ]
 
 MIDDLEWARE = [

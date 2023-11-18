@@ -1,22 +1,52 @@
-{% extends 'genioapp/base.html' %}
-{% block myhdg %}Hello User, Welcome to Course List{% endblock %}
+{% extends 'genioapp/base0.html' %}
+{% block content %}
+    <h1>All Courses</h1>
+    {% comment %} {% for item in courses_with_levels %}
+        <h2>{{ item.course.title }}</h2>
+        <p>Description: {{ item.course.description }}</p>
+        <!-- Display other course details -->
 
-{% block body_block %}
+        <h3>Levels</h3>
+        <ul>
+            {% for level in item.levels %}
+                <li>
+                    <strong>{{ level.name }}</strong>
+                    <p>Description: {{ level.description }}</p>
+                    <!-- Display other level details -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %} {% endcomment %}
 
 
-<body>
+    <nav class="navbar-2" style="margin-top: 400px">
+        {% for item in courses_with_levels %}
+            <div class="text-wrapper-15">
+                <a href="#{{ item.course.title }}" class="nav-link">{{ item.course.title }}</a>
+                <div class="card-container">
+                    {% for level in item.levels %}
+                         <!-- Loop three times for three cards -->
+                            <div class="card">
+                                <div class="card__side card__side--front">
+                                    <div class="card__details">
+                                        <h4 class="card__heading">
+                                            <span class="card__heading-span card__heading-span--1">{{ item.course.title }}</span>
+                                        </h4>
+                                        <p>Instructor: {{ item.course.instructor.name }}</p>
+                                        <h3>Level: {{ level.name }}</h3>
+                                        <p>Description: {{ level.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    {% endfor %}
+                </div>
+            </div>
 
-    <h2>Available Courses</h2>
-    <ul>
-        {% for course in courlist %}
-            <li>{{ course.title }} - {{ course.description }}</li>
-        {% empty %}
-            <li>No courses available</li>
         {% endfor %}
-    </ul>
-{#<p><a href="{% url 'myappF23:place_order' %}">Place a New Order</a></p>#}
-
-</body>
-
-
+    </nav>
+    
+    
+    
+    
 {% endblock %}
