@@ -1,21 +1,27 @@
+/*========landing page============*/
+
+.navbar {
+  width: 100%;
+}
+
 .landing-page {
   background-color: #ffffff;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center; */
   width: 100%;
 }
 
 .landing-page .div {
   background-color: #ffffff;
-  width: 1440px;
+  width: 100%;
   height: 3785px;
   position: relative;
 }
 
 .landing-page .frame {
-  position: absolute;
-  width: 1440px;
+  /* position: absolute; */
+  width: 100%;
   height: 100px;
   top: 0;
   left: 0;
@@ -44,13 +50,13 @@
   white-space: nowrap;
 }
 
-.landing-page .socials-box {
-  position: absolute;
-  width: 236px;
-  height: 32px;
-  top: 34px;
-  left: 857px;
-}
+/*.landing-page .socials-box {*/
+/*  position: absolute;*/
+/*  width: 236px;*/
+/*  height: 32px;*/
+/*  top: 34px;*/
+/*  left: 857px;*/
+/*}*/
 
 .landing-page .frame-2 {
   position: absolute;
@@ -99,7 +105,6 @@
   background-size: cover;
   background-position: 50% 50%;
 }
-
 
 .landing-page .INTRODUCE-YOUR-KID-wrapper {
   position: relative;
@@ -588,12 +593,14 @@
 
 .landing-page .navbar-2 {
   display: flex;
-  width: 1097px;
+  width: 100%;
   align-items: center;
   gap: 60px;
-  position: absolute;
+  /* margin-top: 6rem; */
+  justify-content: center;
+  /* position: absolute;
   top: 140px;
-  left: 100px;
+  left: 100px; */
 }
 
 .landing-page .img {
@@ -603,16 +610,25 @@
   object-fit: cover;
 }
 
-.landing-page .text-wrapper-15 {
+.text-wrapper-15,
+.text-wrapper-15 a {
+  list-style: none;
+  text-decoration: none;
   position: relative;
   width: fit-content;
   font-family: "Inter", Helvetica;
   font-weight: 700;
-  color: #283d5a;
+  color: #193257;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
+  text-decoration: none;
+}
+
+.text-wrapper-15 a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .landing-page .btn-primary {
@@ -666,4 +682,99 @@
   overflow: hidden;
   all: unset;
   box-sizing: border-box;
+}
+
+/* ========SECTION: ABOUT======== */
+.section-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 4rem;
+  height: 50vh;
+  text-align: center;
+}
+
+.about-header {
+  margin-bottom: 2rem;
+  color: #aa082a;
+}
+
+.about-text {
+  color: #929292;
+}
+
+/* ========SECTION: COURSE CATALOGUE======== */
+.section--course-catalogue {
+  display: flex;
+  flex-direction: column;
+  margin: 2.5rem 4rem;
+}
+
+/* ==========course tabs========= */
+#myTab {
+  margin-bottom: 1rem;
+}
+
+.nav-item button:hover {
+  background-color: #bbb;
+}
+
+.nav-tabs .nav-link {
+  border-radius: 25px 25px 0 0 !important;
+  padding: 1rem 2rem;
+  font-weight: 900;
+}
+
+.nav-tabs .nav-link.active {
+  color: white !important;
+  background-color: #aa082a !important;
+  /* border-color: #dee2e6 #dee2e6 #fff; */
+}
+
+.nav-tabs .nav-link {
+  color: rgba(132, 0, 28, 0.6) !important;
+  background-color: #e4e1dd !important;
+  /* border-color: #dee2e6 #dee2e6 #fff; */
+}
+
+/* .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: white;
+  background-color: #AA082A;
+  border-color: #dee2e6 #dee2e6 #fff;
+} */
+
+.card-container {
+  display: flex;
+  gap: 2rem;
+}
+
+/* =======course card======== */
+.card {
+  width: 20rem;
+  color: #aa082a;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.card__details {
+  padding: 0.6rem 2rem;
+}
+
+.card__heading-span {
+  font-size: 1.75rem;
+  font-weight: 900;
+}
+
+.instructor {
+  text-decoration: underline;
+}
+
+.card__picture--1 img {
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.rating {
+  font-weight: 900;
 }
