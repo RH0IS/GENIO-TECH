@@ -58,9 +58,9 @@ def instructorsignup(request):
 
 def index(request):
     # Retrieve the list of categories from the database and order them by ID
-    category_list = Category.objects.all().order_by('id')[:10]
-    return render(request, 'genioapp/index.html', {'category_list': category_list})
-
+    # category_list = Category.objects.all().order_by('id')[:10]
+    # return render(request, 'genioapp/index0.html', {'category_list': category_list})
+    return render(request, 'genioapp/index0.html')
 def about(request):
 
     heading = 'This is a Distance Education Website! Search our Categories to find all available Courses.'

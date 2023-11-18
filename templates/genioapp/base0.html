@@ -22,27 +22,35 @@
           </div>
           <div class="navbar"></div>
         </div>
+
         <div class="navbar-2">
-          <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
-          <div class="text-wrapper-15">HOME</div>
-          <div class="text-wrapper-15">Enroll Instructor</div>
-          <div class="text-wrapper-15">AGE 6-11</div>
-          <div class="text-wrapper-15">AGE 11-16</div>
-          <div class="text-wrapper-15">
-            <button>
-            <a href="{% url 'genioapp:courseregistration' %}">
-              Course Registration
+            <a href="{% url 'genioapp:index' %}">
+                <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
             </a>
-          </button></div>
+            <div class="text-wrapper-15">
+                <a href="{% url 'genioapp:index' %}">
+                    HOME
+                </a>
+            </div>
+
+            <div class="text-wrapper-15">ABOUT US</div>
+
           <div class="text-wrapper-15">
-          <button>
-            <a href="{% url 'genioapp:instructorsignup' %}">
-              Instructor Enroll
-            </a>
-          </button>
+              <a href="{% url 'genioapp:instructorsignup' %}">
+                    ENROLL INSTRUCTOR
+              </a>
+          </div>
+
+          <div class="text-wrapper-15">
+                <a href="{% url 'genioapp:courseregistration' %}">
+                    COURSE REGISTRATION
+                </a>
+          </div>
+
+{#          <div class="text-wrapper-15">Placeholder 1</div>#}
+{#          <div class="text-wrapper-15">Placeholder 2</div>#}
+{#          <div class="text-wrapper-15">Placeholder 3</div>#}
         </div>
-        
-      </div>
      
     </div>
     <div class="container-fluid" style="margin-top: 400px;">
