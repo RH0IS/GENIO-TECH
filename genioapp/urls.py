@@ -13,5 +13,9 @@ urlpatterns = [
     path('login/',views.ins_login, name='ins_login'),
     path('addcourselevels/',views.addcourselevels, name='addcourselevels'),
     path('viewCourses/',views.viewCourses, name='viewCourses')
+    path('login/redirect/',views.instructorsignup, name='login/redirect/'),
+    path('logout/', views.custom_logout, name='logout'),
+    path('instructor_profile/', views.instructor_profile, name = 'instructor_profile'),
+
 
 ]
