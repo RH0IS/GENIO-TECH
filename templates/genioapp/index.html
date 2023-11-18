@@ -1,15 +1,218 @@
-<!DOCTYPE html>
-{% load static %}
+{#<!DOCTYPE html>#} {% extends 'genioapp/base.html' %} {% load static %}
 <html>
   <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:700">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter:700"
+    />
     <link rel="stylesheet" href="{% static 'genioapp/globals.css' %}" />
     <link rel="stylesheet" href="{% static 'genioapp/styles.css' %}" />
     <link rel="stylesheet" href="{% static 'genioapp/styleguide.css' %}" />
+    <!-- {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %} -->
   </head>
+  {% block content %}
   <body>
-    <div class="landing-page">
+    <section class="section--course-catalogue">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="kodu-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#kodu"
+            type="button"
+            role="tab"
+            aria-controls="kodu"
+            aria-selected="true"
+          >
+            Kodu software
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="scratch-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#scratch"
+            type="button"
+            role="tab"
+            aria-controls="scratch"
+            aria-selected="false"
+          >
+            Scratch software
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="ev3-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#ev3"
+            type="button"
+            role="tab"
+            aria-controls="ev3"
+            aria-selected="false"
+          >
+            EV 3 Robotics
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="tetrix-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#tetrix"
+            type="button"
+            role="tab"
+            aria-controls="tetrix"
+            aria-selected="false"
+          >
+            Tetrix
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="comp-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#comp"
+            type="button"
+            role="tab"
+            aria-controls="comp"
+            aria-selected="false"
+          >
+            Competition training
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="kodu"
+          role="tabpanel"
+          aria-labelledby="kodu-tab"
+        >
+          <div class="card-container">
+            <div class="card">
+              <div class="card__side card__side--front">
+                <div class="card__picture card__picture--1">
+                  <img
+                    src="{% static 'genioapp/img/video-games_jr_l1.png' %}"
+                  />
+                </div>
+                <div class="card__details">
+                  <span class="instructor">Claudia Watts</span>
+                  <h4 class="card__heading">
+                    <span class="card__heading-span card__heading-span--1">
+                      Video games
+                    </span>
+                  </h4>
+                  <p>
+                    In this course kids will learn the concepts of game design,
+                    they will build their 3D world, create the characters and
+                    program them to follow their rules
+                  </p>
+                  <span class="rating">4.5 stars &#9733;</span>
+                  <span class="reviews">(2.5k reviews)</span>
+                  <p>Jr &bull; L1</p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__side card__side--front">
+                <div class="card__picture card__picture--1">
+                  <img
+                    src="{% static 'genioapp/img/video-games_jr_l2.png' %}"
+                  />
+                </div>
+                <div class="card__details">
+                  <span class="instructor">Victoria Irons</span>
+                  <h4 class="card__heading">
+                    <span class="card__heading-span card__heading-span--1">
+                      Video games
+                    </span>
+                  </h4>
+                  <p>
+                    Kids will learn more concepts about programming their game
+                    and adding much controllers, they will learn how to use
+                    joystick to have a more fun interacting game
+                  </p>
+                  <span class="rating">4.5 stars &#9733;</span>
+                  <span class="reviews">(2.5k reviews)</span>
+                  <p>Jr &bull; L2</p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__side card__side--front">
+                <div class="card__picture card__picture--1">
+                  <img
+                    src="{% static 'genioapp/img/video-games_jr_l3.png' %}"
+                  />
+                </div>
+                <div class="card__details">
+                  <span class="instructor">Ryley Geir Daelman</span>
+                  <h4 class="card__heading">
+                    <span class="card__heading-span card__heading-span--1">
+                      Video games
+                    </span>
+                  </h4>
+                  <p>
+                    Kids will learn more about how to design a game and make it
+                    attractive for other kids, they will learn how to change the
+                    characters behavior depending on a certain event , they will
+                    be challenged to create their own rules, worlds, and compete
+                    with each other
+                  </p>
+                  <span class="rating">4.5 stars &#9733;</span>
+                  <span class="reviews">(2.5k reviews)</span>
+                  <p>Jr &bull; L3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="scratch"
+          role="tabpanel"
+          aria-labelledby="scratch-tab"
+        >
+          Scratch
+        </div>
+        <div
+          class="tab-pane fade"
+          id="ev3"
+          role="tabpanel"
+          aria-labelledby="ev3-tab"
+        >
+          EV 3
+        </div>
+        <div
+          class="tab-pane fade"
+          id="tetrix"
+          role="tabpanel"
+          aria-labelledby="tetrix-tab"
+        >
+          Tetrix
+        </div>
+        <div
+          class="tab-pane fade"
+          id="comp"
+          role="tabpanel"
+          aria-labelledby="comp-tab"
+        >
+          Competition training
+        </div>
+      </div>
+    </section>
+    <!-- <div class="landing-page">
       <div class="div">
         <div class="frame">
           <img class="mdi-phone" src="https://c.animaapp.com/TPZdvj18/img/mdi-phone.svg" />
@@ -99,6 +302,8 @@
               <div class="text-wrapper-14">L3</div>
               <div class="ellipse"></div>
             </div>
+            <p>lashdbflasbflkasbldfjkasldjkfblasjkbflkadsbflka</p>
+
           </div>
         </div>
         <p class="genio-tech-is-an">
@@ -122,19 +327,16 @@
         </div>
         <div class="navbar-2">
           <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
-          <div class="text-wrapper-15">HOME</div>
-          <div class="text-wrapper-15">ABOUT US</div>
+          <div class="text-wrapper-15"><a href="index.html">HOME</a></div>
+          <div class="text-wrapper-15"><a href="/about">ABOUT US</a></div>
           <div class="text-wrapper-15">AGE 6-11</div>
           <div class="text-wrapper-15">AGE11-16</div>
           <div class="text-wrapper-15">AGE16+</div>
           <div class="text-wrapper-15">COURSES</div>
         </div>
-        <button class="btn-primary"><div class="text-wrapper-16">Register</div></button>
-        <button class="button"><div class="text-wrapper-16">Register</div></button>
-        <button class="btn-primary-2"><div class="text-wrapper-16">Register</div></button>
+
       </div>
-    </div>
+    </div> -->
   </body>
+  {% endblock %}
 </html>
-
-
