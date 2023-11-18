@@ -106,7 +106,6 @@
   background-position: 50% 50%;
 }
 
-
 .landing-page .INTRODUCE-YOUR-KID-wrapper {
   position: relative;
   width: 661px;
@@ -625,10 +624,9 @@
   text-decoration: none;
 }
 
-.text-wrapper-15 a{
+.text-wrapper-15 a {
   color: inherit;
   text-decoration: none;
-
 }
 
 .landing-page .btn-primary {
@@ -682,6 +680,26 @@
   overflow: hidden;
   all: unset;
   box-sizing: border-box;
+}
+
+/* ========SECTION: ABOUT======== */
+.section-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 4rem;
+  height: 50vh;
+  text-align: center;
+}
+
+.about-header {
+  margin-bottom: 2rem;
+  color: #aa082a;
+}
+
+.about-text {
+  color: #929292;
 }
 
 /* ========SECTION: COURSE CATALOGUE======== */
