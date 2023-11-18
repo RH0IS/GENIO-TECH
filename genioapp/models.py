@@ -1,6 +1,5 @@
 from decimal import Decimal
 from django.db import models
-from django_countries.fields import CountryField
 
 # Create your models here.
 class Student(models.Model):
@@ -41,6 +40,7 @@ class Course(models.Model):
     video = models.FileField(upload_to='videos/',default='default_image.jpg')
 
 
+    
     # level choices in Course
 
     COURSE_LEVEL_CHOICES = [
@@ -54,13 +54,20 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
+class InstructorProfile(models.Model):
+    
+    user= models.OneToOneField('auth.User',on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=True)  # Optional field
+    email = models.EmailField(unique=True)
+    # Additional fields
+    field2 = models.CharField(max_length=50, blank=True)  # Optional field
+    
 
 class Instructor(models.Model):
     username = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=254, unique=True, default=None)
-    country = CountryField()
     bio = models.TextField()
     language = models.CharField(max_length=100, default='none')
     image = models.ImageField(upload_to='images/',default='default_image.jpg')
