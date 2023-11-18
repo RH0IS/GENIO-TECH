@@ -13,13 +13,23 @@
     <div class="landing-page">
       <div class="div">
         <div class="frame">
-          <img class="mdi-phone" src="https://c.animaapp.com/TPZdvj18/img/mdi-phone.svg" />
-          <div class="TEL">TEL:&nbsp;&nbsp;(+2) 03 5832093</div>
-          <img class="socials-box" src="https://c.animaapp.com/TPZdvj18/img/socials-box.svg" />
-          <div class="frame-2">
-            <div class="text-wrapper">LOGIN</div>
-            <img class="vector" src="https://c.animaapp.com/TPZdvj18/img/vector.svg" />
-          </div>
+            <div class="phonediv">
+                <img class="mdi-phone" src="https://c.animaapp.com/TPZdvj18/img/mdi-phone.svg" />
+                <div class="TEL">TEL:&nbsp;&nbsp;(+2) 03 5832093</div>
+            </div>
+
+            <div class="sociallogin">
+                <img class="socials-box" src="https://c.animaapp.com/TPZdvj18/img/socials-box.svg" />
+                <div class="frame-2">
+                    <a href="{% url 'genioapp:ins_login' %} " style="display: flex;gap: 1rem">
+                        <div class="text-wrapper">
+                            LOGIN
+                        </div>
+                        <img class="vector" src="https://c.animaapp.com/TPZdvj18/img/vector.svg" />
+                    </a>
+                </div>
+            </div>
+
           <div class="navbar"></div>
         </div>
 
