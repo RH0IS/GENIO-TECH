@@ -1,8 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Category, Course, Student, InstructorProfile
 from django.shortcuts import get_object_or_404
-from .forms import InstructorSignUpForm, CourseForm, LoginForm
+
+from .forms import InstructorSignUpForm, CourseForm, LoginForm, CourseLevelForm
+
+
+
 from django.contrib.auth import authenticate, login, logout
+
 from django.contrib.auth.decorators import login_required, permission_required
 
 
@@ -30,13 +35,40 @@ def ins_login(request):
                 # Example: return redirect('home')
                 print(username)
                 print(password)
+
                 response = redirect('/instructor_profile/')
                 return response  # Redirect to the desired URL after successful login
-
     else:
         form = LoginForm()
 
     return render(request, "genioapp/login.html", {"form": form})
+
+
+
+# def viewCourses(request):
+#     courses=Course.objects.all()
+#     courselevels=CourseLevels.objects.get(course=co)
+    
+#     return render (request,'genioapp/courses.html', {'courses': courses})
+
+def viewCourses(request):
+    courses = Course.objects.all()
+    courses_with_levels = []
+    for course in courses:
+        levels = course.courselevels_set.all()
+        courses_with_levels.append({'course': course, 'levels': levels})
+    
+    print(courses_with_levels)
+    return render(request, 'genioapp/courses.html', {'courses_with_levels': courses_with_levels})
+
+def addcourselevels(request):
+    form= CourseLevelForm(request.POST)
+    if form.is_valid():
+        form.save()
+    else:
+        form = CourseLevelForm()
+    
+    return render(request, 'genioapp/courseregistrationpage.html', {'form': form})
 
 
 @login_required(login_url="/login")
@@ -60,6 +92,7 @@ def instructorsignup(request):
 
 def index(request):
     # Retrieve the list of categories from the database and order them by ID
+
     # category_list = Category.objects.all().order_by('id')[:10]
     # return render(request, 'genioapp/index0.html', {'category_list': category_list})
     return render(request, "genioapp/index.html")
