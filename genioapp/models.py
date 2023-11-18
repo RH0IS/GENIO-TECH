@@ -25,35 +25,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
-class Course(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    instructor = models.ForeignKey('Instructor', on_delete=models.SET_NULL, null=True, related_name='courses_teaching')
-    categories = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-    students = models.ManyToManyField(Student, blank=True)
-    image = models.ImageField(upload_to='images/',default='default_image.jpg')
-    start_date = models.DateField()
-    end_date = models.DateField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    interested = models.PositiveIntegerField(default=0)
-    video = models.FileField(upload_to='videos/',default='default_image.jpg')
-
-
-    
-    # level choices in Course
-
-    COURSE_LEVEL_CHOICES = [
-        ('BE', 'Beginner'),
-        ('IN', 'Intermediate'),
-        ('AD', 'Advanced'),
-    ]
-
-    level = models.CharField(max_length=15, choices=COURSE_LEVEL_CHOICES, default='BE')
-
-    def __str__(self):
-        return self.title
-
 class InstructorProfile(models.Model):
     
     user= models.OneToOneField('auth.User',on_delete=models.CASCADE)
@@ -61,6 +32,33 @@ class InstructorProfile(models.Model):
     email = models.EmailField(unique=True)
     # Additional fields
     field2 = models.CharField(max_length=50, blank=True)  # Optional field
+    def __str__(self):
+        return self.name 
+    
+class Course(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    instructor = models.ForeignKey(InstructorProfile, on_delete=models.SET_NULL, null=True, related_name='courses_teaching')
+    image = models.ImageField(upload_to='images/',default='default_image.jpg')
+    start_date = models.DateField()
+    end_date = models.DateField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    interested = models.PositiveIntegerField(default=0)
+    video = models.FileField(upload_to='videos/',default='default_image.jpg')
+    # level choices in Course
+
+    def __str__(self):
+        return self.title
+
+class CourseLevels(models.Model):
+    name= models.CharField(max_length=100)
+    course=models.ForeignKey(Course, on_delete=models.CASCADE)
+    students = models.ManyToManyField(Student, blank=True)
+    description=models.CharField(max_length=100)
+    def __str__(self):
+        return self.name  
+    
+
     
 
 class Instructor(models.Model):

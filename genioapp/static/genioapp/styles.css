@@ -11,7 +11,12 @@
   justify-content: center; */
   width: 100%;
 }
-
+.navbar-2 {
+  display: flex;
+  justify-content: center;
+  
+  /* Add any additional styling as needed */
+}
 .landing-page .div {
   background-color: #ffffff;
   width: 100%;
