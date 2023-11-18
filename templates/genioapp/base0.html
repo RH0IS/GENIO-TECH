@@ -26,8 +26,20 @@
           <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
           <div class="text-wrapper-15">HOME</div>
           <div class="text-wrapper-15">Enroll Instructor</div>
-          <div class="text-wrapper-15">AGE 6-11</div>
-          <div class="text-wrapper-15">AGE 11-16</div>
+          <div class="text-wrapper-15">
+            <button>
+              <a href="{% url 'genioapp:viewCourses' %}">
+                Browse Courses
+              </a>
+            </button>
+          </div>
+          <div class="text-wrapper-15">
+            <button>
+              <a href="{% url 'genioapp:addcourselevels' %}">
+                Add Course Level
+              </a>
+            </button>
+          </div>
           <div class="text-wrapper-15">
             <button>
             <a href="{% url 'genioapp:courseregistration' %}">
