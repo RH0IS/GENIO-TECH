@@ -1,4 +1,4 @@
-/*========landing page============*/
+/*========LANDING PAGE============*/
 
 .navbar {
   width: 100%;
@@ -107,6 +107,15 @@
   /*top: 100px;*/
   /*left: 0;*/
   padding: 0rem 4rem;
+}
+
+.section-hero{
+  width: 100%;
+}
+
+.hero-img-container,
+.hero-img-container img{
+  width: 100%;
 }
 
 .landing-page .overlap-group {
@@ -638,6 +647,7 @@
   line-height: normal;
   white-space: nowrap;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .text-wrapper-15 a {
