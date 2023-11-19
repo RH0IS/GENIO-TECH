@@ -1,52 +1,41 @@
 {% extends 'genioapp/base0.html' %}
+{% load static %}
 {% block content %}
     <h1>All Courses</h1>
-    {% comment %} {% for item in courses_with_levels %}
-        <h2>{{ item.course.title }}</h2>
-        <p>Description: {{ item.course.description }}</p>
-        <!-- Display other course details -->
-
-        <h3>Levels</h3>
-        <ul>
-            {% for level in item.levels %}
-                <li>
-                    <strong>{{ level.name }}</strong>
-                    <p>Description: {{ level.description }}</p>
-                    <!-- Display other level details -->
-                </li>
-            {% endfor %}
-        </ul>
-    {% endfor %} {% endcomment %}
-
-
-    <nav class="navbar-2" style="margin-top: 400px">
+    <div class="row">
         {% for item in courses_with_levels %}
-            <div class="text-wrapper-15">
-                <a href="#{{ item.course.title }}" class="nav-link">{{ item.course.title }}</a>
-                <div class="card-container">
-                    {% for level in item.levels %}
-                         <!-- Loop three times for three cards -->
-                            <div class="card">
-                                <div class="card__side card__side--front">
-                                    <div class="card__details">
-                                        <h4 class="card__heading">
-                                            <span class="card__heading-span card__heading-span--1">{{ item.course.title }}</span>
-                                        </h4>
-                                        <p>Instructor: {{ item.course.instructor.name }}</p>
-                                        <h3>Level: {{ level.name }}</h3>
-                                        <p>Description: {{ level.description }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                    {% endfor %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <a href="{% url 'genioapp:course_detail' course_id=item.course.id %}">
+                        <img src="{{ item.course.image.url }}" class="card-img-top" alt="{{ item.course.title }}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{% url 'genioapp:course_detail' course_id=item.course.id %}">
+                                {{ item.course.title }}
+                            </a>
+                        </h5>
+                        <p class="card-text">{{ item.course.description }}</p>
+                        <p>Instructor: {{ item.course.instructor.name }}</p>
+                        <p>Start Date: {{ item.course.start_date }}</p>
+                        <p>End Date: {{ item.course.end_date }}</p>
+                        <p>Price: ${{ item.course.price }}</p>
+                        <!-- Add more fields as needed -->
+                        <p>Interested: {{ item.course.interested }}</p>
+                        <p>Video: <a href="{{ item.course.video.url }}" target="_blank">Watch Video</a></p>
+                        <p>Levels:</p>
+                        <ul>
+                            {% for level in item.levels %}
+                                <li>
+                                    <strong>{{ level.name }}</strong>
+                                    <p>Description: {{ level.description }}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{% url 'genioapp:course_detail' course_id=item.course.id %}" class="btn btn-primary">View Details</a>
+                    </div>
                 </div>
             </div>
-
         {% endfor %}
-    </nav>
-    
-    
-    
-    
+    </div>
 {% endblock %}
