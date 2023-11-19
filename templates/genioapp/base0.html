@@ -30,28 +30,34 @@
                 HOME
             </a>
         </div>
+        {% if is_student %}
         <div class="text-wrapper-15">
           <a href="{% url 'genioapp:viewCourses' %}">
             Browse Courses
           </a>
+          {% endif %}
       </div>
 
             {% if user.is_authenticated %}
-            
+            {% if is_instructor %}
           <div class="text-wrapper-15">
               <a href="{% url 'genioapp:addcourselevels' %}">
                 Add Course Level
               </a>
           </div>
+          
+
             <div class="text-wrapper-15">
               <a href="{% url 'genioapp:instructorsignup' %}">
                 Instructor Enroll
               </a>
             </div>
+            
             <div class="text-wrapper-15">
               <a href="{% url 'genioapp:courseregistration' %}">
                 Course Registration
               </a>
+              {% endif %}
         </div>
             <div class="text-wrapper-15">
             <span class="navbar-text">Logged in as {{user.username}}
@@ -78,9 +84,9 @@
 
           
         </div>
-       <div class="container-fluid" style="margin-top: 400px;"> <!-- Adjust the margin-top value as needed -->
+       <div class="container-fluid" > <!-- Adjust the margin-top value as needed -->
       <div class="row justify-content-center">
-        <div class="col-md-18">
+        <div class="col-md-5">
           {% block content %}{% endblock %}
         </div>
       </div>

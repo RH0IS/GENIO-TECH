@@ -51,15 +51,26 @@ def ins_login(request):
     
 #     return render (request,'genioapp/courses.html', {'courses': courses})
 
+def is_instructor(user):
+    val=user.groups.filter(name='Instructor').exists()
+    print(val)
+    return val
+
+def is_student(user):
+    val=user.groups.filter(name='Students').exists()
+    print(val)
+    return val
+
 def viewCourses(request):
-    courses = Course.objects.all()
-    courses_with_levels = []
-    for course in courses:
-        levels = course.courselevels_set.all()
-        courses_with_levels.append({'course': course, 'levels': levels})
-    
-    print(courses_with_levels)
-    return render(request, 'genioapp/courses.html', {'courses_with_levels': courses_with_levels})
+    if is_student(request.user):
+        courses = Course.objects.all()
+        courses_with_levels = []
+        for course in courses:
+            levels = course.courselevels_set.all()
+            courses_with_levels.append({'course': course, 'levels': levels})
+        return render(request, 'genioapp/courses.html', {'courses_with_levels': courses_with_levels})
+    else:
+        return render(request, 'genioapp/instructor_profile.html')
 
 def addcourselevels(request):
     form= CourseLevelForm(request.POST)
@@ -69,7 +80,6 @@ def addcourselevels(request):
         form = CourseLevelForm()
     
     return render(request, 'genioapp/courseregistrationpage.html', {'form': form})
-
 
 @login_required(login_url="/login")
 def instructorsignup(request):
