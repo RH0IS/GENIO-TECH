@@ -2,6 +2,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from .models import Student
 
 from genioapp.models import Course, CourseLevels
 
@@ -27,4 +28,16 @@ class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = '__all__'
+
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['name', 'email', 'age', 'gender', 'phone', 'country' ]
+
+
+class StudentCred(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username']
 

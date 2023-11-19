@@ -2,21 +2,6 @@ from decimal import Decimal
 from django.db import models
 
 # Create your models here.
-class Student(models.Model):
-    STUDENT_STATUS_CHOICES = [
-        ('ER', 'Enrolled'),
-        ('SP', 'Suspended'),
-        ('GD', 'Graduated')
-    ]
-
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=254, unique=True)
-    date_of_birth = models.DateField()
-    status = models.CharField(max_length=10, choices=STUDENT_STATUS_CHOICES, default='ER')
-
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
 
 
 class Category(models.Model):
@@ -58,8 +43,39 @@ class CourseLevels(models.Model):
     def __str__(self):
         return self.name  
     
+class InstructorProfile(models.Model):
+    user= models.OneToOneField('auth.User',on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=True)  # Optional field
+    email = models.EmailField(unique=True)
+    # Additional fields
+    field2 = models.CharField(max_length=50, blank=True)  # Optional field
+    def __str__(self):
+        return self.name
 
-    
+
+class Student(models.Model):
+    name = models.CharField(max_length=50, blank=True)
+    email = models.EmailField(unique=True)
+    age = models.IntegerField(blank=True, null=True)
+    gender = models.CharField(max_length=10, blank=True)
+    phone = models.CharField(max_length=15, blank=True)
+    country = models.CharField(max_length=50, blank=True)
+
+    def __str__(self):
+        return self.name
+      
+class StudentProfile(models.Model):
+    user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
+    # student = models.OneToOneField(Student, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, blank=True)
+    email = models.EmailField(unique=True,default='w@example.com')
+    age = models.IntegerField(blank=True, null=True)
+    gender = models.CharField(max_length=10, blank=True)
+    phone = models.CharField(max_length=15, blank=True)
+    country = models.CharField(max_length=50, blank=True)
+    def __str__(self):
+        return self.name
+
 
 class Instructor(models.Model):
     username = models.CharField(max_length=100)
@@ -69,7 +85,7 @@ class Instructor(models.Model):
     bio = models.TextField()
     language = models.CharField(max_length=100, default='none')
     image = models.ImageField(upload_to='images/',default='default_image.jpg')
-    students = models.ManyToManyField(Student, blank=True, related_name='instructors')
+    #students = models.ManyToManyField(Student, blank=True, related_name='instructors')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
