@@ -1,0 +1,17 @@
+{% extends 'genioapp/base0.html' %}
+{% load static %}
+{% block content %}
+    <body>
+<div>
+<ul>
+    {% for student in students %}
+        <li>{{ student.name }} - {{ student.email }}
+            <a href="{% url 'genioapp:create_credentials' student.id %}">
+                Create Credentials
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+</div>
+</body>
+{% endblock %}
