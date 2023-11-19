@@ -39,53 +39,60 @@
             <a href="{% url 'genioapp:index' %}">
                 HOME
             </a>
-        </div>
-        {% if is_student %}
+
+            {% if is_student %}
         <div class="text-wrapper-15">
           <a href="{% url 'genioapp:viewCourses' %}">
             Browse Courses
           </a>
           {% endif %}
       </div>
-
-            {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
             {% if is_instructor %}
           <div class="text-wrapper-15">
               <a href="{% url 'genioapp:addcourselevels' %}">
                 Add Course Level
               </a>
           </div>
+          <div class="text-wrapper-15">
+            <a href="{% url 'genioapp:instructorsignup' %}">
+              Instructor Enroll
+            </a>
+          </div>
 
+          <div class="text-wrapper-15">
+            <a href="{% url 'genioapp:courseregistration' %}">
+              Course Registration
+            </a>
+          </div>
+            {% endif %}
 
             <div class="text-wrapper-15">
-              <a href="{% url 'genioapp:instructorsignup' %}">
-                Instructor Enroll
-              </a>
-            </div>
-
-            <div class="text-wrapper-15">
-              <a href="{% url 'genioapp:courseregistration' %}">
-                Course Registration
-              </a>
-              {% endif %}
-        </div>
-            <div class="text-wrapper-15">
-            <span class="navbar-text">Logged in as {{user.username}}
-            </span>
-            <br>
-              <a href="{% url 'genioapp:logout' %}">
-                Logout
-              </a>
-            </div>
-
-            {% else %}
-            <div class="text-wrapper-15">
-
-                <a href="{% url 'genioapp:ins_login' %}">
-                  <span class="navbar-text">Please login to access this feature</span>
+              <span class="navbar-text">Logged in as {{user.username}}
+              </span>
+              <br>
+                <a href="{% url 'genioapp:logout' %}">
+                  Logout
                 </a>
               </div>
-            {% endif %}
+
+              {% else %}
+              <div class="text-wrapper-15">
+
+                  <a href="{% url 'genioapp:ins_login' %}">
+                    <span class="navbar-text">Please login to access this feature</span>
+                  </a>
+                </div>
+              {% endif %}
+        </div>
+
+
+
+
+
+
+
+
 
             <a href="{% url 'genioapp:index' %}">
               <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
@@ -94,12 +101,12 @@
 
 
         </div>
-       <div class="container-fluid" > <!-- Adjust the margin-top value as needed -->
-      <div class="row justify-content-center">
-        <div class="col-md-5">
+       <div class="container" > <!-- Adjust the margin-top value as needed -->
+
+
           {% block content %}{% endblock %}
-        </div>
-      </div>
+
+
     </div>
     </div>
 
@@ -109,3 +116,4 @@
 
   </body>
 </html>
+
