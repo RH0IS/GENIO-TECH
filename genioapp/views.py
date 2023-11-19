@@ -10,6 +10,9 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required, permission_required
 
+def about(request):
+    return render(request, 'genioapp/about.html')
+
 def course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     return render(request, 'genioapp/course_detail.html', {'course': course})

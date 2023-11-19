@@ -17,6 +17,7 @@ urlpatterns = [
     path('logout/', views.custom_logout, name='logout'),
     path('instructor_profile/', views.instructor_profile, name = 'instructor_profile'),
     path('course/<int:course_id>/', views.course_detail, name='course_detail'),
+    path('about/', views.about, name='about'),
 
 
 ]
