@@ -55,14 +55,14 @@
                 Add Course Level
               </a>
           </div>
-          
+
 
             <div class="text-wrapper-15">
               <a href="{% url 'genioapp:instructorsignup' %}">
                 Instructor Enroll
               </a>
             </div>
-            
+
             <div class="text-wrapper-15">
               <a href="{% url 'genioapp:courseregistration' %}">
                 Course Registration
@@ -78,53 +78,34 @@
               </a>
             </div>
 
-
-            <div class="text-wrapper-15">ABOUT US</div>
-
-          <div class="text-wrapper-15">
-            {% if user.is_authenticated %}
-            <span class="navbar-text">Logged in as {{user.username}} | </span>
-
-                
-            <a href="{% url 'genioapp:student_form' %}">
-              Studs Enroll
-            </a>
-
             {% else %}
             <div class="text-wrapper-15">
-                
+
                 <a href="{% url 'genioapp:ins_login' %}">
                   <span class="navbar-text">Please login to access this feature</span>
                 </a>
               </div>
             {% endif %}
-          
+
             <a href="{% url 'genioapp:index' %}">
               <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
 
           </a>
 
-          
+
         </div>
-
-
-    </div>
-    <div class="container-fluid"> <!-- Adjust the margin-top value as needed -->
-      <div class="row justify-content-top">
-        <div class="col-md-2">
+       <div class="container-fluid" > <!-- Adjust the margin-top value as needed -->
+      <div class="row justify-content-center">
+        <div class="col-md-5">
           {% block content %}{% endblock %}
         </div>
       </div>
-
     </div>
     </div>
 
 
-   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 
   </body>
 </html>
-
-
