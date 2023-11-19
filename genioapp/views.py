@@ -1,11 +1,16 @@
 from django.contrib.auth.models import User, Group
 from django.shortcuts import render, redirect
+
 from .models import Category, Course, Student, InstructorProfile, StudentProfile
+
 from django.shortcuts import get_object_or_404
 from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
 
+def course_detail(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    return render(request, 'genioapp/course_detail.html', {'course': course})
 
 
 

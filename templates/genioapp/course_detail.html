@@ -1,0 +1,12 @@
+{% extends 'genioapp/base0.html' %}
+{% block content %}
+    <h1>{{ course.title }} Details</h1>
+    <div>
+        <p>Description: {{ course.description }}</p>
+        <p>Instructor: {{ course.instructor.name }}</p>
+        <p>Start Date: {{ course.start_date }}</p>
+        <p>End Date: {{ course.end_date }}</p>
+        <p>Price: ${{ course.price }}</p>
+        <!-- Add more details as needed -->
+    </div>
+{% endblock %}
