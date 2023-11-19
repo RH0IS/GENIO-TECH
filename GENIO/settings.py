@@ -67,7 +67,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "genioapp.context_processor.check_student_group",
-                "genioapp.context_processor.check_student_group",
+                "genioapp.context_processor.check_instructor_group",
             ],
         },
     },
