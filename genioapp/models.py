@@ -10,20 +10,19 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class InstructorProfile(models.Model):
-    
-    user= models.OneToOneField('auth.User',on_delete=models.CASCADE)
+    user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
     name = models.CharField(max_length=50, blank=True)  # Optional field
     email = models.EmailField(unique=True)
     # Additional fields
     field2 = models.CharField(max_length=50, blank=True)  # Optional field
-    def __str__(self):
-        return self.name 
-    
+
+
 class Course(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    instructor = models.ForeignKey(InstructorProfile, on_delete=models.SET_NULL, null=True, related_name='courses_teaching')
+    instructor = models.ForeignKey(InstructorProfile, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/',default='default_image.jpg')
     start_date = models.DateField()
     end_date = models.DateField()
@@ -38,19 +37,11 @@ class Course(models.Model):
 class CourseLevels(models.Model):
     name= models.CharField(max_length=100)
     course=models.ForeignKey(Course, on_delete=models.CASCADE)
-    students = models.ManyToManyField(Student, blank=True)
+    #students = models.ManyToManyField(Student, blank=True)
     description=models.CharField(max_length=100)
     def __str__(self):
         return self.name  
-    
-class InstructorProfile(models.Model):
-    user= models.OneToOneField('auth.User',on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, blank=True)  # Optional field
-    email = models.EmailField(unique=True)
-    # Additional fields
-    field2 = models.CharField(max_length=50, blank=True)  # Optional field
-    def __str__(self):
-        return self.name
+
 
 
 class Student(models.Model):
