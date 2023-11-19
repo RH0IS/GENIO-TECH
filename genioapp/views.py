@@ -5,7 +5,6 @@ from django.shortcuts import get_object_or_404
 from .forms import InstructorSignUpForm, CourseForm, LoginForm, CourseLevelForm
 
 
-
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required, permission_required
@@ -19,7 +18,7 @@ def courseregistration(request):
     else:
         form = CourseForm()
 
-    return render(request, 'genioapp/courseregistrationpage.html', {'form': form})
+    return render(request, "genioapp/courseregistrationpage.html", {"form": form})
 
 
 def ins_login(request):
@@ -36,7 +35,7 @@ def ins_login(request):
                 print(username)
                 print(password)
 
-                response = redirect('/instructor_profile/')
+                response = redirect("/instructor_profile/")
                 return response  # Redirect to the desired URL after successful login
     else:
         form = LoginForm()
@@ -44,31 +43,34 @@ def ins_login(request):
     return render(request, "genioapp/login.html", {"form": form})
 
 
-
 # def viewCourses(request):
 #     courses=Course.objects.all()
 #     courselevels=CourseLevels.objects.get(course=co)
-    
+
 #     return render (request,'genioapp/courses.html', {'courses': courses})
+
 
 def viewCourses(request):
     courses = Course.objects.all()
     courses_with_levels = []
     for course in courses:
         levels = course.courselevels_set.all()
-        courses_with_levels.append({'course': course, 'levels': levels})
-    
+        courses_with_levels.append({"course": course, "levels": levels})
+
     print(courses_with_levels)
-    return render(request, 'genioapp/courses.html', {'courses_with_levels': courses_with_levels})
+    return render(
+        request, "genioapp/courses.html", {"courses_with_levels": courses_with_levels}
+    )
+
 
 def addcourselevels(request):
-    form= CourseLevelForm(request.POST)
+    form = CourseLevelForm(request.POST)
     if form.is_valid():
         form.save()
     else:
         form = CourseLevelForm()
-    
-    return render(request, 'genioapp/courseregistrationpage.html', {'form': form})
+
+    return render(request, "genioapp/courseregistrationpage.html", {"form": form})
 
 
 @login_required(login_url="/login")
@@ -86,8 +88,7 @@ def instructorsignup(request):
     else:
         form = InstructorSignUpForm()
 
-    return render(request, 'genioapp/InstructorSignup.html', {'form': form})
-
+    return render(request, "genioapp/InstructorSignup.html", {"form": form})
 
 
 def index(request):
@@ -95,13 +96,16 @@ def index(request):
 
     # category_list = Category.objects.all().order_by('id')[:10]
     # return render(request, 'genioapp/index0.html', {'category_list': category_list})
-    return render(request, "genioapp/index.html")
+    return render(
+        request,
+        "genioapp/index.html",
+    )
 
 
 @login_required
 def about(request):
-    heading = 'This is a Distance Education Website! Search our Categories to find all available Courses.'
-    return render(request, 'genioapp/about.html', {'heading': heading})
+    heading = "This is a Distance Education Website! Search our Categories to find all available Courses."
+    return render(request, "genioapp/about.html", {"heading": heading})
 
 
 def detail(request, category_no):
@@ -116,15 +120,15 @@ def detail(request, category_no):
 
 
 def courses(request):
-    courlist = Course.objects.all().order_by('id')
-    return render(request, 'genioapp/courses.html',
-                  {'courlist': courlist})
+    courlist = Course.objects.all().order_by("id")
+    return render(request, "genioapp/courses.html", {"courlist": courlist})
+
 
 def custom_logout(request):
     logout(request)
-    return redirect('/login/')
+    return redirect("/login/")
 
-@login_required(login_url = '/login/')
+
+@login_required(login_url="/login/")
 def instructor_profile(request):
-    return render(request, 'genioapp/instructor_profile.html')
-
+    return render(request, "genioapp/instructor_profile.html")
