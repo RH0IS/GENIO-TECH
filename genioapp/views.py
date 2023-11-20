@@ -58,13 +58,6 @@ def ins_login(request):
     return render(request, "genioapp/login.html", {"form": form})
 
 
-# def viewCourses(request):
-#     courses=Course.objects.all()
-#     courselevels=CourseLevels.objects.get(course=co)
-
-#     return render (request,'genioapp/courses.html', {'courses': courses})
-
-
 def is_instructor(user):
     val = user.groups.filter(name="Instructor").exists()
     print(val)
@@ -126,11 +119,16 @@ def instructorsignup(request):
 def index(request):
     # Retrieve the list of categories from the database and order them by ID
 
-    # category_list = Category.objects.all().order_by('id')[:10]
-    # return render(request, 'genioapp/index0.html', {'category_list': category_list})
+    if is_student(request.user):
+        courses = Course.objects.all()
+        courses_with_levels = []
+        for course in courses:
+            levels = course.courselevels_set.all()
+            courses_with_levels.append({"course": course, "levels": levels})
     return render(
         request,
         "genioapp/index.html",
+        {"courses_with_levels": courses_with_levels}
     )
 
 
