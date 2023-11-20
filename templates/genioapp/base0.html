@@ -42,14 +42,16 @@
             <a href="{% url 'genioapp:index' %}">
               HOME
             </a>
-
-            {% if is_student %}
-              <div class="text-wrapper-15">
-                <a href="{% url 'genioapp:viewCourses' %}">
-                  Browse Courses
-                </a>
-            {% endif %}
           </div>
+
+          {% if is_student %}
+            <div class="text-wrapper-15">
+              <a href="{% url 'genioapp:viewCourses' %}">
+                Browse Courses
+              </a>
+            </div>
+          {% endif %}
+
           {% if user.is_authenticated %}
             {% if is_instructor %}
               <div class="text-wrapper-15">
@@ -87,18 +89,20 @@
               </a>
             </div>
           {% endif %}
+{#        </div>#}
+
+
         </div>
+        <div class="content" > <!-- Adjust the margin-top value as needed -->
 
 
-      </div>
-      <div class="content" > <!-- Adjust the margin-top value as needed -->
+          {% block content %}{% endblock %}
 
 
-        {% block content %}{% endblock %}
-
-
+        </div>
       </div>
     </div>
+
 
 
 
