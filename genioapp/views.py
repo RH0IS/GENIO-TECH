@@ -205,7 +205,7 @@ def create_credentials(request, student_id):
             )
             studentProfile.save()
             student.delete()
-            student_group = Group.objects.get(name="Student")
+            student_group = Group.objects.get(name="Students")
             user.groups.add(student_group)
             return redirect("/admin_students_list/")
     else:
