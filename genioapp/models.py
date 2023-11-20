@@ -26,7 +26,7 @@ class InstructorProfile(models.Model):
 class Course(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    instructor = models.ForeignKey(InstructorProfile, on_delete=models.CASCADE)
+    instructor = models.ForeignKey(InstructorProfile, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to="images/", default="default_image.jpg")
     start_date = models.DateField()
     end_date = models.DateField()

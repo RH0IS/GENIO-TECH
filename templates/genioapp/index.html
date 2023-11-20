@@ -25,17 +25,19 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
 
             {% for item in courses_with_levels %}
-{#                {% if courses_with_levels[0] %} {% endif %}#}
+
                 <li class="nav-item" role="presentation">
                     <button
-                        class="nav-link"
+{#                            {% if cryptocurrency.volume_24h < 0 %}text-danger{% else %}text-success{% endif %}#}
+
+                        class="nav-link {% if forloop.first %}active{% endif %}"
                         id="{{ item.course.title }}-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#{{ item.course.title }}"
                         type="button"
                         role="tab"
                         aria-controls="{{ item.course.title }}"
-                        aria-selected="true"
+                        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
                     >
                         {{ item.course.title}}
                     </button>
@@ -45,7 +47,7 @@
         <div class="tab-content" id="myTabContent">
             {% for item in courses_with_levels %}
                 <div
-                    class="tab-pane fade show"
+                    class="tab-pane fade show {% if forloop.first %}active{% endif %}"
                     id="{{ item.course.title }}"
                     role="tabpanel"
                     aria-labelledby="{{ item.course.title }}-tab"

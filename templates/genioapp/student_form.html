@@ -2,7 +2,8 @@
 <body>
   <div class="form">
     <form method="post" action="{% url 'genioapp:student_form' %}">
-      {% csrf_token %} {{ form}}
+      {% csrf_token %}
+        {{form}}
 
       <button type="submit">Submit</button>
     </form>
