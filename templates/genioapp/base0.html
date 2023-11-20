@@ -123,72 +123,53 @@
 
 
         </div>
-        <div class="navbar">
-          <a href="{% url 'genioapp:index' %}">
-            <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
 
-          </a>
-          <div class="text-wrapper-15">
+          <div class="navbarfooter">
+
+            <div class="text-wrapper-footer">
+                <a href="{% url 'genioapp:index' %}">
+                    <img class="img-footer" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
+                </a>
+            </div>
+
+
+            <div class="text-wrapper-footer">
             <a href="{% url 'genioapp:index' %}">
               HOME
             </a>
           </div>
 
-        <div class="text-wrapper-15">
-            <a href="{% url 'genioapp:about' %}">
-              ABOUT
-            </a>
-          </div>
+            <div class="text-wrapper-footer">
+                <a href="{% url 'genioapp:about' %}">
+                    ABOUT
+                </a>
+            </div>
 
-          {% if is_student %}
-            <div class="text-wrapper-15">
+            <div class="text-wrapper-footer">
               <a href="{% url 'genioapp:viewCourses' %}">
                 Browse Courses
               </a>
             </div>
-          {% endif %}
 
-          {% if user.is_authenticated %}
-            {% if is_instructor %}
-              <div class="text-wrapper-15">
+            <div class="text-wrapper-footer">
                 <a href="{% url 'genioapp:addcourselevels' %}">
                   Add Course Level
                 </a>
-              </div>
-              <div class="text-wrapper-15">
+            </div>
+
+            <div class="text-wrapper-footer">
                 <a href="{% url 'genioapp:instructorsignup' %}">
                   Instructor Enroll
                 </a>
-              </div>
+            </div>
 
-              <div class="text-wrapper-15">
+              <div class="text-wrapper-footer">
                 <a href="{% url 'genioapp:courseregistration' %}">
                   Course Registration
                 </a>
               </div>
-            {% endif %}
-
-{#            <div class="text-wrapper-15">#}
-{#              <span class="navbar-text">Logged in as {{user.username}}#}
-{#              </span>#}
-{#              <br>#}
-{#              <a href="{% url 'genioapp:logout' %}">#}
-{#                Logout#}
-{#              </a>#}
-{#            </div>#}
-
-          {% else %}
-{#            <div class="text-wrapper-15">#}
-{##}
-{#              <a href="{% url 'genioapp:ins_login' %}">#}
-{#                <span class="navbar-text">Please login to access this feature</span>#}
-{#              </a>#}
-{#            </div>#}
-          {% endif %}
-{#        </div>#}
-
-
         </div>
+
         <div class="framefooter">
             <div class = "text-wrapper">
                 <p>&copy; 2023 GENIO-TECH. All rights reserved.</p>
