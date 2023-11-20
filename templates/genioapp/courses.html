@@ -3,7 +3,7 @@
   <section class="section--course-catalogue">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
 
-    {% for item in courses_with_levels %}
+      {% for item in courses_with_levels %}
 
         <li class="nav-item" role="presentation">
           <button
@@ -19,46 +19,46 @@
             {{ item.course.title}}
           </button>
         </li>
-    {% endfor %}
+      {% endfor %}
     </ul>
     <div class="tab-content" id="myTabContent">
-    {% for item in courses_with_levels %}
+      {% for item in courses_with_levels %}
 {#          {% for level in item.levels %}#}
-            <div
-              class="tab-pane fade show"
-              id="{{ item.course.title }}"
-              role="tabpanel"
-              aria-labelledby="{{ item.course.title }}-tab"
-            >
-              <div  class="card-container">
-                {% for level in item.levels %}
-                <div class="card">
-                  <div class="card__side card__side--front">
-                    <div class="card__picture card__picture--1">
-                      <img src="{% static 'genioapp/img/video-games_jr_l1.png' %}" />
-                    </div>
-                    <div class="card__details">
-                      <span class="instructor">{{ item.course.instructor.name }}</span>
-                      <h4 class="card__heading">
-                        <span class="card__heading-span card__heading-span--1">
-                          {{ level.name }}
-                        </span>
-                      </h4>
-                      <p>
-                        {{ level.description }}
-                      </p>
+        <div
+          class="tab-pane fade show"
+          id="{{ item.course.title }}"
+          role="tabpanel"
+          aria-labelledby="{{ item.course.title }}-tab"
+        >
+          <div  class="card-container">
+            {% for level in item.levels %}
+              <div class="card">
+                <div class="card__side card__side--front">
+                  <div class="card__picture card__picture--1">
+                    <img src="{% static 'genioapp/img/video-games_jr_l1.png' %}" />
+                  </div>
+                  <div class="card__details">
+                    <span class="instructor">{{ item.course.instructor.name }}</span>
+                    <h4 class="card__heading">
+                      <span class="card__heading-span card__heading-span--1">
+                        {{ level.name }}
+                      </span>
+                    </h4>
+                    <p>
+                      {{ level.description }}
+                    </p>
               <!-- <span class="rating">4.5 stars &#9733;</span>
                   <span class="reviews">(2.5k reviews)</span> -->
-                      <p>Jr &bull; L1</p>
-                    </div>
+                    <p>Jr &bull; L1</p>
                   </div>
                 </div>
-                {% endfor %}
               </div>
-            </div>
-{#          {% endfor %}#}
-    {% endfor %}
+            {% endfor %}
+          </div>
         </div>
+{#          {% endfor %}#}
+      {% endfor %}
+    </div>
 
 
 {#    <li class="nav-item" role="presentation">#}
@@ -117,7 +117,7 @@
 {#        Competition training#}
 {#      </button>#}
 {#    </li>#}
-    </ul>
+  </ul>
   </section>
 
   <nav class="navbar-2" style="margin-top: 400px">
