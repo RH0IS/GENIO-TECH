@@ -1,41 +1,151 @@
-{% extends 'genioapp/base0.html' %}
-{% load static %}
-{% block content %}
-    <h1>All Courses</h1>
-    <div class="row">
-        {% for item in courses_with_levels %}
-            <div class="col-md-4 mb-4">
+{% extends 'genioapp/base0.html' %} {% block content %} {% load static %}
+  <h1>All Courses</h1>
+  <section class="section--course-catalogue">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+    {% for item in courses_with_levels %}
+
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="{{ item.course.title }}-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#{{ item.course.title }}"
+            type="button"
+            role="tab"
+            aria-controls="{{ item.course.title }}"
+            aria-selected="true"
+          >
+            {{ item.course.title}}
+          </button>
+        </li>
+    {% endfor %}
+    </ul>
+    <div class="tab-content" id="myTabContent">
+    {% for item in courses_with_levels %}
+{#          {% for level in item.levels %}#}
+            <div
+              class="tab-pane fade show"
+              id="{{ item.course.title }}"
+              role="tabpanel"
+              aria-labelledby="{{ item.course.title }}-tab"
+            >
+              <div  class="card-container">
+                {% for level in item.levels %}
                 <div class="card">
-                    <a href="{% url 'genioapp:course_detail' course_id=item.course.id %}">
-                        <img src="{{ item.course.image.url }}" class="card-img-top" alt="{{ item.course.title }}">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{% url 'genioapp:course_detail' course_id=item.course.id %}">
-                                {{ item.course.title }}
-                            </a>
-                        </h5>
-                        <p class="card-text">{{ item.course.description }}</p>
-                        <p>Instructor: {{ item.course.instructor.name }}</p>
-                        <p>Start Date: {{ item.course.start_date }}</p>
-                        <p>End Date: {{ item.course.end_date }}</p>
-                        <p>Price: ${{ item.course.price }}</p>
-                        <!-- Add more fields as needed -->
-                        <p>Interested: {{ item.course.interested }}</p>
-                        <p>Video: <a href="{{ item.course.video.url }}" target="_blank">Watch Video</a></p>
-                        <p>Levels:</p>
-                        <ul>
-                            {% for level in item.levels %}
-                                <li>
-                                    <strong>{{ level.name }}</strong>
-                                    <p>Description: {{ level.description }}</p>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                        <a href="{% url 'genioapp:course_detail' course_id=item.course.id %}" class="btn btn-primary">View Details</a>
+                  <div class="card__side card__side--front">
+                    <div class="card__picture card__picture--1">
+                      <img src="{% static 'genioapp/img/video-games_jr_l1.png' %}" />
                     </div>
+                    <div class="card__details">
+                      <span class="instructor">{{ item.course.instructor.name }}</span>
+                      <h4 class="card__heading">
+                        <span class="card__heading-span card__heading-span--1">
+                          {{ level.name }}
+                        </span>
+                      </h4>
+                      <p>
+                        {{ level.description }}
+                      </p>
+              <!-- <span class="rating">4.5 stars &#9733;</span>
+                  <span class="reviews">(2.5k reviews)</span> -->
+                      <p>Jr &bull; L1</p>
+                    </div>
+                  </div>
                 </div>
+                {% endfor %}
+              </div>
             </div>
-        {% endfor %}
-    </div>
+{#          {% endfor %}#}
+    {% endfor %}
+        </div>
+
+
+{#    <li class="nav-item" role="presentation">#}
+{#      <button#}
+{#        class="nav-link"#}
+{#        id="scratch-tab"#}
+{#        data-bs-toggle="tab"#}
+{#        data-bs-target="#scratch"#}
+{#        type="button"#}
+{#        role="tab"#}
+{#        aria-controls="scratch"#}
+{#        aria-selected="false"#}
+{#      >#}
+{#        Scratch software#}
+{#      </button>#}
+{#    </li>#}
+{#    <li class="nav-item" role="presentation">#}
+{#      <button#}
+{#        class="nav-link"#}
+{#        id="ev3-tab"#}
+{#        data-bs-toggle="tab"#}
+{#        data-bs-target="#ev3"#}
+{#        type="button"#}
+{#        role="tab"#}
+{#        aria-controls="ev3"#}
+{#        aria-selected="false"#}
+{#      >#}
+{#        EV 3 Robotics#}
+{#      </button>#}
+{#    </li>#}
+{#    <li class="nav-item" role="presentation">#}
+{#      <button#}
+{#        class="nav-link"#}
+{#        id="tetrix-tab"#}
+{#        data-bs-toggle="tab"#}
+{#        data-bs-target="#tetrix"#}
+{#        type="button"#}
+{#        role="tab"#}
+{#        aria-controls="tetrix"#}
+{#        aria-selected="false"#}
+{#      >#}
+{#        Tetrix#}
+{#      </button>#}
+{#    </li>#}
+{#    <li class="nav-item" role="presentation">#}
+{#      <button#}
+{#        class="nav-link"#}
+{#        id="comp-tab"#}
+{#        data-bs-toggle="tab"#}
+{#        data-bs-target="#comp"#}
+{#        type="button"#}
+{#        role="tab"#}
+{#        aria-controls="comp"#}
+{#        aria-selected="false"#}
+{#      >#}
+{#        Competition training#}
+{#      </button>#}
+{#    </li>#}
+    </ul>
+  </section>
+
+  <nav class="navbar-2" style="margin-top: 400px">
+    {% for item in courses_with_levels %}
+      <div class="text-wrapper-15">
+        <div class="card-container">
+          {% for level in item.levels %}
+      <!-- Loop three times for three cards -->
+            <div class="card">
+              <div class="card__side card__side--front">
+                <div class="card__details">
+                  <h4 class="card__heading">
+                    <span class="card__heading-span card__heading-span--1"
+                    >{{ item.course.title }}</span
+                      >
+                    </h4>
+                    <p>Instructor: {{ item.course.instructor.name }}</p>
+                    <h3>Level: {{ level.name }}</h3>
+                    <p>Description: {{ level.description }}</p>
+                  </div>
+                </div>
+              </div>
+
+          {% endfor %}
+        </div>
+      </div>
+
+    {% endfor %}
+  </nav>
+
 {% endblock %}
