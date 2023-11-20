@@ -8,7 +8,7 @@ from .forms import (
     InstructorSignUpForm,
     CourseForm,
     LoginForm,
-    # StudentForm,
+    StudentForm,
     StudentCred,
     CourseLevelForm,
 )
@@ -165,16 +165,16 @@ def instructor_profile(request):
 
 
 def student_form(request):
-    # if request.method == "POST":
-    #     form = StudentForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect("/admin_students_list/")  # Redirect to the admin view
-    # else:
-    #     form = StudentForm()
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/admin_students_list/")  # Redirect to the admin view
+    else:
+        form = StudentForm()
 
-    # return render(request, "genioapp/student_form.html", {"form": form})
-    return render(request,"genioapp/student_form.html")
+    return render(request, "genioapp/student_form.html", {"form": form})
+
 
 def admin_students_list(request):
     students = Student.objects.all()
