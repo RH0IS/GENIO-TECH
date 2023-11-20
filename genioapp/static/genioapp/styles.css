@@ -14,7 +14,7 @@
 .navbar-2 {
   display: flex;
   justify-content: center;
-  
+
   /* Add any additional styling as needed */
 }
 .landing-page .div {
@@ -37,11 +37,11 @@
   justify-content: space-between;
 }
 
-.landing-page .phonediv{
+.landing-page .phonediv {
   display: inline-block;
 }
 
-.landing-page .sociallogin{
+.landing-page .sociallogin {
   display: flex;
   align-items: center;
   gap: 4rem;
@@ -109,12 +109,12 @@
   padding: 0rem 4rem;
 }
 
-.section-hero{
+.section-hero {
   width: 100%;
 }
 
 .hero-img-container,
-.hero-img-container img{
+.hero-img-container img {
   width: 100%;
 }
 
@@ -733,6 +733,7 @@
   display: flex;
   flex-direction: column;
   margin: 2.5rem 4rem;
+  height: 120vh;
 }
 
 /* ==========course tabs========= */
@@ -801,4 +802,21 @@
 
 .rating {
   font-weight: 900;
+}
+
+/*======SECTION: CTA========*/
+.section-CTA {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 4rem;
+}
+
+.btn-CTA {
+  background-color: #aa082a;
+  border: none;
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 50%;
+  font-weight: 700;
 }
