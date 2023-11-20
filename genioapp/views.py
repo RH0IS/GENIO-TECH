@@ -118,10 +118,10 @@ def instructorsignup(request):
 
 def index(request):
     # Retrieve the list of categories from the database and order them by ID
-
+    courses_with_levels = []
     if is_student(request.user):
         courses = Course.objects.all()
-        courses_with_levels = []
+        # courses_with_levels = []
         for course in courses:
             levels = course.courselevels_set.all()
             courses_with_levels.append({"course": course, "levels": levels})

@@ -1,29 +1,29 @@
 /*===========utilities========*/
-.u-text-color-primary{
+.u-text-color-primary {
   color: #aa082a;
 }
 
-.u-text-color-grey{
+.u-text-color-grey {
   color: #707070;
 }
 
-.u-text-color-white{
+.u-text-color-white {
   color: white;
 }
 
-.u-mb-2{
+.u-mb-2 {
   margin-bottom: 2rem;
 }
 
-.u-mb-1{
+.u-mb-1 {
   margin-bottom: 1rem;
 }
 
 /*========LANDING PAGE============*/
 
-.navbar {
-  width: 100%;
-}
+/*.navbar {*/
+/*  width: 100%;*/
+/*}*/
 
 .landing-page {
   background-color: #ffffff;
@@ -590,9 +590,9 @@
 }
 /*============================*/
 /*========ABOUT PAGE======*/
-.heading-primary{
+.heading-primary {
   font-family: "Inter", Helvetica;
-    font-weight: 600;
+  font-weight: 600;
 }
 /*===========================*/
 
@@ -899,12 +899,12 @@
 }
 
 /*========SIGNUP PAGE==========*/
-.section-register{
+.section-register {
   padding: 2rem 4rem;
   height: 100vh;
 }
 /*-------student form--------*/
-.student-form-container{
+.student-form-container {
   /*margin: 2rem auto !important;*/
   /*background-color: red;*/
   /*width: 75%;*/
@@ -913,33 +913,55 @@
   justify-content: center;
 }
 
-.form-label{
-  margin-bottom: .5rem;
+.form-label {
+  margin-bottom: 0.5rem;
 }
 
-.form-input{
+.form-input {
   background-color: lightgrey;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    height: 2.5rem;
-      margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.btn-primary{
+.btn-primary {
   /*background-color: #aa082a;*/
   width: 100%;
-    height: 64px;
-    /*top: 658px;*/
-    /*left: 83px;*/
-    background-color: var(--variable-collection-colour-primary);
-    border-radius: 8px;
+  height: 64px;
+  /*top: 658px;*/
+  /*left: 83px;*/
+  background-color: var(--variable-collection-colour-primary);
+  border-radius: 8px;
   color: white;
   border: none;
 }
 
-.btn-primary-small{
+.btn-primary-small {
   width: 10rem;
   display: block;
   margin: 0 auto;
+}
+/*========FOOTER==========*/
+
+.navbarfooter {
+  /*position: absolute;*/
+  width: 100%;
+  height: 196px;
+  /*top: 100px;*/
+  /*left: 0;*/
+  padding: 0rem 4rem;
+}
+.framefooter {
+  /*position: relative;*/
+  gap: 2rem;
+  padding: 0 5rem;
+  width: 100%;
+  height: 60px;
+  background-color: #283d5a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
