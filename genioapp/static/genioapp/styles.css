@@ -21,9 +21,9 @@
 
 /*========LANDING PAGE============*/
 
-.navbar {
-  width: 100%;
-}
+/*.navbar {*/
+/*  width: 100%;*/
+/*}*/
 
 .landing-page {
   background-color: #ffffff;
@@ -936,3 +936,27 @@
   color: white;
   border: none;
 }
+
+/*========FOOTER==========*/
+
+ .navbarfooter {
+  /*position: absolute;*/
+  width: 100%;
+  height: 196px;
+  /*top: 100px;*/
+  /*left: 0;*/
+  padding: 0rem 4rem;
+}
+.framefooter {
+  /*position: relative;*/
+  gap: 2rem;
+  padding: 0 5rem;
+  width: 100%;
+  height: 60px;
+  background-color: #283d5a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
