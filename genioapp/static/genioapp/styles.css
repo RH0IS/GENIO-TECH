@@ -1,3 +1,20 @@
+/*===========utilities========*/
+.u-text-color-primary{
+  color: #aa082a;
+}
+
+.u-text-color-grey{
+  color: #707070;
+}
+
+.u-mb-2{
+  margin-bottom: 2rem;
+}
+
+.u-mb-1{
+  margin-bottom: 1rem;
+}
+
 /*========LANDING PAGE============*/
 
 .navbar {
@@ -567,6 +584,13 @@
   line-height: normal;
   white-space: nowrap;
 }
+/*============================*/
+/*========ABOUT PAGE======*/
+.heading-primary{
+  font-family: "Inter", Helvetica;
+    font-weight: 600;
+}
+/*===========================*/
 
 .gallery-container {
   display: flex;
