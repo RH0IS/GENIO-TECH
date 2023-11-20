@@ -1,15 +1,70 @@
 {% extends 'genioapp/base0.html' %}
 {% load static %}
 {% block content %}
-    <body>
-    <div class="form">
-        <form method="post" action="{% url 'genioapp:student_form' %}">
-    {% csrf_token %}
-    {{ form}}
+        <body>
+{#    <div class="form">#}
+{#        <form method="post" action="{% url 'genioapp:student_form' %}">#}
+{#    {% csrf_token %}#}
+{#    {{ form }}#}
 
-    <button type="submit">Submit</button>
-</form>
-    </div>
+{#    <button type="submit">Submit</button>#}
+{#</form>#}
+                <section class="section-register">
+                        <div class="student-form-container">
+                                <form method="post" action="{% url 'genioapp:student_form' %}">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                                <div class="col">
+                                                    <label for="id_name">Full name:</label>
+                                                    <input class="form-input" type="text" id="id_name" name="name" required>
+                                                </div>
 
-</body>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="id_email">Email:</label>
+                                                <input class="form-input" type="email" id="id_email" name="email" required>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                                <div class="col">
+                                                        <label for="id_age">Age:</label><br>
+                                                        <input class="form-input" type="number" id="id_age" name="age" required>
+                                                </div>
+                                                <div class="col">
+                                                        <label for="id_gender">Gender:</label><br>
+                                                        <select class="form-input" id="id_gender" name="gender" required>
+                                                                <option value="male">Male</option>
+                                                                <option value="female">Female</option>
+                                                                <option value="other">Other</option>
+                                                        </select>
+                                                </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="id_phone">Phone:</label><br>
+                                                <input class="form-input" type="text" id="id_phone" name="phone" required>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="id_country">Country:</label><br>
+                                                <input class="form-input" type="text" id="id_country" name="country" required>
+                                            </div>
+
+                                        </div>
+                                        <br>
+                                        <button class="btn-primary" type="submit">Submit</button>
+                                </form>
+
+
+
+                        </div>
+                </section>
+
+
+
+        </body>
 {% endblock %}

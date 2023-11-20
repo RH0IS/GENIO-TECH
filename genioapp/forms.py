@@ -30,10 +30,10 @@ class CourseForm(forms.ModelForm):
         fields = '__all__'
 
 
-class StudentForm(forms.ModelForm):
-    class Meta:
-        model = Student
-        fields = ['name', 'email', 'age', 'gender', 'phone', 'country' ]
+# class StudentForm(forms.ModelForm):
+#     class Meta:
+#         model = Student
+#         fields = ['name', 'email', 'age', 'gender', 'phone', 'country' ]
 
 
 class StudentCred(UserCreationForm):
