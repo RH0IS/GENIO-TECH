@@ -25,7 +25,7 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
 
             {% for item in courses_with_levels %}
-
+{#                {% if courses_with_levels[0] %} {% endif %}#}
                 <li class="nav-item" role="presentation">
                     <button
                         class="nav-link"
@@ -77,7 +77,7 @@
                 </div>
             {% endfor %}
         </div>
-
+        <button class="btn-primary btn-primary-small">Register Now!</button>
 
 
     </ul>

@@ -802,7 +802,7 @@
   display: flex;
   flex-direction: column;
   margin: 2.5rem 4rem;
-  height: 120vh;
+  height: 125vh;
 }
 
 /* ==========course tabs========= */
@@ -841,6 +841,7 @@
 .card-container {
   display: flex;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* =======course card======== */
@@ -935,4 +936,10 @@
     border-radius: 8px;
   color: white;
   border: none;
+}
+
+.btn-primary-small{
+  width: 10rem;
+  display: block;
+  margin: 0 auto;
 }
