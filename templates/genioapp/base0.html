@@ -20,7 +20,9 @@
 
           <div class="sociallogin">
             <img class="socials-box" src="https://c.animaapp.com/TPZdvj18/img/socials-box.svg" />
-            <div class="frame-2">
+            {% if user.is_authenticated %}
+
+              <div class="frame-2">
               <a href="{% url 'genioapp:ins_login' %}" style="display: flex;gap: 1rem">
                 <div class="text-wrapper">
                   LOGIN
@@ -31,6 +33,16 @@
 
                 </a>
             </div>
+            {% else %}
+                <div class="text-wrapper-15">
+              <span class="navbar-text">Logged in as {{user.username}}
+              </span>
+              <br>
+              <a href="{% url 'genioapp:logout' %}">
+                Logout
+              </a>
+            </div>
+              {% endif %}
           </div>
 
 {#          <div class="navbar"></div>#}
@@ -81,14 +93,14 @@
               </div>
             {% endif %}
 
-            <div class="text-wrapper-15">
-              <span class="navbar-text">Logged in as {{user.username}}
-              </span>
-              <br>
-              <a href="{% url 'genioapp:logout' %}">
-                Logout
-              </a>
-            </div>
+{#            <div class="text-wrapper-15">#}
+{#              <span class="navbar-text">Logged in as {{user.username}}#}
+{#              </span>#}
+{#              <br>#}
+{#              <a href="{% url 'genioapp:logout' %}">#}
+{#                Logout#}
+{#              </a>#}
+{#            </div>#}
 
           {% else %}
 {#            <div class="text-wrapper-15">#}
