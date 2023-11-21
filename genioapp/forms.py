@@ -31,10 +31,24 @@ class CourseForm(forms.ModelForm):
 
 
 class StudentForm(forms.ModelForm):
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+        ('O', 'Other'),
+    ]
+
+    gender = forms.ChoiceField(choices=GENDER_CHOICES, widget=forms.Select(attrs={'class': 'form-input'}))
     class Meta:
         model = Student
-        fields = ['name', 'email', 'age', 'gender', 'phone', 'country' ]
+        fields = ['name', 'email', 'age', 'gender', 'phone', 'country']
 
+
+
+    def __init__(self, *args, **kwargs):
+        super(StudentForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-input'
+            # self.fields[field_name].label_classes = 'custom-label-class'
 
 class StudentCred(UserCreationForm):
     class Meta:
