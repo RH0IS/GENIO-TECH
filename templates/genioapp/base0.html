@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 {% load static %}
+
 <html>
   <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:700">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter:700"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="{% static 'genioapp/globals.css' %}" />
     <link rel="stylesheet" href="{% static 'genioapp/styles.css' %}" />
     <link rel="stylesheet" href="{% static 'genioapp/styleguide.css' %}" />
@@ -13,124 +25,139 @@
     <div class="landing-page">
       <div class="div">
         <div class="frame">
-            <div class="phonediv">
-                <img class="mdi-phone" src="https://c.animaapp.com/TPZdvj18/img/mdi-phone.svg" />
-                <div class="TEL">TEL:&nbsp;&nbsp;(+2) 03 5832093</div>
-            </div>
-
-            <div class="sociallogin">
-                <img class="socials-box" src="https://c.animaapp.com/TPZdvj18/img/socials-box.svg" />
-                <div class="frame-2">
-                    <a href="{% url 'genioapp:ins_login' %} " style="display: flex;gap: 1rem">
-                        <div class="text-wrapper">
-                            LOGIN
-                        </div>
-                        <img class="vector" src="https://c.animaapp.com/TPZdvj18/img/vector.svg" />
-                    </a>
-                </div>
-            </div>
-
-          <div class=""></div>
-        </div>
-
-        <div class="navbar-2">
-
-          <div class="text-wrapper-15">
-            <a href="{% url 'genioapp:index' %}">
-                HOME
-            </a>
-          </div>
-          <div class="text-wrapper-15">
-            <a href="{% url 'genioapp:viewinsavailability' %}">
-                Instructor availability
-            </a>
+          <div class="phonediv">
+            <img
+              class="mdi-phone"
+              src="https://c.animaapp.com/TPZdvj18/img/mdi-phone.svg"
+            />
+            <div class="TEL">TEL:&nbsp;&nbsp;(+2) 03 5832093</div>
           </div>
 
-            {% if is_student %}
-        <div class="text-wrapper-15">
-          <a href="{% url 'genioapp:viewCourses' %}">
-            Browse Courses
-          </a>
-        </div>
-          {% endif %}
-          <div class="text-wrapper-15">
-            <a href="{% url 'genioapp:student_form' %}">
-              New Student
-            </a>
-          </div>
-      {% if user.is_authenticated %}
-      {% if is_student and is_instructor %}
-        <div class="text-wrapper-15">
-          <a href="{% url 'genioapp:admin_students_list' %}">
-            Pending Students
-          </a>
-        </div>
-          {% endif %}
-            {% if is_instructor %}
-          <div class="text-wrapper-15">
-              <a href="{% url 'genioapp:addcourselevels' %}">
-                Add Course Level
-              </a>
-          </div>
-          <div class="text-wrapper-15">
-            <a href="{% url 'genioapp:instructorsignup' %}">
-              Instructor Enroll
-            </a>
-          </div>
-
-          <div class="text-wrapper-15">
-            <a href="{% url 'genioapp:courseregistration' %}">
-              Course Registration
-            </a>
-          </div>
-            {% endif %}
-
+          <div class="sociallogin">
+            <img
+              class="socials-box"
+              src="https://c.animaapp.com/TPZdvj18/img/socials-box.svg"
+            />
+            {% if user.is_authenticated %}
             <div class="text-wrapper-15">
-              <span class="navbar-text">Logged in as {{user.username}}
-              </span>
-              <br>
-                <a href="{% url 'genioapp:logout' %}">
-                  Logout
-                </a>
+              <div class="username navbar-text u-text-color-white">
+                <span>Logged in as {{user.username}}</span>
+                <br />
+                <a class="u-text-color-white" href="{% url 'genioapp:logout' %}"
+                  >Logout</a
+                >
               </div>
-
-              {% else %}
-              <div class="text-wrapper-15">
-
-                  <a href="{% url 'genioapp:ins_login' %}">
-                    <span class="navbar-text">Please login to access this feature</span>
-                  </a>
-                </div>
-              {% endif %}
+            </div>
+            {% else %}
+            <div class="frame-2">
+              <a
+                href="{% url 'genioapp:ins_login' %}"
+                style="display: flex; gap: 1rem"
+              >
+                <div class="text-wrapper">LOGIN</div>
+              </a>
+              <a href="{% url 'genioapp:student_form' %}">
+                <img
+                  class="vector"
+                  src="https://c.animaapp.com/TPZdvj18/img/vector.svg"
+                />
+              </a>
+            </div>
+            {% endif %}
+          </div>
         </div>
-
-
-
-
-
-
-
-
-
-            <a href="{% url 'genioapp:index' %}">
-              <img class="img" src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png" />
-
+        <div class="navbar">
+          <a href="{% url 'genioapp:index' %}">
+            <img
+              class="img"
+              src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png"
+            />
           </a>
+          <div class="text-wrapper-15">
+            <a href="{% url 'genioapp:index' %}"> HOME </a>
+          </div>
+          <div class="text-wrapper-15">
+            <a href="{% url 'genioapp:about' %}"> ABOUT </a>
+          </div>
+          {% if user.is_authenticated %} {% if is_instructor %}
+          <div class="text-wrapper-15">
+            <a href="{% url 'genioapp:addcourselevels' %}">Add Course Level</a>
+          </div>
+          <div class="text-wrapper-15">
+            <a href="{% url 'genioapp:instructorsignup' %}"
+              >Instructor Enroll</a
+            >
+          </div>
+          <div class="text-wrapper-15">
+            <a href="{% url 'genioapp:courseregistration' %}"
+              >Course Registration</a
+            >
+          </div>
+          {% endif %}
+          <div class="text-wrapper-15">
+            <span class="navbar-text">Logged in as {{user.username}}</span>
+            <br />
+            <a href="{% url 'genioapp:logout' %}">Logout</a>
+          </div>
 
 
+          {% endif %}
         </div>
-       <div class="container" > <!-- Adjust the margin-top value as needed -->
+      </div>
+
+      <div class="content">
+        <!-- Adjust the margin-top value as needed -->
+        {% block content %}{% endblock %}
+      </div>
+
+      <div class="navbarfooter">
+        <div class="text-wrapper-footer">
+          <a href="{% url 'genioapp:index' %}">
+            <img
+              class="img-footer"
+              src="https://c.animaapp.com/TPZdvj18/img/image-11-1@2x.png"
+            />
+          </a>
+        </div>
+
+        <div class="text-wrapper-footer">
+          <a href="{% url 'genioapp:index' %}"> HOME </a>
+        </div>
+
+        <div class="text-wrapper-footer">
+          <a href="{% url 'genioapp:about' %}"> ABOUT </a>
+        </div>
 
 
-          {% block content %}{% endblock %}
 
+        <div class="text-wrapper-footer">
+          <a href="{% url 'genioapp:addcourselevels' %}"> Add Course Level </a>
+        </div>
 
+        <div class="text-wrapper-footer">
+          <a href="{% url 'genioapp:instructorsignup' %}">
+            Instructor Enroll
+          </a>
+        </div>
+
+        <div class="text-wrapper-footer">
+          <a href="{% url 'genioapp:courseregistration' %}">
+            Course Registration
+          </a>
+        </div>
+      </div>
+
+      <div class="framefooter">
+        <div class="text-wrapper">
+          <p>&copy; 2023 GENIO-TECH. All rights reserved.</p>
+        </div>
+      </div>
     </div>
-    </div>
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

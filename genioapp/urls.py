@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'genioapp'
+app_name = "genioapp"
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -21,7 +21,4 @@ urlpatterns = [
     path('admin_students_list/', views.admin_students_list, name='admin_students_list'),
     path('create_credentials/<int:student_id>/', views.create_credentials, name='create_credentials'),
     path('viewinsavailability/',views.view_ins_availability, name='viewinsavailability'),
-
-
-
 ]
