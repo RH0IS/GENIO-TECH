@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Student, IntructorAvailability
+from .models import Student, IntructorAvailability, CourseLevels, Course, CourseSession, InstructorProfile
 
 from genioapp.models import Course, CourseLevels
 
@@ -69,3 +69,33 @@ class InstructorAvailabilityForm(forms.ModelForm):
     class Meta:
         model = IntructorAvailability
         fields = ['day', 'start_time', 'end_time', 'available']
+        
+class CourseSessionForm(forms.ModelForm):
+    course = forms.ModelChoiceField(queryset=Course.objects.all(), required=True, label='Course Title')
+    course_level = forms.ModelChoiceField(queryset=CourseLevels.objects.none(), required=True, label='Course Level')
+    instructor = forms.ModelChoiceField(queryset=InstructorProfile.objects.none(), required=True, label='Instructor')
+
+    class Meta:
+        model = CourseSession
+        fields = ['course', 'course_level', 'instructor', 'session', 'start_datetime', 'end_datetime']
+
+    def __init__(self, *args, **kwargs):
+        super(CourseSessionForm, self).__init__(*args, **kwargs)
+        self.fields['course_level'].queryset = CourseLevels.objects.none()
+        self.fields['instructor'].queryset = InstructorProfile.objects.none()
+
+        if 'course' in self.data:
+            try:
+                course_id = int(self.data.get('course'))
+                self.fields['course_level'].queryset = CourseLevels.objects.filter(course_id=course_id)
+                self.fields['instructor'].queryset = InstructorProfile.objects.filter(course=Course.objects.get(id=course_id))
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['course_level'].queryset = self.instance.course_level.course.course_levels_set
+            self.fields['instructor'].queryset = self.instance.instructor.course.instructor_set
+
+    widgets = {
+        'start_datetime': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        'end_datetime': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+    }

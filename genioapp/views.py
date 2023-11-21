@@ -2,11 +2,12 @@ from django.contrib.auth.models import User, Group
 from django.shortcuts import render, redirect
 from django import forms
 from django.utils import timezone
-from .models import Category, Course, Student, InstructorProfile, StudentProfile, IntructorAvailability
+from .models import Category, Course, Student, InstructorProfile, StudentProfile, IntructorAvailability, CourseLevels, CourseSession
+from django.http import JsonResponse
 
 from django.shortcuts import get_object_or_404
 
-from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm, InstructorSelectionForm, InstructorAvailabilityForm
+from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm, InstructorSelectionForm, InstructorAvailabilityForm, CourseSessionForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
@@ -23,12 +24,15 @@ def course_detail(request, course_id):
 
 # Create your views here.
 def courseregistration(request):
+
     form = CourseForm(request.POST)
+    #print(form.cleaned_data.get('title'))
     if form.is_valid():
+        print('Hello world')
         form.save()
+        return redirect('/')
     else:
         form = CourseForm()
-
     return render(request, "genioapp/courseregistrationpage.html", {"form": form})
 
 
@@ -45,7 +49,6 @@ def ins_login(request):
                 # Example: return redirect('home')
                 print(username)
                 print(password)
-
                 response = redirect("/instructor_profile/")
                 return response  # Redirect to the desired URL after successful login
     else:
@@ -81,6 +84,26 @@ def viewCourses(request):
     else:
         return render(request, "genioapp/instructor_profile.html")
 
+def create_course_session(request):
+    if request.method == 'POST':
+        form = CourseSessionForm(request.POST)
+        if form.is_valid():
+            form.save()  # You might want to customize this based on your logic
+            return redirect('/create_course_session/')
+    else:
+        form = CourseSessionForm()
+
+    return render(request, 'genioapp/sessions.html', {'form': form})
+
+def get_course_levels(request):
+    course_id = request.GET.get('course_id')
+    levels = CourseLevels.objects.filter(course_id=course_id).values('id', 'name')
+    return JsonResponse(list(levels), safe=False)
+
+def get_instructor(request):
+    course_id = request.GET.get('course_id')
+    instructor = InstructorProfile.objects.filter(course=Course.objects.get(id=course_id)).values('id', 'name')
+    return JsonResponse(list(instructor), safe=False)
 
 def init_ins_availability(instructor):
     i=1

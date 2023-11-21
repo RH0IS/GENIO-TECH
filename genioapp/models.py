@@ -117,3 +117,16 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order for {self.course} by {self.student}"
+    
+class CourseSession(models.Model):
+    course_level = models.ForeignKey(CourseLevels, on_delete=models.CASCADE)
+    YOUR_CHOICES = [
+        (1, 'Session 1'),
+        (2, 'Session 2'),
+        (3, 'Session 3'),
+        (4, 'Session 4'),
+    ]
+
+    session = models.IntegerField(choices=YOUR_CHOICES)
+    start_datetime = models.DateTimeField(default = timezone.now)
+    end_datetime = models.DateTimeField(default = timezone.now)
