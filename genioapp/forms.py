@@ -2,7 +2,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Student
+from .models import Student, IntructorAvailability
 
 from genioapp.models import Course, CourseLevels
 
@@ -41,3 +41,12 @@ class StudentCred(UserCreationForm):
         model = User
         fields = ['username']
 
+class InstructorSelectionForm(forms.ModelForm):
+    class Meta:
+        model = IntructorAvailability
+        fields = ['instructor']
+        
+class InstructorAvailabilityForm(forms.ModelForm):
+    class Meta:
+        model = IntructorAvailability
+        fields = ['day', 'start_time', 'end_time', 'available']

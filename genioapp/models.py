@@ -1,5 +1,6 @@
 from decimal import Decimal
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -17,12 +18,14 @@ class InstructorProfile(models.Model):
     email = models.EmailField(unique=True)
     # Additional fields
     field2 = models.CharField(max_length=50, blank=True)  # Optional field
+    def __str__(self):
+        return self.name
 
 
 class Course(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    instructor = models.ForeignKey(InstructorProfile, on_delete=models.CASCADE)
+    instructor = models.ForeignKey(InstructorProfile, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='images/',default='default_image.jpg')
     start_date = models.DateField()
     end_date = models.DateField()
@@ -80,6 +83,15 @@ class Instructor(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
+class IntructorAvailability(models.Model):
+     instructor = models.ForeignKey(InstructorProfile, on_delete=models.CASCADE, null=True)
+     day = models.DateField(default=timezone.now)
+     start_time=models.TimeField(default='08:00')
+     end_time=models.TimeField(default='09:00')
+     available = models.BooleanField(default=False)
+     def __str__(self):
+        return self.instructor.name
 
 class Order(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)

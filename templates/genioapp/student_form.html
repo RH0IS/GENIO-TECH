@@ -5,7 +5,10 @@
     <div class="form">
         <form method="post" action="{% url 'genioapp:student_form' %}">
     {% csrf_token %}
-    {{ form}}
+    <table class="">
+        {{ form.as_table}}
+    </table>
+    
 
     <button type="submit">Submit</button>
 </form>
