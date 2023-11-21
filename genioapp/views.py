@@ -4,7 +4,7 @@ from django import forms
 from django.utils import timezone
 from .models import Category, Course, Student, InstructorProfile, StudentProfile, IntructorAvailability, CourseLevels, CourseSession
 from django.http import JsonResponse
-
+from django.urls import reverse
 from django.shortcuts import get_object_or_404
 
 from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm, InstructorSelectionForm, InstructorAvailabilityForm, CourseSessionForm
@@ -106,13 +106,8 @@ def get_instructor(request):
     return JsonResponse(list(instructor), safe=False)
 
 def init_ins_availability(instructor):
-    i=1
-    while i<=20:
-        insa= IntructorAvailability(
-            instructor=instructor
-        )
-        insa.save()
-        i+=1
+    insa= IntructorAvailability(instructor=instructor)
+    insa.save()
 
 def view_ins_availability(request):
 
@@ -120,7 +115,7 @@ def view_ins_availability(request):
     try:
         instructor_profile = InstructorProfile.objects.get(user=user)
         #instructor_profile_id = instructor_profile.pk
-        InsFormSet = forms.inlineformset_factory(InstructorProfile, IntructorAvailability, fields="__all__")
+        InsFormSet = forms.inlineformset_factory(InstructorProfile, IntructorAvailability, fields="__all__",  extra=0)
         if request.method == "POST":
             formset = InsFormSet(request.POST, request.FILES, instance=instructor_profile)
             if formset.is_valid():
@@ -134,7 +129,15 @@ def view_ins_availability(request):
         #instructor_profile_id = None
         return render(request, 'genioapp/index.html')
     
-
+def add_availability(request):
+    instructor_profile = InstructorProfile.objects.get(user=request.user)
+    insa= IntructorAvailability(
+            instructor=instructor_profile,
+            start_time='15:00',
+            end_time='16:00'
+        )
+    insa.save()
+    return redirect('/viewinsavailability/')
 
 
 def addcourselevels(request):

@@ -5,8 +5,11 @@
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Submit</button>
+        <input type="submit">
     </form>
-    
+    <a href="{% url 'genioapp:add_availability' %}">
+        <button>Add Availability</button>
+    </a>
+
 </body>
 {% endblock %}
