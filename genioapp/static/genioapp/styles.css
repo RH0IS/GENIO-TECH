@@ -1,8 +1,29 @@
-/*========landing page============*/
-
-.navbar {
-  width: 100%;
+/*===========utilities========*/
+.u-text-color-primary {
+  color: #aa082a;
 }
+
+.u-text-color-grey {
+  color: #707070;
+}
+
+.u-text-color-white {
+  color: white;
+}
+
+.u-mb-2 {
+  margin-bottom: 2rem;
+}
+
+.u-mb-1 {
+  margin-bottom: 1rem;
+}
+
+/*========LANDING PAGE============*/
+
+/*.navbar {*/
+/*  width: 100%;*/
+/*}*/
 
 .landing-page {
   background-color: #ffffff;
@@ -14,7 +35,7 @@
 .navbar-2 {
   display: flex;
   justify-content: center;
-  
+
   /* Add any additional styling as needed */
 }
 .landing-page .div {
@@ -37,11 +58,11 @@
   justify-content: space-between;
 }
 
-.landing-page .phonediv{
+.landing-page .phonediv {
   display: inline-block;
 }
 
-.landing-page .sociallogin{
+.landing-page .sociallogin {
   display: flex;
   align-items: center;
   gap: 4rem;
@@ -100,12 +121,22 @@
   left: 11px;
 }
 
-.landing-page .navbar {
-  position: absolute;
+.navbar {
+  /*position: absolute;*/
   width: 100%;
   height: 196px;
-  top: 100px;
-  left: 0;
+  /*top: 100px;*/
+  /*left: 0;*/
+  padding: 0rem 4rem;
+}
+
+.section-hero {
+  width: 100%;
+}
+
+.hero-img-container,
+.hero-img-container img {
+  width: 100%;
 }
 
 .landing-page .overlap-group {
@@ -557,15 +588,63 @@
   line-height: normal;
   white-space: nowrap;
 }
+/*============================*/
+/*========ABOUT PAGE======*/
+.heading-primary {
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+}
+/*===========================*/
 
-.landing-page .gallery-container {
+.gallery-container {
   display: flex;
-  width: 1440px;
+  /*width: 1440px;*/
   align-items: flex-start;
+  /*position: absolute;*/
+  /*top: 2648px;*/
+  /*left: 0;*/
+  /*background-color: #9e6565;*/
+}
+
+.gallery-img-container {
+  width: 25%;
+  position: relative;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+}
+
+.gallery-img {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.gallery-img--hover-text {
+  transition: 0.5s ease;
+  opacity: 0;
   position: absolute;
-  top: 2648px;
-  left: 0;
-  background-color: #9e6565;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(170, 8, 42, 0.75);
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding: 25% 10%;
+}
+
+.gallery-img-container:hover .gallery-img {
+  opacity: 0.3;
+}
+
+.gallery-img-container:hover .gallery-img--hover-text {
+  opacity: 1;
 }
 
 .landing-page .frame-7 {
@@ -637,24 +716,12 @@
   line-height: normal;
   white-space: nowrap;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .text-wrapper-15 a {
   color: inherit;
   text-decoration: none;
-}
-
-.landing-page .btn-primary {
-  position: absolute;
-  width: 292px;
-  height: 72px;
-  top: 2232px;
-  left: 756px;
-  background-color: var(--variable-collection-colour-primary);
-  border-radius: 8.13px;
-  overflow: hidden;
-  all: unset;
-  box-sizing: border-box;
 }
 
 .landing-page .text-wrapper-16 {
@@ -722,6 +789,7 @@
   display: flex;
   flex-direction: column;
   margin: 2.5rem 4rem;
+  height: 125vh;
 }
 
 /* ==========course tabs========= */
@@ -760,6 +828,7 @@
 .card-container {
   display: flex;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* =======course card======== */
@@ -790,4 +859,155 @@
 
 .rating {
   font-weight: 900;
+}
+
+/*======SECTION: CTA========*/
+.section-CTA {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 4rem;
+  margin-bottom: 4rem;
+}
+
+.btn-CTA {
+  background-color: #aa082a;
+  border: none;
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+/*--------SECTION: GALLERY-------*/
+.section-gallery {
+  height: 45vh;
+  margin-bottom: 5rem;
+}
+
+/*========SIGNUP PAGE==========*/
+.section-register {
+  padding: 2rem 4rem;
+  height: 120vh;
+}
+/*-------student form--------*/
+.student-form-container {
+  /*margin: 2rem auto !important;*/
+  /*background-color: red;*/
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  background-color: lightgrey;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  /*background-color: #aa082a;*/
+  width: 100%;
+  height: 64px;
+  /*top: 658px;*/
+  /*left: 83px;*/
+  background-color: var(--variable-collection-colour-primary);
+  border-radius: 8px;
+  color: white;
+  border: none;
+  margin-top: 2rem;
+}
+
+.btn-primary-small {
+  width: 10rem;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+/*---------section: course-details-----*/
+.section-course-details{
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/*--------section: login------*/
+.section-login{
+  height: 55vh;
+}
+
+.login-form-container {
+  /*margin: 2rem auto !important;*/
+  /*background-color: red;*/
+  width: 25%;
+  display: block;
+  margin: 0 auto;
+}
+
+/*========FOOTER==========*/
+
+.navbarfooter {
+  /*position: absolute;*/
+  /*width: 100%;*/
+  /*height: 196px;*/
+  /*!*top: 100px;*!*/
+  /*!*left: 0;*!*/
+  /*padding: 0rem 4rem;*/
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 110px;
+  background-color: #aa092a;
+  color: white;
+  padding: 0 5rem;
+}
+.framefooter {
+  /*position: relative;*/
+  gap: 2rem;
+  padding: 0 5rem;
+  width: 100%;
+  height: 60px;
+  background-color: #283d5a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.text-wrapper-footer {
+  display: flex;
+  align-items: center;
+  font-family: "Inter", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 0;
+  /*line-height: normal;*/
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.text-wrapper-footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.img-footer {
+  width: 250px; /* adjust the size as needed */
+  height: auto;
+  filter: brightness(0) invert(1);
 }
