@@ -1,12 +1,25 @@
 {% extends 'genioapp/base0.html' %} {% load static %} {% block content %}
 <body>
-  <div class="form">
-    <form method="post" action="{% url 'genioapp:student_form' %}">
+{#  <div class="form">#}
+<section class="section-register">
+    <div class="student-form-container">
+          <form method="post" action="{% url 'genioapp:student_form' %}">
       {% csrf_token %}
-        {{form}}
 
-      <button type="submit">Submit</button>
+              {% for field in form %}
+
+      <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+
+      {{ field }}
+
+  {% endfor %}
+
+      <button class="btn-primary" type="submit">Submit</button>
     </form>
-  </div>
+      </div>
+</section>
+
+
+{#  </div>#}
 </body>
 {% endblock %}

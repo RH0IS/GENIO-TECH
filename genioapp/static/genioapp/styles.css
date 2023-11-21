@@ -724,19 +724,6 @@
   text-decoration: none;
 }
 
-/*.landing-page .btn-primary {*/
-/*  position: absolute;*/
-/*  width: 292px;*/
-/*  height: 72px;*/
-/*  top: 2232px;*/
-/*  left: 756px;*/
-/*  background-color: var(--variable-collection-colour-primary);*/
-/*  border-radius: 8.13px;*/
-/*  overflow: hidden;*/
-/*  all: unset;*/
-/*  box-sizing: border-box;*/
-/*}*/
-
 .landing-page .text-wrapper-16 {
   position: absolute;
   top: 19px;
@@ -901,16 +888,15 @@
 /*========SIGNUP PAGE==========*/
 .section-register {
   padding: 2rem 4rem;
-  height: 100vh;
+  height: 120vh;
 }
 /*-------student form--------*/
 .student-form-container {
   /*margin: 2rem auto !important;*/
   /*background-color: red;*/
-  /*width: 75%;*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
 }
 
 .form-label {
@@ -936,6 +922,7 @@
   border-radius: 8px;
   color: white;
   border: none;
+  margin-top: 2rem;
 }
 
 .btn-primary-small {
