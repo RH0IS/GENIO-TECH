@@ -1,12 +1,15 @@
 {% extends 'genioapp/base0.html' %}
 {% block content %}
-    <h1>{{ course.title }} Details</h1>
-    <div>
-        <p>Description: {{ course.description }}</p>
-        <p>Instructor: {{ course.instructor.name }}</p>
-        <p>Start Date: {{ course.start_date }}</p>
-        <p>End Date: {{ course.end_date }}</p>
-        <p>Price: ${{ course.price }}</p>
-        <!-- Add more details as needed -->
-    </div>
+    <section class="section-course-details">
+        <h1 class="u-text-color-primary">{{ course.title }}</h1>
+        <div>
+            <p class="u-text-color-grey">Description: {{ course.description }}</p>
+            <p class="u-text-color-grey">Instructor: {{ course.instructor.name }}</p>
+            <p class="u-text-color-grey">Start Date: {{ course.start_date }}</p>
+            <p class="u-text-color-grey">End Date: {{ course.end_date }}</p>
+            <p class="u-text-color-grey">Price: ${{ course.price }}</p>
+            <button class="btn-primary btn-primary-small">Purchase</button>
+        </div>
+    </section>
+
 {% endblock %}

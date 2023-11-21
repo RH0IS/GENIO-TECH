@@ -929,6 +929,17 @@
   width: 10rem;
   display: block;
   margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+/*---------section: course-details-----*/
+.section-course-details{
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /*--------section: login------*/

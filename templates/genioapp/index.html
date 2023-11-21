@@ -75,11 +75,13 @@
                                 </div>
                             </div>
                         {% endfor %}
+
                     </div>
+                <a href="{% url 'genioapp:course_detail' item.course.id %}" class="btn-primary btn-primary-small">Register Now!</a>
+
                 </div>
             {% endfor %}
         </div>
-        <button class="btn-primary btn-primary-small">Register Now!</button>
 
 
     </ul>
@@ -87,9 +89,9 @@
 
     <section class="section-CTA">
         <h1 class="about-header">How to enroll your child to a class?</h1>
-{#        <div class="btn-CTA--container">#}
+
         <a href="{% url 'genioapp:student_form' %}" class="btn-CTA">APPLY NOW</a>
-{#        </div>#}
+
     </section>
     <section class="section-gallery">
         <div class="gallery-container">
