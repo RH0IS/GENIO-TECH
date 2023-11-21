@@ -99,14 +99,8 @@
             <br />
             <a href="{% url 'genioapp:logout' %}">Logout</a>
           </div>
-          {% else %}
-          <div class="text-wrapper-15">
-            <a href="{% url 'genioapp:ins_login' %}">
-              <span class="navbar-text"
-                >Please login to access this feature</span
-              >
-            </a>
-          </div>
+
+
           {% endif %}
         </div>
       </div>
@@ -134,11 +128,7 @@
           <a href="{% url 'genioapp:about' %}"> ABOUT </a>
         </div>
 
-        {% if is_student %}
-        <div class="text-wrapper-15">
-          <a href="{% url 'genioapp:viewCourses' %}"> Browse Courses </a>
-        </div>
-        {% endif %}
+
 
         <div class="text-wrapper-footer">
           <a href="{% url 'genioapp:addcourselevels' %}"> Add Course Level </a>

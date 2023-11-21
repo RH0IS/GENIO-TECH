@@ -879,7 +879,7 @@
   font-weight: 700;
 }
 
-/*=======SECTION: GALLERY======*/
+/*--------SECTION: GALLERY-------*/
 .section-gallery {
   height: 45vh;
   margin-bottom: 5rem;
@@ -930,6 +930,20 @@
   display: block;
   margin: 0 auto;
 }
+
+/*--------section: login------*/
+.section-login{
+  height: 55vh;
+}
+
+.login-form-container {
+  /*margin: 2rem auto !important;*/
+  /*background-color: red;*/
+  width: 25%;
+  display: block;
+  margin: 0 auto;
+}
+
 /*========FOOTER==========*/
 
 .navbarfooter {
@@ -972,6 +986,7 @@
   letter-spacing: 0;
   /*line-height: normal;*/
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .text-wrapper-footer a {

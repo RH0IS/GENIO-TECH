@@ -2,11 +2,26 @@
 {% load static %}
 {% block content %}
     <body>
-        <form method="post">
+    <section class="section-login">
+        <div class="login-form-container">
+
+            <form method="post">
             {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit">Login</button>
+                {% for field in form %}
+
+            <label for="{{ field.id_for_label }}" class="form-label"
+            >{{ field.label }}</label
+              >
+
+              {{ field }}
+            {% endfor %}
+{#            {{form.as_p}}#}
+            <button class="btn-primary" type="submit">Login</button>
         </form>
+        </div>
+    </section>
+
+
 
     </body>
 {% endblock %}
