@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 
-from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm, InstructorSelectionForm, InstructorAvailabilityForm, CourseSessionForm
+from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm, InstructorSelectionForm, InstructorAvailabilityForm, CourseSessionForm, CheckInstructorAvailability
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
@@ -87,13 +87,29 @@ def viewCourses(request):
 def create_course_session(request):
     if request.method == 'POST':
         form = CourseSessionForm(request.POST)
+        form1 = CheckInstructorAvailability(request.POST or None)
         if form.is_valid():
             form.save()  # You might want to customize this based on your logic
             return redirect('/create_course_session/')
+
+        if form1.is_valid():
+            instructor_name = form1.cleaned_data['instructor']
+            print(instructor_name)
+            availability = IntructorAvailability.objects.filter(
+                instructor=InstructorProfile.objects.get(name = instructor_name)).values('id', 'day', 'start_time',
+                                                                                              'end_time', 'available')
+            print(availability)
+            availability_data = [
+                {'day': av['day'], 'start_time': av['start_time'], 'end_time': av['end_time'], 'available': av['available']} for av in availability
+            ]
+            return render(request, 'genioapp/sessions.html', {'form': form, 'form1': form1, 'availability_data': availability_data})
+        else:
+            return render(request, 'genioapp/sessions.html', {'form': form,'form1': form1})
     else:
         form = CourseSessionForm()
+        form1 = CheckInstructorAvailability(request.POST or None)
 
-    return render(request, 'genioapp/sessions.html', {'form': form})
+    return render(request, 'genioapp/sessions.html', {'form': form, 'form1': form1})
 
 def get_course_levels(request):
     course_id = request.GET.get('course_id')
@@ -273,3 +289,8 @@ def create_credentials(request, student_id):
         "genioapp/create_credentials.html",
         {"form": form, "student_id": student_id},
     )  # Redirect back to the admin view
+
+#def get_instructor_availability(request):
+
+
+

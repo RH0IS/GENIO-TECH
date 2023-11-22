@@ -34,44 +34,4 @@ class Migration(migrations.Migration):
             name="age",
             field=models.IntegerField(blank=True, null=True),
         ),
-        migrations.CreateModel(
-            name="CourseSession",
-            fields=[
-                (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                (
-                    "session",
-                    models.IntegerField(
-                        choices=[
-                            (1, "Session 1"),
-                            (2, "Session 2"),
-                            (3, "Session 3"),
-                            (4, "Session 4"),
-                        ]
-                    ),
-                ),
-                (
-                    "start_datetime",
-                    models.DateTimeField(default=django.utils.timezone.now),
-                ),
-                (
-                    "end_datetime",
-                    models.DateTimeField(default=django.utils.timezone.now),
-                ),
-                (
-                    "course_level",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        to="genioapp.courselevels",
-                    ),
-                ),
-            ],
-        ),
     ]

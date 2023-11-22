@@ -99,3 +99,14 @@ class CourseSessionForm(forms.ModelForm):
         'start_datetime': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         'end_datetime': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
     }
+
+class CheckInstructorAvailability(forms.ModelForm):
+    instructor = forms.ModelChoiceField(queryset=InstructorProfile.objects.all(), required=True, label='Instructor')
+    class Meta:
+        model = InstructorProfile
+        fields = ['name']
+
+    def __init__(self, *args, **kwargs):
+        super(CheckInstructorAvailability, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-input'

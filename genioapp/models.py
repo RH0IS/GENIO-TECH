@@ -130,3 +130,5 @@ class CourseSession(models.Model):
     session = models.IntegerField(choices=YOUR_CHOICES)
     start_datetime = models.DateTimeField(default = timezone.now)
     end_datetime = models.DateTimeField(default = timezone.now)
+
+
