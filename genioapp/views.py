@@ -68,7 +68,7 @@ def courseregistration(request):
     return render(request, "genioapp/courseregistrationpage.html", {"form": form})
 
 
-def ins_login(request):
+def login(request):
     if request.method == "POST":
         form = LoginForm(data=request.POST)
         if form.is_valid():
@@ -81,7 +81,7 @@ def ins_login(request):
                 # Example: return redirect('home')
                 print(username)
                 print(password)
-                response = redirect("/instructor_profile/")
+                response = redirect("/user_profile/")
                 return response  # Redirect to the desired URL after successful login
     else:
         form = LoginForm()
@@ -114,7 +114,7 @@ def viewCourses(request):
             {"courses_with_levels": courses_with_levels},
         )
     else:
-        return render(request, "genioapp/instructor_profile.html")
+        return render(request, "genioapp/user_profile.html")
 
 def create_course_session(request):
     if request.method == 'POST':
@@ -294,8 +294,8 @@ def custom_logout(request):
 
 
 @login_required(login_url="/login/")
-def instructor_profile(request):
-    return render(request, "genioapp/instructor_profile.html")
+def user_profile(request):
+    return render(request, "genioapp/user_profile.html")
 
 
 def student_form(request):
@@ -371,6 +371,61 @@ def createorder(request, course_level_id):
 
     return render(request, 'genioapp/order.html', {'course': course, 'courselevels': courselevels,
                                                    'student_already_enrolled': student_already_enrolled})
+
+def user_profile(request):
+    user = request.user
+
+    if is_student(user):
+        student = StudentProfile.objects.get(user=user)
+
+        # Get StudentOrder objects for the student
+        student_orders = StudentOrder.objects.filter(student=student)
+
+        stu_course_levels = []
+        for student_order in student_orders:
+            # Get the associated CourseLevels and Course objects
+            course_level = student_order.course_level
+            course = course_level.course
+
+            # Get CourseSession objects for the course level
+            sessions = CourseSession.objects.filter(course_level=course_level)
+
+            # Build a dictionary for each student order with relevant information
+            stu_course_lvl = {
+                "course_title": course.title,
+                "course_level": course_level.name,
+                "sessions": sessions,
+            }
+
+            stu_course_levels.append(stu_course_lvl)
+
+        profile_data = {
+            'username': user.username,
+            'group': 'Student',
+            'name' : student.name,
+            'age' : student.age,
+            'email': student.email,
+            'gender': student.gender,
+            'country': student.country,
+            'phone': student.phone,
+            'stu_course_levels': stu_course_levels
+            # Add other student-specific data
+        }
+    elif is_instructor(user):
+        profile_data = {
+            'username': user.username,
+            'group': 'Instructor',
+            # Add other instructor-specific data
+        }
+    else:
+        # Handle other user types or roles as needed
+        profile_data = {
+            'username': user.username,
+            'group': 'Other',
+            # Add other data for other user types
+        }
+
+    return render(request, "genioapp/user_profile.html", {"profile_data": profile_data})
 
 
 
