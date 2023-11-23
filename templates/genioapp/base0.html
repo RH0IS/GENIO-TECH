@@ -43,9 +43,9 @@
               <div class="username navbar-text u-text-color-white">
                 <span>Logged in as {{user.username}}</span>
                 <br />
-                <a class="u-text-color-white" href="{% url 'genioapp:logout' %}"
-                  >Logout</a
-                >
+                <a class="u-text-color-primary" href="{% url 'genioapp:logout' %}">
+                    Logout
+                </a>
               </div>
             </div>
             {% else %}
@@ -94,11 +94,7 @@
             >
           </div>
           {% endif %}
-          <div class="text-wrapper-15">
-            <span class="navbar-text">Logged in as {{user.username}}</span>
-            <br />
-            <a href="{% url 'genioapp:logout' %}">Logout</a>
-          </div>
+
 
 
           {% endif %}

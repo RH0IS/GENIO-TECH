@@ -1,6 +1,6 @@
 /*===========utilities========*/
 .u-text-color-primary {
-  color: #aa082a;
+  color: #aa082a !important;
 }
 
 .u-text-color-grey {
