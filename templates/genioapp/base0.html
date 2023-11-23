@@ -55,13 +55,19 @@
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:index' %}"> HOME </a>
                     </div>
+                    {% if user.is_authenticated %}
+                        {% if is_instructor %}
                     <div class="text-wrapper-15">
-                        <a href="{% url 'genioapp:viewinsavailability' %}"> Ins avl </a>
+                        <a href="{% url 'genioapp:viewinsavailability' %}"> Add Availability </a>
                     </div>
+                    {% endif %}
+                    {% endif %}
+
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:about' %}"> ABOUT </a>
                     </div>
-                    {% if user.is_authenticated %} {% if is_instructor %}
+                    {% if user.is_authenticated %}
+                        {% if is_staff %}
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:addcourselevels' %}">Add Course Level</a>
                     </div>
@@ -75,6 +81,9 @@
                         <a href="{% url 'genioapp:create_course_session' %}">Add Timeslots</a>
                     </div>
                     {% endif %}
+                    <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:user_profile' %}">Profile</a>
+                    </div>
                     <div class="text-wrapper-15">
                         <span class="navbar-text">Logged in as {{user.username}}</span>
                         <br />
