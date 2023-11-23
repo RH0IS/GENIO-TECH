@@ -857,6 +857,8 @@
   height: 100%;
   z-index: -1;
   visibility: hidden;
+  background-color: black;
+  border-radius: 10px 10px 0 0;
 }
 
 .card__details {
