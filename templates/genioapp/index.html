@@ -2,7 +2,7 @@
 {% block content %}
     <section class="section-hero">
         <div class="hero-img-container">
-            <img src="{% static 'genioapp/img/hero.png' %}" />
+            <img src="{% static 'genioapp/img/hero.png' %}" alt="hero" />
         </div>
     </section>
     <section class="section-about">
@@ -58,9 +58,9 @@
                                 <div class="card__side card__side--front">
                                     <div class="card__picture card__picture--1">
 {#                                        <img src="{% static 'genioapp/img/video-games_jr_l1.png' %}" />#}
-                                        <img src="{{ item.course.image.url }}"/>
+                                        <img src="{{ item.course.image.url }}" alt="{{ item.course.title }}"/>
                                         <video src="{{ item.course.video  }} "
-                                                type="video/mp4" muted class="vid" id="course-vid"
+                                                type="video/mp4" muted class="vid {{ level.id }}-vid" id="course-vid"
                                                 loop style="width: 100%;">
                                         </video>
 
@@ -146,54 +146,22 @@
         </div>
     </section>
     <script>
-        console.log({{ course.id }})
-        // Targeting video element
-        let clips = document.querySelectorAll(".vid")
-        let cards = document.querySelectorAll(".card__picture--1")
+        let cards = document.querySelectorAll(".card__picture--1");
 
+cards.forEach(card => {
+  let clip = card.querySelector(".vid"); // Assuming .vid is the class of your video element
+  card.addEventListener('mouseover', function handleClick(event) {
+    clip.style.visibility = 'visible';
+    clip.style.zIndex = 10;
+    clip.play();
+  });
 
-        cards.forEach(card => {
-          card.addEventListener('mouseover', function handleClick(event) {
-            {#console.log('box clicked', event);#}
-            clips.forEach(clip => {
-                {#clip.setAttribute('style','visibility: visible')#}
-                clip.style.visibility ='visible'
-                clip.style.zIndex = 10
-                clip.play();
-            })
-            {#card.setAttribute('style', 'background-color: yellow;');#}
-          });
-        });
-        /* Applying mouseover event on video clip
-        and then we call play() function to play
-        the video when the mouse is over the video */
-        {#card.addEventListener("mouseover", function (e) {#}
-        {#    clip.style.visibility ='visible'#}
-        {#    clip.style.zIndex = 10#}
-        {#    clip.play();#}
-        {##}
-        {#})#}
+  card.addEventListener('mouseout', function handleClick(event) {
+    clip.style.visibility = 'hidden';
+    clip.style.zIndex = -1;
+    clip.pause();
+  });
+});
 
-        {#document.getElementById('id1').style.color = 'red'#}
-        /* Applying mouseout event on video clip
-        and then we call pause() function to stop
-        the video when the mouse is out the video */
-        cards.forEach(card => {
-          card.addEventListener('mouseout', function handleClick(event) {
-            {#console.log('box clicked', event);#}
-            clips.forEach(clip => {
-                {#clip.setAttribute('style','visibility: visible')#}
-                clip.style.visibility ='hidden'
-                clip.style.zIndex = -1
-                clip.pause();
-            })
-            {#card.setAttribute('style', 'background-color: yellow;');#}
-          });
-        });
-        {#card.addEventListener("mouseout", function (e) {#}
-        {#    clip.pause();#}
-        {#    clip.style.visibility = 'hidden'#}
-        {#    clip.style.zIndex = -1#}
-        {#})#}
     </script>
 {% endblock %}
