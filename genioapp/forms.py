@@ -22,12 +22,17 @@ class CourseLevelForm(forms.ModelForm):
         fields='__all__'
 
 class InstructorSignUpForm(UserCreationForm):
-    email=forms.EmailField(required=True)
-    name=forms.CharField(required=False)
+    #username = forms.CharField(max_length=100)
+    first_name = forms.CharField(required=True)
+    last_name = forms.CharField(required=True)
+    email = forms.EmailField(required=True)
+    bio = forms.CharField()
+    language = forms.CharField(required=True)
+    image = forms.ImageField()
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'name', 'password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'email', 'bio', 'language','image','password1', 'password2']
         
 class CourseForm(forms.ModelForm):
     class Meta:
@@ -104,9 +109,23 @@ class CheckInstructorAvailability(forms.ModelForm):
     instructor = forms.ModelChoiceField(queryset=InstructorProfile.objects.all(), required=True, label='Instructor')
     class Meta:
         model = InstructorProfile
-        fields = ['name']
+        fields = ['first_name', 'last_name']
 
     def __init__(self, *args, **kwargs):
         super(CheckInstructorAvailability, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-input'
+
+class GetSessionForm(forms.ModelForm):
+    course_level = forms.ModelChoiceField(queryset=CourseLevels.objects.all(), label='Course Level')
+
+    class Meta:
+        model=CourseLevels
+        fields=['course_level']
+    def __init__(self, course_id, *args, **kwargs):
+        super(GetSessionForm, self).__init__(*args, **kwargs)
+        course=Course.objects.get(id=course_id)
+        #print('Course:',course)
+        #course=CourseLevels.objects.get(course_id=course_id)
+
+        self.fields['course_level'].queryset = CourseLevels.objects.filter(course=course)

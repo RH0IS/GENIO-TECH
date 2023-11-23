@@ -16,7 +16,7 @@ urlpatterns = [
     path('login/redirect/',views.instructorsignup, name='login/redirect/'),
     path('logout/', views.custom_logout, name='logout'),
     path('instructor_profile/', views.instructor_profile, name = 'instructor_profile'),
-    path('course/<int:course_id>/', views.course_by_id, name='course_detail'),
+    path('course/<int:course_id>/', views.course_detail, name='course_detail'),
     path('student_form/', views.student_form, name='student_form'),
     path('admin_students_list/', views.admin_students_list, name='admin_students_list'),
     path('create_credentials/<int:student_id>/', views.create_credentials, name='create_credentials'),
@@ -25,5 +25,6 @@ urlpatterns = [
     path('get_course_levels/', views.get_course_levels, name='get_course_levels'),
     path('get_instructor/', views.get_instructor, name='get_instructor'),
     path('add_availability/', views.add_availability, name='add_availability'),
+    path('createorder/<int:course_level_id>',views.createorder,name='createorder'),
 
 ]
