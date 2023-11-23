@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = "genioapp"
 
@@ -16,7 +18,7 @@ urlpatterns = [
     path("login/redirect/", views.instructorsignup, name="login/redirect/"),
     path("logout/", views.custom_logout, name="logout"),
     path("instructor_profile/", views.instructor_profile, name="instructor_profile"),
-    path("course_detail/<int:course_id>/", views.course_detail, name="course_detail"),
+    path("course/<int:course_id>/", views.course_detail, name="course_detail"),
     # path('about/', views.about, name='about'),
     path("student_form/", views.student_form, name="student_form"),
     path("admin_students_list/", views.admin_students_list, name="admin_students_list"),
@@ -26,3 +28,6 @@ urlpatterns = [
         name="create_credentials",
     ),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
