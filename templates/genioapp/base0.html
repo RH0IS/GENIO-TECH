@@ -67,7 +67,7 @@
                         <a href="{% url 'genioapp:about' %}"> ABOUT </a>
                     </div>
                     {% if user.is_authenticated %}
-                        {% if is_staff %}
+                        {% if not is_student and not is_instructor %}
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:addcourselevels' %}">Add Course Level</a>
                     </div>
