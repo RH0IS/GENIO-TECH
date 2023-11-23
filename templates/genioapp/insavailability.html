@@ -1,0 +1,15 @@
+{% extends 'genioapp/base0.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit">
+    </form>
+    <a href="{% url 'genioapp:add_availability' %}">
+        <button>Add Availability</button>
+    </a>
+
+</body>
+{% endblock %}

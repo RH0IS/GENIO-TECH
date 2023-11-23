@@ -6,6 +6,7 @@
     <section class="section-register">
       <div class="student-form-container">
         <form method="post" action="{% url 'genioapp:student_form' %}">
+
           {% csrf_token %}
             {% for field in form %}
 
@@ -20,6 +21,7 @@
         </form>
       </div>
     </section>
+
 
 
 
