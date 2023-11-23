@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category,Course,Student,Instructor,Order,InstructorProfile, StudentProfile, CourseLevels, IntructorAvailability, CourseSession
+from .models import Category,Course,Student,Order,InstructorProfile, StudentProfile, CourseLevels, IntructorAvailability, CourseSession, StudentOrder
 
 
 # Register your models here.
@@ -8,11 +8,12 @@ from .models import Category,Course,Student,Instructor,Order,InstructorProfile, 
 admin.site.register(Category)
 admin.site.register(Course)
 admin.site.register(Student)
-admin.site.register(Instructor)
 admin.site.register(Order)
 admin.site.register(InstructorProfile)
 admin.site.register(StudentProfile)
 admin.site.register(CourseLevels)
 admin.site.register(IntructorAvailability)
 admin.site.register(CourseSession)
+admin.site.register(StudentOrder)
+
 

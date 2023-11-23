@@ -15,15 +15,15 @@ class Category(models.Model):
 
 class InstructorProfile(models.Model):
     user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, blank=True)  # Optional field
-    email = models.EmailField(unique=True)
-    # Additional fields
-    field2 = models.CharField(max_length=50, blank=True)  # Optional field
-    def __str__(self):
-        return self.name
+    first_name = models.CharField(max_length=100, default='first_name')
+    last_name = models.CharField(max_length=100, null=True)
+    email = models.EmailField(max_length=254, unique=True, default=None, null=True)
+    bio = models.TextField(null=True)
+    language = models.CharField(max_length=100, default="none", null=True)
+    image = models.ImageField(upload_to="images/", default="default_image.jpg")
 
     def __str__(self):
-        return self.name
+        return f"{self.first_name} {self.last_name}"
 
 
 class Course(models.Model):
@@ -77,20 +77,6 @@ class StudentProfile(models.Model):
     def __str__(self):
         return self.name
 
-
-class Instructor(models.Model):
-    username = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=254, unique=True, default=None)
-    bio = models.TextField()
-    language = models.CharField(max_length=100, default="none")
-    image = models.ImageField(upload_to="images/", default="default_image.jpg")
-    # students = models.ManyToManyField(Student, blank=True, related_name='instructors')
-
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
-    
 class IntructorAvailability(models.Model):
      instructor = models.ForeignKey(InstructorProfile, on_delete=models.CASCADE, null=True)
      day = models.DateField(default=timezone.now)
@@ -98,7 +84,7 @@ class IntructorAvailability(models.Model):
      end_time=models.TimeField(default='09:00')
      available = models.BooleanField(default=False)
      def __str__(self):
-        return self.instructor.name
+        return f"{self.instructor.first_name} {self.instructor.last_name}"
 
 
 class Order(models.Model):
@@ -130,5 +116,15 @@ class CourseSession(models.Model):
     session = models.IntegerField(choices=YOUR_CHOICES)
     start_datetime = models.DateTimeField(default = timezone.now)
     end_datetime = models.DateTimeField(default = timezone.now)
+
+class StudentOrder(models.Model):
+    student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
+    course_level = models.ForeignKey(CourseLevels, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('student', 'course_level')
+
+    def __str__(self):
+        return f"{self.student.user.username} - {self.course_level}"
 
 

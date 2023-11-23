@@ -4,12 +4,41 @@
         <h1 class="u-text-color-primary">{{ course.title }}</h1>
         <div>
             <p class="u-text-color-grey">Description: {{ course.description }}</p>
-            <p class="u-text-color-grey">Instructor: {{ course.instructor.name }}</p>
             <p class="u-text-color-grey">Start Date: {{ course.start_date }}</p>
             <p class="u-text-color-grey">End Date: {{ course.end_date }}</p>
             <p class="u-text-color-grey">Price: ${{ course.price }}</p>
-            <button class="btn-primary btn-primary-small">Purchase</button>
         </div>
-    </section>
 
+        <h1 class="u-text-color-primary">Course Instructors</h1>
+        <div>
+            <p class="u-text-color-grey">Instructor: {{ course.instructor }}</p>
+            <p class="u-text-color-grey">Bio: {{ instructor_profile.bio }}</p>
+            <p class="u-text-color-grey">Language: {{ instructor_profile.language }}</p>
+        </div>
+
+        <h1 class="u-text-color-primary">Select Course Level</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.course_level.label_tag }}
+  {{ form.course_level }}
+  <input type="submit" value="Show Sessions">
+</form>
+
+{% if course_sessions %}
+  <h2 class="u-text-color-primary">Sessions for {{ form.cleaned_data.course_level }}</h2>
+  <ul>
+    {% for session in course_sessions %}
+      <li>{{ session.session }} - {{ session.start_datetime }} to {{ session.end_datetime }}</li>
+    {% endfor %}
+  </ul>
+    <a href="{% url 'genioapp:createorder' form.cleaned_data.course_level.id %}">
+    <div class="">
+    Enroll for this Level
+    </div>
+    </a>
+    {% else %}
+    <h2>No sessions available</h2>
+{% endif %}
+
+    </section>
 {% endblock %}

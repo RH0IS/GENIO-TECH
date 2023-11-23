@@ -1,0 +1,23 @@
+{% extends 'genioapp/base0.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+<div>
+    <h1>Order Details</h1>
+    <h3>{{ course.title }}</h3>
+    <h3>{{ courselevels.name }}</h3>
+    <h3>{{ course.price }}</h3>
+
+    {% if not student_already_enrolled %}
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Enroll and Make Payment</button>
+        </form>
+    {% else %}
+        <p>You are already enrolled in this course level.</p>
+    {% endif %}
+</div>
+
+</body>
+{% endblock %}

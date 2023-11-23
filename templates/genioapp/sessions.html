@@ -67,7 +67,7 @@
                     var instructors = $('#id_instructor');
                     instructors.empty();
                     $.each(data, function(index, value) {
-                        instructors.append($('<option>').text(value.name).attr('value', value.id));
+                        instructors.append($('<option>').text(value.first_name+" "+value.last_name).attr('value', value.id));
                     });
                 }
             });
