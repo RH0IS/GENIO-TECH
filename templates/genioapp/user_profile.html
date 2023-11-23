@@ -6,6 +6,7 @@
         <div>
             <a href="{% url 'genioapp:logout' %}">Logout</a>
         </div>
+        {% if profile_data.group == 'Student' %}
 
         <h2>User Profile</h2>
         <p>Username: {{ profile_data.username }}</p>
@@ -35,5 +36,42 @@
         {% else %}
             <p>No student orders available.</p>
         {% endif %}
+    {% elif profile_data.group == 'Instructor' %}
+            <h1>User Profile</h1>
+    <p>Username: {{ profile_data.username }}</p>
+    <p>User Group: {{ profile_data.group }}</p>
+    <p>Name: {{ profile_data.name }}</p>
+    <p>Email: {{ profile_data.email }}</p>
+    <p>Bio: {{ profile_data.bio }}</p>
+    <p>Language: {{ profile_data.language }}</p>
+    <img src="{{ profile_data.image }}" alt="Instructor Image">
+
+    {% if profile_data.courses_taught %}
+        <h2>Courses Taught</h2>
+        {% for course_level_data in profile_data.courses_taught %}
+            <h3>Course: {{ course_level_data.course.title }}</h3>
+            {% for level in course_level_data.levels %}
+                <p>Course Level: {{ level.name }}</p>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>No courses taught.</p>
+    {% endif %}
+
+    {% if profile_data.session_details %}
+        <h2>Session Details</h2>
+        {% for session_data in profile_data.session_details %}
+            <h3>Course Level: {{ session_data.course_level.name }}</h3>
+            {% for session in session_data.sessions %}
+                <p>Session: {{ session.session }}</p>
+                <p>Start Time: {{ session.start_datetime }}</p>
+                <p>End Time: {{ session.end_datetime }}</p>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>No session details available.</p>
+    {% endif %}
+    {% endif %}
+
         </body>
 {% endblock %}

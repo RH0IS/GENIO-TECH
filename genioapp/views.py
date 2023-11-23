@@ -68,7 +68,7 @@ def courseregistration(request):
     return render(request, "genioapp/courseregistrationpage.html", {"form": form})
 
 
-def login(request):
+def custom_login(request):
     if request.method == "POST":
         form = LoginForm(data=request.POST)
         if form.is_valid():
@@ -374,23 +374,16 @@ def createorder(request, course_level_id):
 
 def user_profile(request):
     user = request.user
-
     if is_student(user):
         student = StudentProfile.objects.get(user=user)
-
-        # Get StudentOrder objects for the student
         student_orders = StudentOrder.objects.filter(student=student)
 
         stu_course_levels = []
         for student_order in student_orders:
-            # Get the associated CourseLevels and Course objects
             course_level = student_order.course_level
             course = course_level.course
-
-            # Get CourseSession objects for the course level
             sessions = CourseSession.objects.filter(course_level=course_level)
 
-            # Build a dictionary for each student order with relevant information
             stu_course_lvl = {
                 "course_title": course.title,
                 "course_level": course_level.name,
@@ -409,20 +402,41 @@ def user_profile(request):
             'country': student.country,
             'phone': student.phone,
             'stu_course_levels': stu_course_levels
-            # Add other student-specific data
         }
     elif is_instructor(user):
+        instructor_profile = InstructorProfile.objects.get(user=user)
+
+        # Get courses taught by the instructor
+        courses_taught = Course.objects.filter(instructor=instructor_profile)
+
+        # Get course levels for each course
+        instructor_course_levels = []
+        for course in courses_taught:
+            levels = CourseLevels.objects.filter(course=course)
+            instructor_course_levels.append({'course': course, 'levels': levels})
+
+        # Get session details for each course level
+        session_details = []
+        for course_level in CourseLevels.objects.filter(course__in=courses_taught):
+            sessions = CourseSession.objects.filter(course_level=course_level)
+            session_details.append({'course_level': course_level, 'sessions': sessions})
+
         profile_data = {
             'username': user.username,
             'group': 'Instructor',
+            'name': instructor_profile.first_name + ' ' + instructor_profile.last_name,
+            'email': instructor_profile.email,
+            'bio': instructor_profile.bio,
+            'language': instructor_profile.language,
+            'image': instructor_profile.image.url,
+            'courses_taught': instructor_course_levels,
+            'session_details': session_details,
             # Add other instructor-specific data
         }
     else:
-        # Handle other user types or roles as needed
         profile_data = {
             'username': user.username,
             'group': 'Other',
-            # Add other data for other user types
         }
 
     return render(request, "genioapp/user_profile.html", {"profile_data": profile_data})
