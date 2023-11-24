@@ -26,9 +26,9 @@
           <input type="submit" value="Show Sessions">
         </form>
 
-        {% if message %}
-            <p class="message">{{ message }}</p>
-        {% endif %}
+{#        {% if message %}#}
+{#            <p class="message">{{ message }}</p>#}
+{#        {% endif %}#}
 
         {% if course_sessions %}
           <h2 class="u-text-color-primary">Sessions for {{ form.cleaned_data.course_level }}</h2>
@@ -38,14 +38,14 @@
             {% endfor %}
           </ul>
 
-          {% if form.cleaned_data.course_level.name == 'L1' or is_previous_level_completed %}
+          {% if form.cleaned_data.course_level.name == 'L1' or message == None  %}
             <a href="{% url 'genioapp:createorder' form.cleaned_data.course_level.id %}">
               <div class="">
                 Enroll for this Level
               </div>
             </a>
           {% else %}
-            <p class="message">You need to complete the previous level before enrolling in this level.</p>
+            <p class>{{ message }}</p>
           {% endif %}
 
         {% else %}
