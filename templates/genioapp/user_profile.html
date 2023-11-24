@@ -1,0 +1,77 @@
+{% extends 'genioapp/base0.html' %}
+{%  load static %}
+{% block content %}
+    <body>
+        <h2 class="u-text-color-primary">Welcome, {{user.username}}</h2>
+        <div>
+            <a href="{% url 'genioapp:logout' %}">Logout</a>
+        </div>
+        {% if profile_data.group == 'Student' %}
+
+        <h2 class="u-text-color-primary">User Profile</h2>
+        <p class="u-text-color-grey">Username: {{ profile_data.username }}</p>
+        <p class="u-text-color-grey">User Group: {{ profile_data.group }}</p>
+        <p class="u-text-color-grey">Name: {{ profile_data.name }}</p>
+        <p class="u-text-color-grey">Age: {{ profile_data.age }}</p>
+        <p class="u-text-color-grey">Email: {{ profile_data.email }}</p>
+        <p class="u-text-color-grey">Gender: {{ profile_data.gender }}</p>
+        <p class="u-text-color-grey">Country: {{ profile_data.country }}</p>
+        <p class="u-text-color-grey">Phone: {{ profile_data.phone }}</p>
+
+        {% if profile_data.stu_course_levels %}
+            <h2 class="u-text-color-primary">Student Orders</h2>
+            {% for stu_course_lvl in profile_data.stu_course_levels %}
+                <h3 class="u-text-color-primary">Course: {{ stu_course_lvl.course_title }}</h3>
+                <p class="u-text-color-grey">Course Level: {{ stu_course_lvl.course_level }}</p>
+                <h4 class="u-text-color-primary">Sessions</h4>
+                <ul>
+                    {% for session in stu_course_lvl.sessions %}
+                        <li>Session: {{ session.session }}</li>
+                        <li>Start Time: {{ session.start_datetime }}</li>
+                        <li>End Time: {{ session.end_datetime }}</li>
+                        <!-- Add other session details as needed -->
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        {% else %}
+            <p class="u-text-color-grey">No student orders available.</p>
+        {% endif %}
+    {% elif profile_data.group == 'Instructor' %}
+            <h1 class="u-text-color-primary">User Profile</h1>
+    <p class="u-text-color-grey">Username: {{ profile_data.username }}</p>
+    <p class="u-text-color-grey">User Group: {{ profile_data.group }}</p>
+    <p class="u-text-color-grey">Name: {{ profile_data.name }}</p>
+    <p class="u-text-color-grey">Email: {{ profile_data.email }}</p>
+    <p class="u-text-color-grey">Bio: {{ profile_data.bio }}</p>
+    <p class="u-text-color-grey">Language: {{ profile_data.language }}</p>
+    <img src="{{ profile_data.image }}" alt="Instructor Image">
+
+    {% if profile_data.courses_taught %}
+        <h2 class="u-text-color-primary">Courses Taught</h2>
+        {% for course_level_data in profile_data.courses_taught %}
+            <h3 class="u-text-color-primary">Course: {{ course_level_data.course.title }}</h3>
+            {% for level in course_level_data.levels %}
+                <p class="u-text-color-grey">Course Level: {{ level.name }}</p>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p class="u-text-color-grey">No courses taught.</p>
+    {% endif %}
+
+    {% if profile_data.session_details %}
+        <h2 class="u-text-color-primary">Session Details</h2>
+        {% for session_data in profile_data.session_details %}
+            <h3 class="u-text-color-primary">Course Level: {{ session_data.course_level.name }}</h3>
+            {% for session in session_data.sessions %}
+                <p class="u-text-color-grey">Session: {{ session.session }}</p>
+                <p class="u-text-color-grey">Start Time: {{ session.start_datetime }}</p>
+                <p class="u-text-color-grey">End Time: {{ session.end_datetime }}</p>
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p class="u-text-color-grey">No session details available.</p>
+    {% endif %}
+    {% endif %}
+
+    </body>
+{% endblock %}

@@ -1,12 +1,56 @@
 {% extends 'genioapp/base0.html' %}
+{% load static %}
 {% block content %}
-    <h1>{{ course.title }} Details</h1>
-    <div>
-        <p>Description: {{ course.description }}</p>
-        <p>Instructor: {{ course.instructor.name }}</p>
-        <p>Start Date: {{ course.start_date }}</p>
-        <p>End Date: {{ course.end_date }}</p>
-        <p>Price: ${{ course.price }}</p>
-        <!-- Add more details as needed -->
-    </div>
+<body>
+    <section class="section-course-details">
+        <h1 class="u-text-color-primary">{{ course.title }}</h1>
+        <div>
+            <p class="u-text-color-grey">Description: {{ course.description }}</p>
+            <p class="u-text-color-grey">Start Date: {{ course.start_date }}</p>
+            <p class="u-text-color-grey">End Date: {{ course.end_date }}</p>
+            <p class="u-text-color-grey">Price: ${{ course.price }}</p>
+        </div>
+
+        <h1 class="u-text-color-primary">Course Instructors</h1>
+        <div>
+            <p class="u-text-color-grey">Instructor: {{ course.instructor }}</p>
+            <p class="u-text-color-grey">Bio: {{ instructor_profile.bio }}</p>
+            <p class="u-text-color-grey">Language: {{ instructor_profile.language }}</p>
+        </div>
+
+        <h1 class="u-text-color-primary">Select Course Level</h1>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.course_level.label_tag }}
+          {{ form.course_level }}
+          <input type="submit" value="Show Sessions">
+        </form>
+
+{#        {% if message %}#}
+{#            <p class="message">{{ message }}</p>#}
+{#        {% endif %}#}
+
+        {% if course_sessions %}
+          <h2 class="u-text-color-primary">Sessions for {{ form.cleaned_data.course_level }}</h2>
+          <ul>
+            {% for session in course_sessions %}
+              <li>{{ session.session }} - {{ session.start_datetime }} to {{ session.end_datetime }}</li>
+            {% endfor %}
+          </ul>
+
+          {% if form.cleaned_data.course_level.name == 'L1' or message == None  %}
+            <a href="{% url 'genioapp:createorder' form.cleaned_data.course_level.id %}">
+              <div class="">
+                Enroll for this Level
+              </div>
+            </a>
+          {% else %}
+            <p class>{{ message }}</p>
+          {% endif %}
+
+        {% else %}
+            <h2>No sessions available</h2>
+        {% endif %}
+    </section>
+</body>
 {% endblock %}

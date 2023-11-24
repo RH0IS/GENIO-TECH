@@ -3,16 +3,16 @@
 
 {% block body_block %}
 
-<body>
-   <h2>Category Detail</h2>
-    <p>Student Name: {{ Student }}</p>
-    <h3>List of Courses:</h3>
-    <ul>
-        {% for course in courses %}
-            <li>{{ course }}</li>
-        {% endfor %}
-    </ul>
+    <body>
+        <h2>Category Detail</h2>
+        <p>Student Name: {{ Student }}</p>
+        <h3>List of Courses:</h3>
+        <ul>
+            {% for course in courses %}
+                <li>{{ course }}</li>
+            {% endfor %}
+        </ul>
         <p><a href={% url 'myappF23:index' %}>Back to home</a></p>
 
-</body>
+    </body>
 {% endblock %}

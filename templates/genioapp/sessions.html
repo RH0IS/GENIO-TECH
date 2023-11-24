@@ -1,0 +1,79 @@
+{% extends 'genioapp/base0.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <div id="instructorAvailability"></div>
+    <!-- Your form and other content here -->
+    <form method="post" action="{% url 'genioapp:create_course_session' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Session</button>
+    </form>
+
+
+    <form method="post" action="{% url 'genioapp:create_course_session' %}">
+        {% csrf_token %}
+        <label>Instructor:</label>
+        {{ form1.instructor }}
+        <button type="submit">Get Availability</button>
+    </form>
+
+<div>
+    {% if availability_data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in availability_data %}
+                    <tr>
+                        <td>{{ data.day }}</td>
+                        <td>{{ data.start_time }}</td>
+                        <td>{{ data.end_time }}</td>
+                        <td>{{ data.available }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+    <!-- Your jQuery script here -->
+    <script>
+    $(document).ready(function() {
+        $('#id_course').change(function() {
+            var course_id = $(this).val();
+            $.ajax({
+                url: '/get_course_levels/',
+                data: {'course_id': course_id},
+                dataType: 'json',
+                success: function(data) {
+                    var levels = $('#id_course_level');
+                    levels.empty();
+                    $.each(data, function(index, value) {
+                        levels.append($('<option>').text(value.name).attr('value', value.id));
+                    });
+                }
+            });
+            $.ajax({
+                url: '/get_instructor/',
+                data: {'course_id': course_id},
+                dataType: 'json',
+                success: function(data) {
+                    var instructors = $('#id_instructor');
+                    instructors.empty();
+                    $.each(data, function(index, value) {
+                        instructors.append($('<option>').text(value.first_name+" "+value.last_name).attr('value', value.id));
+                    });
+                }
+            });
+        });
+        });
+
+</script>
+</body>
+{% endblock %}
