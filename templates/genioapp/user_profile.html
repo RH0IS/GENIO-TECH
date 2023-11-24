@@ -2,13 +2,11 @@
 {%  load static %}
 {% block content %}
     <body>
+      <div class="login-form-container">
+{#        <div class="login-form-container">#}
         <h2 class="u-text-color-primary">Welcome, {{user.username}}</h2>
-        <div>
-            <a href="{% url 'genioapp:logout' %}">Logout</a>
-        </div>
         {% if profile_data.group == 'Student' %}
 
-        <h2 class="u-text-color-primary">User Profile</h2>
         <p class="u-text-color-grey">Username: {{ profile_data.username }}</p>
         <p class="u-text-color-grey">User Group: {{ profile_data.group }}</p>
         <p class="u-text-color-grey">Name: {{ profile_data.name }}</p>
@@ -26,9 +24,9 @@
                 <h4 class="u-text-color-primary">Sessions</h4>
                 <ul>
                     {% for session in stu_course_lvl.sessions %}
-                        <li>Session: {{ session.session }}</li>
-                        <li>Start Time: {{ session.start_datetime }}</li>
-                        <li>End Time: {{ session.end_datetime }}</li>
+                        <li class="u-text-color-grey">Session: {{ session.session }}</li>
+                        <li class="u-text-color-grey">Start Time: {{ session.start_datetime }}</li>
+                        <li class="u-text-color-grey">End Time: {{ session.end_datetime }}</li>
                         <!-- Add other session details as needed -->
                     {% endfor %}
                 </ul>
@@ -72,6 +70,23 @@
         <p class="u-text-color-grey">No session details available.</p>
     {% endif %}
     {% endif %}
+    </div>
 
+<style>
+    .u-text-color-grey {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    form label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .p {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
     </body>
 {% endblock %}

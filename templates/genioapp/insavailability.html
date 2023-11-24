@@ -2,14 +2,33 @@
 {% load static %}
 {% block content %}
 <body>
+        <div class="login-form-container">
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit">
     </form>
     <a href="{% url 'genioapp:add_availability' %}">
-        <button>Add Availability</button>
+        <div class="form-group">
+            <button class="btn-primary">Add Availability</button></div>
     </a>
+        </div>
 
+<style>
+    .u-text-color-grey {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    form label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    form p {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
 </body>
 {% endblock %}

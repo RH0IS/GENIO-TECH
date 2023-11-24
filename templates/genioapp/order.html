@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 <body>
+        <div class="login-form-container">
 
-<div>
     <h1>Order Details</h1>
     <h3>{{ course.title }}</h3>
     <h3>{{ courselevels.name }}</h3>
@@ -12,12 +12,31 @@
     {% if not student_already_enrolled %}
         <form method="POST">
             {% csrf_token %}
-            <button type="submit">Enroll and Make Payment</button>
+            <div class="form-group">
+            <button class="btn-primary type="submit">Enroll and Make Payment</button></div>
         </form>
     {% else %}
         <p>You are already enrolled in this course level.</p>
     {% endif %}
 </div>
+ <div class="extra-space"></div>
+<style>
+     .extra-space {
+        margin-bottom: 430px;
+    .u-text-color-grey {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    form label {
+        font-weight: bold;
+        color: #333;
+    }
 
+    form p {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
 </body>
 {% endblock %}

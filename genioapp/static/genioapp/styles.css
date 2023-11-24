@@ -1049,3 +1049,28 @@
   height: auto;
   filter: brightness(0) invert(1);
 }
+
+.custom-label {
+    font-weight: bold;
+    color: #333; /* Specify your desired color */
+    /* Add any other styles you want */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Add spacing between form elements */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.wrapper {
+    flex: 1;
+}
+
+.footer {
+    margin-top: auto;
+}
