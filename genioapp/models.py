@@ -37,12 +37,11 @@ class Course(models.Model):
     interested = models.PositiveIntegerField(default=0)
     video = models.FileField(upload_to="videos/", default="default_image.jpg")
     AGE_RANGE_CHOICES = [
-        ('1',  '(7-11)'),
-        ('2', '(12-14)'),
-        ('3', '(15-17)'),
-        ('4', '(17+)'),
+        ('(7-11)', '(7-11)'),
+        ('(12-14)', '(12-14)'),
+        ('(15-17)', '(15-17)'),
+        ('(17+)', '(17+)'),
     ]
-
     age_range = models.CharField(max_length=10, choices=AGE_RANGE_CHOICES, default='1')
 
     def __str__(self):
