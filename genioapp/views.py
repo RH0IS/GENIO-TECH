@@ -6,6 +6,7 @@ from .models import Category, Course, Student, InstructorProfile, StudentProfile
 from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
+import re
 
 from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm, InstructorSelectionForm, InstructorAvailabilityForm, CourseSessionForm, CheckInstructorAvailability, GetSessionForm
 
@@ -20,9 +21,7 @@ def about(request):
 def course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     course_levels = CourseLevels.objects.filter(course=course)
-    #print('Levels',course_levels)
     instructor = course.instructor
-    #print(instructor)
     instructor_profile = InstructorProfile.objects.get(id=instructor.id)
 
     if request.method == 'POST':
@@ -31,16 +30,43 @@ def course_detail(request, course_id):
         if form.is_valid():
             print('Validated form')
             course_level = form.cleaned_data.get('course_level')
+            level_str = re.search(r'\d+', course_level.name)
+
+            if level_str:
+                level = int(level_str.group())
+                level = level - 1
+                if level != 0:
+                    prev_level = f"L{level}"
+
+                    # Check if the student has completed the previous level
+                    student = StudentProfile.objects.get(user=request.user)
+                    prev_level_order = StudentOrder.objects.filter(student=student,
+                                                                   course_level__name=prev_level).first()
+
+                    if prev_level_order and prev_level_order.completion_status == 'completed':
+                        # The student has completed the previous level, allow enrollment
+                        print(f"Student can enroll in {course_level}")
+                    else:
+                        # Send a message that the student needs to complete the previous level
+                        message = f"You need to complete {prev_level} before enrolling in {course_level}"
+                        print(message)
+                        course_sessions = CourseSession.objects.filter(course_level=course_level)
+                        return render(request, "genioapp/course_detail.html", {
+                            "course": course,
+                            "instructor_profile": instructor_profile,
+                            "course_levels": course_levels,
+                            "course_sessions": course_sessions,
+                            "form": form,
+                            "message": message
+                        })
+
             print(course_level)
             course_sessions = CourseSession.objects.filter(course_level=course_level)
-            #course_order = StudentOrder.objects.get(course_level = course_level)
-            print('sessions',course_sessions)
             return render(request, "genioapp/course_detail.html", {
                 "course": course,
                 "instructor_profile": instructor_profile,
                 "course_levels": course_levels,
                 "course_sessions": course_sessions,
-                #"course_order": course_order,
                 "form": form,
             })
     else:

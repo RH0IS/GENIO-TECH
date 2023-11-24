@@ -62,35 +62,35 @@
                     </div>
                     {% endif %}
                     {% endif %}
-
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:about' %}"> ABOUT </a>
                     </div>
                     {% if user.is_authenticated %}
-                {% if not is_student and not is_instructor %}
-                            <div class="text-wrapper-15">
-                                <a href="{% url 'genioapp:addcourselevels' %}">Add Course Level</a>
-                            </div>
-                            <div class="text-wrapper-15">
-                                <a href="{% url 'genioapp:instructorsignup' %}">Instructor Enroll</a>
-                            </div>
-                            <div class="text-wrapper-15">
-                                <a href="{% url 'genioapp:courseregistration' %}">Course Registration</a>
-                            </div>
-                            <div class="text-wrapper-15">
-                                <a href="{% url 'genioapp:create_course_session' %}">Add Timeslots</a>
-                            </div>
-                            {% endif %}
-                            <div class="text-wrapper-15">
-                                <a href="{% url 'genioapp:user_profile' %}">Profile</a>
-                            </div>
-        {#                    <div class="text-wrapper-15">#}
-        {#                        <span class="navbar-text">Logged in as {{user.username}}</span>#}
-        {#                        <br />#}
-        {#                        <a href="{% url 'genioapp:logout' %}">Logout</a>#}
-        {#                    </div>#}
-                        </div>
-                        {% endif %}
+
+                        {% if not is_student and not is_instructor %}
+                    <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:addcourselevels' %}">Add Course Level</a>
+                    </div>
+                    <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:instructorsignup' %}">Instructor Enroll</a>
+                    </div>
+                    <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:courseregistration' %}">Course Registration</a>
+                    </div>
+                    <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:create_course_session' %}">Add Timeslots</a>
+                    </div>
+                    {% endif %}
+                    <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:user_profile' %}">Profile</a>
+                    </div>
+                    <div class="text-wrapper-15">
+                        <span class="navbar-text">Logged in as {{user.username}}</span>
+                        <br />
+                        <a href="{% url 'genioapp:logout' %}">Logout</a>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
         <div class="content">

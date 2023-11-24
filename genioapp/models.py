@@ -36,7 +36,14 @@ class Course(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     interested = models.PositiveIntegerField(default=0)
     video = models.FileField(upload_to="videos/", default="default_image.jpg")
-    # level choices in Course
+    AGE_RANGE_CHOICES = [
+        ('1',  '(7-11)'),
+        ('2', '(12-14)'),
+        ('3', '(15-17)'),
+        ('4', '(17+)'),
+    ]
+
+    age_range = models.CharField(max_length=10, choices=AGE_RANGE_CHOICES, default='1')
 
     def __str__(self):
         return self.title
@@ -118,13 +125,18 @@ class CourseSession(models.Model):
     end_datetime = models.DateTimeField(default = timezone.now)
 
 class StudentOrder(models.Model):
+    COMPLETION_CHOICES = [
+        ('completed', 'Completed'),
+        ('ongoing', 'On-going'),
+    ]
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     course_level = models.ForeignKey(CourseLevels, on_delete=models.CASCADE)
+    completion_status = models.CharField(max_length=10, choices=COMPLETION_CHOICES, default='On-going')
 
     class Meta:
         unique_together = ('student', 'course_level')
 
     def __str__(self):
-        return f"{self.student.user.username} - {self.course_level}"
+        return f"{self.student.user.username} - {self.course_level} - {self.completion_status}"
 
 

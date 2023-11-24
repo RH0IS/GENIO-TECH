@@ -1,5 +1,7 @@
 {% extends 'genioapp/base0.html' %}
+{% load static %}
 {% block content %}
+<body>
     <section class="section-course-details">
         <h1 class="u-text-color-primary">{{ course.title }}</h1>
         <div>
@@ -17,28 +19,38 @@
         </div>
 
         <h1 class="u-text-color-primary">Select Course Level</h1>
-<form method="post">
-  {% csrf_token %}
-  {{ form.course_level.label_tag }}
-  {{ form.course_level }}
-  <input type="submit" value="Show Sessions">
-</form>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.course_level.label_tag }}
+          {{ form.course_level }}
+          <input type="submit" value="Show Sessions">
+        </form>
 
-{% if course_sessions %}
-  <h2 class="u-text-color-primary">Sessions for {{ form.cleaned_data.course_level }}</h2>
-  <ul>
-    {% for session in course_sessions %}
-      <li>{{ session.session }} - {{ session.start_datetime }} to {{ session.end_datetime }}</li>
-    {% endfor %}
-  </ul>
-    <a href="{% url 'genioapp:createorder' form.cleaned_data.course_level.id %}">
-    <div class="">
-    Enroll for this Level
-    </div>
-    </a>
-    {% else %}
-    <h2>No sessions available</h2>
-{% endif %}
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
 
+        {% if course_sessions %}
+          <h2 class="u-text-color-primary">Sessions for {{ form.cleaned_data.course_level }}</h2>
+          <ul>
+            {% for session in course_sessions %}
+              <li>{{ session.session }} - {{ session.start_datetime }} to {{ session.end_datetime }}</li>
+            {% endfor %}
+          </ul>
+
+          {% if form.cleaned_data.course_level.name == 'L1' or is_previous_level_completed %}
+            <a href="{% url 'genioapp:createorder' form.cleaned_data.course_level.id %}">
+              <div class="">
+                Enroll for this Level
+              </div>
+            </a>
+          {% else %}
+            <p class="message">You need to complete the previous level before enrolling in this level.</p>
+          {% endif %}
+
+        {% else %}
+            <h2>No sessions available</h2>
+        {% endif %}
     </section>
+</body>
 {% endblock %}
