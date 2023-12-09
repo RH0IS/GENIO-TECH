@@ -109,7 +109,7 @@ class CheckInstructorAvailability(forms.ModelForm):
     instructor = forms.ModelChoiceField(queryset=InstructorProfile.objects.all(), required=True, label='Instructor')
     class Meta:
         model = InstructorProfile
-        fields = ['first_name', 'last_name']
+        fields = ['instructor']
 
     def __init__(self, *args, **kwargs):
         super(CheckInstructorAvailability, self).__init__(*args, **kwargs)

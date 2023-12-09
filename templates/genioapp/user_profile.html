@@ -2,6 +2,22 @@
 {%  load static %}
 {% block content %}
     <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    .profile-picture-container {
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+    }
+
+    .profile-picture-container img {
+        width: 100%;
+        height: auto;
+    }
+</style>
       <div class="login-form-container">
 {#        <div class="login-form-container">#}
         <h2 class="u-text-color-primary">Welcome, {{user.username}}</h2>
@@ -35,14 +51,18 @@
             <p class="u-text-color-grey">No student orders available.</p>
         {% endif %}
     {% elif profile_data.group == 'Instructor' %}
-            <h1 class="u-text-color-primary">User Profile</h1>
+{#            <h1 class="u-text-color-primary">User Profile</h1>#}
+             <p class="u-text-color-grey">Profile Picture</p>
+             <div class="profile-picture-container">
+    <img src="{{ profile_data.image }}" alt="Instructor Image" alt="Profile Picture" class="rounded-circle">
+            </div>
     <p class="u-text-color-grey">Username: {{ profile_data.username }}</p>
     <p class="u-text-color-grey">User Group: {{ profile_data.group }}</p>
     <p class="u-text-color-grey">Name: {{ profile_data.name }}</p>
     <p class="u-text-color-grey">Email: {{ profile_data.email }}</p>
     <p class="u-text-color-grey">Bio: {{ profile_data.bio }}</p>
     <p class="u-text-color-grey">Language: {{ profile_data.language }}</p>
-    <img src="{{ profile_data.image }}" alt="Instructor Image">
+
 
     {% if profile_data.courses_taught %}
         <h2 class="u-text-color-primary">Courses Taught</h2>
