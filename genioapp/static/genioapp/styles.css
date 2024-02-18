@@ -803,6 +803,69 @@
   color: #929292;
 }
 
+/* ========SECTION: TOPIC======== */
+.section-topic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 2rem;
+  height: auto;
+  text-align: center;
+}
+.topic-header {
+  margin-bottom: 2rem;
+  color: #aa082a;
+  font-family: "Inter-Bold", sans-serif;
+  font-weight: 700;
+}
+
+.topic-icon-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  width: 150px;
+  height: 150px;
+  position: relative;
+}
+
+.circle {
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.icon-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.topic-text{
+  color: #aa082a;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-weight: 700;
+  font-size: 100%;
+  position: relative;
+}
+
+
+
+
 /* ========SECTION: COURSE CATALOGUE======== */
 .section--course-catalogue {
   display: flex;
