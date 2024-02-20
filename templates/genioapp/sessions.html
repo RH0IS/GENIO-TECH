@@ -2,20 +2,23 @@
 {% load static %}
 {% block content %}
 <body>
-    <div id="instructorAvailability"></div>
+        <div class="login-form-container">
     <!-- Your form and other content here -->
     <form method="post" action="{% url 'genioapp:create_course_session' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create Session</button>
+        <button class="btn-primary" type="submit">Create Session</button>
     </form>
-
+<br/>
 
     <form method="post" action="{% url 'genioapp:create_course_session' %}">
         {% csrf_token %}
-        <label>Instructor:</label>
+        <div class="form-group">
+            <label class="custom-label">Instructor:</label>
         {{ form1.instructor }}
-        <button type="submit">Get Availability</button>
+        <button class="btn-primary" type="submit">Get Availability</button>
+        </div>
+
     </form>
 
 <div>
@@ -42,6 +45,7 @@
         </table>
     {% endif %}
 </div>
+        <div class="extra-space"></div>
     <!-- Your jQuery script here -->
     <script>
     $(document).ready(function() {
@@ -75,5 +79,19 @@
         });
 
 </script>
+        <style>
+            .extra-space {
+        margin-bottom: 110px;
+    form label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    form p {
+        margin-bottom: 10px; /* Add spacing between form elements */
+    }
+</style>
+
+        </div>
 </body>
 {% endblock %}

@@ -165,16 +165,28 @@ def create_course_session(request):
             form.save()  # You might want to customize this based on your logic
             return redirect('/create_course_session/')
 
+
+
         if form1.is_valid():
-            instructor_name = form1.cleaned_data['instructor']
-            print(instructor_name)
+            instructor_profile = form1.cleaned_data['instructor']
+            # first_name = form1.cleaned_data['first_name']
+            # last_name = form1.cleaned_data['last_name']
+            # first_name, last_name = instructor_name.split(' ', 1) if ' ' in instructor_name else (instructor_name, '')
+            # print(instructor_name)
             availability = IntructorAvailability.objects.filter(
-                instructor=InstructorProfile.objects.get(name = instructor_name)).values('id', 'day', 'start_time',
-                                                                                              'end_time', 'available')
-            print(availability)
+                instructor=instructor_profile
+            ).values('id', 'day', 'start_time', 'end_time', 'available')
             availability_data = [
-                {'day': av['day'], 'start_time': av['start_time'], 'end_time': av['end_time'], 'available': av['available']} for av in availability
+                {'day': av['day'], 'start_time': av['start_time'], 'end_time': av['end_time'],
+                 'available': av['available']} for av in availability
             ]
+            # availability = IntructorAvailability.objects.filter(
+            #     instructor=InstructorProfile.objects.get(instructorprofile = instruvtot)).values('id', 'day', 'start_time',
+            #                                                                                   'end_time', 'available')
+            # print(availability)
+            # availability_data = [
+            #     {'day': av['day'], 'start_time': av['start_time'], 'end_time': av['end_time'], 'available': av['available']} for av in availability
+            # ]
             return render(request, 'genioapp/sessions.html', {'form': form, 'form1': form1, 'availability_data': availability_data})
         else:
             return render(request, 'genioapp/sessions.html', {'form': form,'form1': form1})
@@ -234,8 +246,10 @@ def addcourselevels(request):
     form = CourseLevelForm(request.POST)
     if form.is_valid():
         form.save()
+        return redirect("/")
     else:
         form = CourseLevelForm()
+
 
     return render(request, "genioapp/courseregistrationpage.html", {"form": form})
 
@@ -254,7 +268,6 @@ def instructorsignup(request):
             language = form.cleaned_data.get("language")
             image = form.cleaned_data.get("image")
 
-            # Additional validation for image file
             try:
                 validate_image_file(image)
             except ValidationError as e:
