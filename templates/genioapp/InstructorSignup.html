@@ -2,11 +2,30 @@
 {% load static %}
 {% block content %}
     <body>
+        <div class="login-form-container">
         <form method="POST">
             {% csrf_token %}
             {{form.as_p}}
-            <button type="submit">Sign Up</button>
+            <div class="form-group">
+                <button class="btn-primary" type="submit">Sign Up</button></div>
         </form>
+        </div>
 
+<style>
+    .u-text-color-grey {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    form label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    form p {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
     </body>
 {% endblock %}

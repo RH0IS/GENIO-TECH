@@ -39,11 +39,14 @@
           </ul>
 
           {% if form.cleaned_data.course_level.name == 'L1' or message == None  %}
-            <a href="{% url 'genioapp:createorder' form.cleaned_data.course_level.id %}">
+               <div class="form-group">
+            <button class="btn-primary"><a href="{% url 'genioapp:createorder' form.cleaned_data.course_level.id %}" class="white-link">
               <div class="">
                 Enroll for this Level
               </div>
             </a>
+              </button>
+               </div>
           {% else %}
             <p class>{{ message }}</p>
           {% endif %}
@@ -52,5 +55,28 @@
             <h2>No sessions available</h2>
         {% endif %}
     </section>
+<style>
+    .u-text-color-grey {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    form label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    form p {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 16px;
+
+    .white-link {
+        color: white;
+        text-decoration: none;
+    }
+    }
+</style>
 </body>
 {% endblock %}
+
+

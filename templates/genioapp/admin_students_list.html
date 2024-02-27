@@ -2,16 +2,32 @@
 {% load static %}
 {% block content %}
     <body>
-        <div>
+        <div class="login-form-container">
             <ul>
                 {% for student in students %}
                     <li>{{ student.name }} - {{ student.email }}
+                         <div class="form-group">
+            <button class="btn-primary">
                         <a href="{% url 'genioapp:create_credentials' student.id %}">
                             Create Credentials
                         </a>
+            </button></div>
                     </li>
                 {% endfor %}
             </ul>
         </div>
+         <div class="extra-space"></div>
+    <style>
+    .extra-space {
+        margin-bottom: 550px;
+    form li {
+        font-weight: bold;
+        color: #333;
+    }
+
+    form p {
+        margin-bottom: 10px; /* Add spacing between form elements */
+    }
+</style>
     </body>
 {% endblock %}
