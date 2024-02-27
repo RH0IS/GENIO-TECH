@@ -3,5 +3,8 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.11 (GENIO-TECH)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (GENIO-TECH)" project-jdk-type="Python SDK" />
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="FLOW" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (GENIO-TECH-1)" project-jdk-type="Python SDK" />
 </project>

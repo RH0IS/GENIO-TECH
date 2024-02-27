@@ -1,7 +1,7 @@
 from decimal import Decimal
 from django.db import models
 from django.utils import timezone
-
+import random
 
 # Create your models here.
 
@@ -12,30 +12,34 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class ClassRoom(models.Model):
+    name = models.CharField(max_length=200)
+    uid = models.CharField(max_length=1000)
+    room_name = models.CharField(max_length=200)
+    insession = models.BooleanField(default=True)
+    def __str__(self):
+        return self.name
 
 class InstructorProfile(models.Model):
     user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=100, default='first_name')
+    first_name = models.CharField(max_length=100, default='first_name', null=True)
     last_name = models.CharField(max_length=100, null=True)
     email = models.EmailField(max_length=254, unique=True, default=None, null=True)
     bio = models.TextField(null=True)
     language = models.CharField(max_length=100, default="none", null=True)
-    image = models.ImageField(upload_to="images/", default="default_image.jpg")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
 
 class Course(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
+    title = models.CharField(max_length=200, null=True)
+    description = models.TextField(null=True)
     instructor = models.ForeignKey(InstructorProfile, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to='images/',default='default_image.jpg')
-    start_date = models.DateField()
-    end_date = models.DateField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    interested = models.PositiveIntegerField(default=0)
-    video = models.FileField(upload_to="videos/", default="default_image.jpg")
+    start_date = models.TextField(null=True)
+    end_date = models.TextField(null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2,null=True)
+    interested = models.PositiveIntegerField(default=0,null=True)
     AGE_RANGE_CHOICES = [
         ('(7-11)', '(7-11)'),
         ('(12-14)', '(12-14)'),
@@ -59,8 +63,9 @@ class CourseLevels(models.Model):
 
 
 class Student(models.Model):
+    user = models.OneToOneField("auth.User", on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=50, blank=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True,default="w@example.com")
     age = models.IntegerField(blank=True, null=True)
     gender = models.CharField(max_length=10, blank=True)
     phone = models.CharField(max_length=15, blank=True)
@@ -120,8 +125,8 @@ class CourseSession(models.Model):
     ]
 
     session = models.IntegerField(choices=YOUR_CHOICES)
-    start_datetime = models.DateTimeField(default = timezone.now)
-    end_datetime = models.DateTimeField(default = timezone.now)
+    start_datetime = models.CharField(max_length=50, blank=True)#models.DateTimeField(default = timezone.now)
+    end_datetime = models.CharField(max_length=50, blank=True)#models.DateTimeField(default = timezone.now)
 
 class StudentOrder(models.Model):
     COMPLETION_CHOICES = [

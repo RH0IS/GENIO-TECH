@@ -52,8 +52,14 @@
                     </a>
                 </div>
                 <div class="NavText">
+                <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:createClassRoom' %}"> Create ClassRoom </a>
+                    </div>
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:index' %}"> HOME </a>
+                    </div>
+                    <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:lobby' %}"> Video Call </a>
                     </div>
                     {% if user.is_authenticated %}
                         {% if is_instructor %}

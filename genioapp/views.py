@@ -1,17 +1,93 @@
 from django.contrib.auth.models import User, Group
+from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django import forms
 from django.utils import timezone
-from .models import Category, Course, Student, InstructorProfile, StudentProfile, IntructorAvailability, CourseLevels, CourseSession, StudentOrder
+from .models import ClassRoom, Course, Student, InstructorProfile, StudentProfile, IntructorAvailability, CourseLevels, \
+    CourseSession, StudentOrder
 from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 import re
-
-from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm, InstructorSelectionForm, InstructorAvailabilityForm, CourseSessionForm, CheckInstructorAvailability, GetSessionForm
-
+import random
+import time
+from agora_token_builder import RtcTokenBuilder
+import json
+from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, StudentCred, CourseLevelForm, \
+    ClassRoomForm, InstructorAvailabilityForm, CourseSessionForm, CheckInstructorAvailability, GetSessionForm
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
+
+
+@csrf_exempt
+def createClassRoom(request):
+    form = ClassRoomForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    else:
+        form = ClassRoomForm()
+    return render(request, "genioapp/create_classroom.html", {"form": form})
+
+
+@csrf_exempt
+def createRoomMember(request):
+    data = json.loads(request.body)
+    member, created = ClassRoom.objects.get_or_create(
+        name=data['name'],
+        uid=data['UID'],
+        room_name=data['room_name']
+    )
+
+    return JsonResponse({'name': data['name']}, safe=False)
+
+
+def getRoomMember(request):
+    uid = request.GET.get('UID')
+    room_name = request.GET.get('room_name')
+
+    member = ClassRoom.objects.get(
+        uid=uid,
+        room_name=room_name,
+    )
+    name = member.name
+    return JsonResponse({'name': member.name}, safe=False)
+
+
+@csrf_exempt
+def deleteRoomMember(request):
+    data = json.loads(request.body)
+    member = ClassRoom.objects.get(
+        name=data['name'],
+        uid=data['UID'],
+        room_name=data['room_name']
+    )
+    member.delete()
+    return JsonResponse('Member deleted', safe=False)
+
+
+def getAgoraToken(request):
+    appId = "6b8b1f511c3b46958111cac2bec48fd8"
+    appCertificate = "a5f8fa4d7a2f471f88ae7cecfed923e9"
+    channelName = request.GET.get('channel')
+    uid = random.randint(1, 230)
+    expirationTimeInSeconds = 3600
+    currentTimeStamp = int(time.time())
+    privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
+    role = 1
+
+    token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
+
+    return JsonResponse({'token': token, 'uid': uid}, safe=False)
+
+
+def lobby(request):
+    return render(request, "genioapp/lobby.html")
+
+
+def room(request):
+    return render(request, "genioapp/room.html")
 
 
 def about(request):
@@ -90,17 +166,19 @@ def course_detail(request, course_id):
         "form": form,
     })
 
+
 def is_age_appropriate(student_age, age_range):
     lower_bound, upper_bound = map(int, re.findall(r'\d+', age_range))
-    print("LB:",lower_bound)
-    print("UB",upper_bound)
+    print("LB:", lower_bound)
+    print("UB", upper_bound)
     print("Age:", student_age)
     return lower_bound <= student_age <= upper_bound
 
-def courseregistration(request):
 
+def courseregistration(request):
     form = CourseForm(request.POST)
-    #print(form.cleaned_data.get('title'))
+    print(form.data)
+
     if form.is_valid():
         form.save()
         return redirect('/')
@@ -157,55 +235,67 @@ def viewCourses(request):
     else:
         return render(request, "genioapp/user_profile.html")
 
+
 def create_course_session(request):
     if request.method == 'POST':
         form = CourseSessionForm(request.POST)
         form1 = CheckInstructorAvailability(request.POST or None)
         if form.is_valid():
             form.save()  # You might want to customize this based on your logic
-            return redirect('/create_course_session/')
-
-        if form1.is_valid():
-            instructor_name = form1.cleaned_data['instructor']
+            return redirect('/')
+        print(form1.data)
+        if form1.is_bound:
+            availability_data = []
+            availability=[]
+            instructor_name = form1.data['instructor']
             print(instructor_name)
-            availability = IntructorAvailability.objects.filter(
-                instructor=InstructorProfile.objects.get(name = instructor_name)).values('id', 'day', 'start_time',
-                                                                                              'end_time', 'available')
-            print(availability)
+            print(len(instructor_name))
+            if len(instructor_name)<=1:
+                availability = IntructorAvailability.objects.filter(
+                    instructor=InstructorProfile.objects.get(id=instructor_name)).values('id', 'day', 'start_time',
+                                                                                           'end_time', 'available')
+
             availability_data = [
-                {'day': av['day'], 'start_time': av['start_time'], 'end_time': av['end_time'], 'available': av['available']} for av in availability
+                {'day': av['day'], 'start_time': av['start_time'], 'end_time': av['end_time'],
+                 'available': av['available']} for av in availability
             ]
-            return render(request, 'genioapp/sessions.html', {'form': form, 'form1': form1, 'availability_data': availability_data})
+            return render(request, 'genioapp/sessions.html',
+                          {'form': form, 'form1': form1, 'availability_data': availability_data})
         else:
-            return render(request, 'genioapp/sessions.html', {'form': form,'form1': form1})
+            return render(request, 'genioapp/sessions.html', {'form': form, 'form1': form1})
     else:
         form = CourseSessionForm()
         form1 = CheckInstructorAvailability(request.POST or None)
 
     return render(request, 'genioapp/sessions.html', {'form': form, 'form1': form1})
 
+
 def get_course_levels(request):
     course_id = request.GET.get('course_id')
     levels = CourseLevels.objects.filter(course_id=course_id).values('id', 'name')
     return JsonResponse(list(levels), safe=False)
 
+
 def get_instructor(request):
     course_id = request.GET.get('course_id')
-    instructor = InstructorProfile.objects.filter(course=Course.objects.get(id=course_id)).values('first_name','last_name')
+    instructor = InstructorProfile.objects.filter(course=Course.objects.get(id=course_id)).values('first_name',
+                                                                                                  'last_name')
     print(instructor)
-    #prinr(instructor.first_name)
+    # prinr(instructor.first_name)
     return JsonResponse(list(instructor), safe=False)
 
+
 def init_ins_availability(instructor):
-    insa= IntructorAvailability(instructor=instructor)
+    insa = IntructorAvailability(instructor=instructor)
     insa.save()
+
 
 def view_ins_availability(request):
     user = request.user
     try:
         instructor_profile = InstructorProfile.objects.get(user=user)
-        #instructor_profile_id = instructor_profile.pk
-        InsFormSet = forms.inlineformset_factory(InstructorProfile, IntructorAvailability, fields="__all__",  extra=0)
+        # instructor_profile_id = instructor_profile.pk
+        InsFormSet = forms.inlineformset_factory(InstructorProfile, IntructorAvailability, fields="__all__", extra=0)
         if request.method == "POST":
             formset = InsFormSet(request.POST, request.FILES, instance=instructor_profile)
             if formset.is_valid():
@@ -214,18 +304,19 @@ def view_ins_availability(request):
         else:
             formset = InsFormSet(instance=instructor_profile)
             return render(request, 'genioapp/insavailability.html', {
-                                                             'form':formset})
+                'form': formset})
     except InstructorProfile.DoesNotExist:
-        #instructor_profile_id = None
+        # instructor_profile_id = None
         return render(request, 'genioapp/index.html')
-    
+
+
 def add_availability(request):
     instructor_profile = InstructorProfile.objects.get(user=request.user)
-    insa= IntructorAvailability(
-            instructor=instructor_profile,
-            start_time='15:00',
-            end_time='16:00'
-        )
+    insa = IntructorAvailability(
+        instructor=instructor_profile,
+        start_time='15:00',
+        end_time='16:00'
+    )
     insa.save()
     return redirect('/viewinsavailability/')
 
@@ -244,22 +335,18 @@ def addcourselevels(request):
 def instructorsignup(request):
     if request.method == "POST":
         form = InstructorSignUpForm(request.POST,
-                                    request.FILES)  # Make sure to include request.FILES for handling uploaded files
+                                    request.FILES)
+        # Make sure to include request.FILES for handling uploaded files
         if form.is_valid():
+            print(form.data)
             user = form.save()
             first_name = form.cleaned_data.get("first_name")
             last_name = form.cleaned_data.get("last_name")
             email = form.cleaned_data.get("email")
             bio = form.cleaned_data.get("bio")
             language = form.cleaned_data.get("language")
-            image = form.cleaned_data.get("image")
 
             # Additional validation for image file
-            try:
-                validate_image_file(image)
-            except ValidationError as e:
-                form.add_error('image', e)
-                return render(request, "genioapp/signup.html", {"form": form})
 
             instructor = InstructorProfile(
                 user=user,
@@ -267,8 +354,7 @@ def instructorsignup(request):
                 last_name=last_name,
                 email=email,
                 bio=bio,
-                language=language,
-                image=image
+                language=language
             )
             instructor.save()
 
@@ -314,7 +400,6 @@ def index(request):
 
 
 def course_by_id(request, course_id):
-    
     courses = Course.objects.get(id=course_id)
 
     return render(
@@ -343,7 +428,28 @@ def student_form(request):
     if request.method == "POST":
         form = StudentForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            age = form.cleaned_data.get('age')
+            phone = form.cleaned_data.get('phone')
+            country = form.cleaned_data.get('country')
+            gender = form.cleaned_data.get('gender')
+
+            student = Student(
+                user=user,
+                name=name,
+                email=email,
+                age=age,
+                gender=gender,
+                phone=phone,
+                country=country,
+            )
+            student.save()
+            # student.delete()
+
+            student_group = Group.objects.get(name="Students")
+            user.groups.add(student_group)
             return redirect("/admin_students_list/")  # Redirect to the admin view
     else:
         form = StudentForm()
@@ -381,7 +487,7 @@ def create_credentials(request, student_id):
             studentProfile.save()
             student.delete()
 
-            student_group = Group.objects.get(name ="Students")
+            student_group = Group.objects.get(name="Students")
             user.groups.add(student_group)
             return redirect("/admin_students_list/")
     else:
@@ -393,7 +499,8 @@ def create_credentials(request, student_id):
         {"form": form, "student_id": student_id},
     )  # Redirect back to the admin view
 
-#def get_instructor_availability(request):
+
+# def get_instructor_availability(request):
 
 def createorder(request, course_level_id):
     courselevels = CourseLevels.objects.get(id=course_level_id)
@@ -412,6 +519,7 @@ def createorder(request, course_level_id):
 
     return render(request, 'genioapp/order.html', {'course': course, 'courselevels': courselevels,
                                                    'student_already_enrolled': student_already_enrolled})
+
 
 def user_profile(request):
     user = request.user
@@ -436,8 +544,8 @@ def user_profile(request):
         profile_data = {
             'username': user.username,
             'group': 'Student',
-            'name' : student.name,
-            'age' : student.age,
+            'name': student.name,
+            'age': student.age,
             'email': student.email,
             'gender': student.gender,
             'country': student.country,
@@ -481,10 +589,3 @@ def user_profile(request):
         }
 
     return render(request, "genioapp/user_profile.html", {"profile_data": profile_data})
-
-
-
-
-
-
-

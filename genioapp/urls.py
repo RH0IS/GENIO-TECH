@@ -38,6 +38,14 @@ urlpatterns = [
     path("get_instructor/", views.get_instructor, name="get_instructor"),
     path("add_availability/", views.add_availability, name="add_availability"),
     path("createorder/<int:course_level_id>", views.createorder, name="createorder"),
+    path("lobby/", views.lobby, name="lobby"),
+    path('get_token/', views.getAgoraToken),
+    path("room/", views.room, name="room"),
+    path('create_member/', views.createRoomMember),
+    path("createClassRoom/", views.createClassRoom, name="createClassRoom"),
+    path('get_member/', views.getRoomMember),
+    path('delete_member/', views.deleteRoomMember),
+    
 ]
 
 if settings.DEBUG:
