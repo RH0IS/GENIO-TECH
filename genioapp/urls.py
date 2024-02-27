@@ -7,6 +7,7 @@ app_name = "genioapp"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("123/", views.index, name="index"),
     path("about/", views.about, name="about"),
     path("courses/", views.courses, name="courses"),
     path("category/<int:category_no>/", views.course_by_id, name="category_detail"),
@@ -39,10 +40,10 @@ urlpatterns = [
     path("add_availability/", views.add_availability, name="add_availability"),
     path("createorder/<int:course_level_id>", views.createorder, name="createorder"),
     path("lobby/", views.lobby, name="lobby"),
-    path('get_token/', views.getAgoraToken),
+    path('get_token/<int:id>', views.getAgoraToken),
     path("room/", views.room, name="room"),
     path('create_member/', views.createRoomMember),
-    path("createClassRoom/", views.createClassRoom, name="createClassRoom"),
+    path("createClassRoom/", views.joinClassRoom, name="createClassRoom"),
     path('get_member/', views.getRoomMember),
     path('delete_member/', views.deleteRoomMember),
     

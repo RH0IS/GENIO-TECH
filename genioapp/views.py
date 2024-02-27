@@ -21,15 +21,13 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 
 @csrf_exempt
-def createClassRoom(request):
-    form = ClassRoomForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('/')
-    else:
-        form = ClassRoomForm()
-    return render(request, "genioapp/create_classroom.html", {"form": form})
+def joinClassRoom(request):
+    rooms=ClassRoom.objects.all()
+    return render(request, "genioapp/join_classroom.html", {"rooms": rooms})
 
+@csrf_exempt
+def enterClassRoom(request):
+    return render(request)
 
 @csrf_exempt
 def createRoomMember(request):
@@ -67,11 +65,13 @@ def deleteRoomMember(request):
     return JsonResponse('Member deleted', safe=False)
 
 
-def getAgoraToken(request):
+def getAgoraToken(request, id):
     appId = "6b8b1f511c3b46958111cac2bec48fd8"
     appCertificate = "a5f8fa4d7a2f471f88ae7cecfed923e9"
-    channelName = request.GET.get('channel')
-    uid = random.randint(1, 230)
+    #room_id= request.GET.get('id')
+    channelName = ClassRoom.objects.get(id=id).room_name
+    uid = request.user.id
+    user_name=request.user.username
     expirationTimeInSeconds = 3600
     currentTimeStamp = int(time.time())
     privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
@@ -79,7 +79,7 @@ def getAgoraToken(request):
 
     token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
 
-    return JsonResponse({'token': token, 'uid': uid}, safe=False)
+    return JsonResponse({'token': token, 'uid': uid, 'room_name':channelName, 'user_name':user_name}, safe=False)
 
 
 def lobby(request):
@@ -241,6 +241,25 @@ def create_course_session(request):
         form = CourseSessionForm(request.POST)
         form1 = CheckInstructorAvailability(request.POST or None)
         if form.is_valid():
+            course_level = form.cleaned_data["course_level"]
+            session = form.cleaned_data["session"]
+            start_datetime = form.cleaned_data["start_datetime"]
+            end_datetime = form.cleaned_data["end_datetime"]
+            course_name = form.cleaned_data["course"].title
+            course_level_name=course_level.name
+            class_room = ClassRoom(
+                room_name= course_name+"_"+course_level_name
+            )
+            class_room.save()
+
+            course_session = CourseSession(
+                course_level=course_level,
+                session=session,
+                start_datetime=start_datetime,
+                end_datetime=end_datetime)
+            course_session.save()
+            return redirect("/")
+
             form.save()  # You might want to customize this based on your logic
             return redirect('/')
         print(form1.data)

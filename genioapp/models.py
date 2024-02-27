@@ -13,10 +13,10 @@ class Category(models.Model):
         return self.name
 
 class ClassRoom(models.Model):
-    name = models.CharField(max_length=200)
-    uid = models.CharField(max_length=1000)
-    room_name = models.CharField(max_length=200)
-    insession = models.BooleanField(default=True)
+    name = models.CharField(max_length=200, default='user')
+    uid = models.CharField(max_length=1000, default='0')
+    room_name = models.CharField(max_length=200, default='classroom')
+    insession = models.BooleanField(default=False)
     def __str__(self):
         return self.name
 
@@ -123,7 +123,7 @@ class CourseSession(models.Model):
         (3, 'Session 3'),
         (4, 'Session 4'),
     ]
-
+    class_room = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, null=True)
     session = models.IntegerField(choices=YOUR_CHOICES)
     start_datetime = models.CharField(max_length=50, blank=True)#models.DateTimeField(default = timezone.now)
     end_datetime = models.CharField(max_length=50, blank=True)#models.DateTimeField(default = timezone.now)
