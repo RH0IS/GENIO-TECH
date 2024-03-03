@@ -1,0 +1,5 @@
+pip
+pillow
+Django
+agora_token_builder
+psycopg2
