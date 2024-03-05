@@ -840,7 +840,7 @@
   text-align: center;
 }
 .topic-header {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   color: #aa082a;
   font-family: "Inter-Bold", sans-serif;
   font-weight: 700;
@@ -850,7 +850,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 6rem;
 }
 
 .icon {
@@ -1049,9 +1049,14 @@
 }
 
 .row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: auto; 
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-bottom: auto;
+    width: 100%;
+    margin: 2rem 6rem;
+    gap: 10rem;
+    justify-content: center;
 }
 
 .power-header {
@@ -1067,11 +1072,12 @@
   flex-direction: row;
   justify-content: center; 
   gap: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 8rem;
 }
 
 .power-icon {
   height: auto;
+    width: fit-content;
 }
 
 .power-icon-image {

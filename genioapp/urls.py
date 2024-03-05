@@ -7,7 +7,7 @@ app_name = "genioapp"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("123/", views.index, name="index"),
+    # path("123/", views.index, name="index"),
     path("about/", views.about, name="about"),
     path("courses/", views.courses, name="courses"),
     path("category/<int:category_no>/", views.course_by_id, name="category_detail"),
