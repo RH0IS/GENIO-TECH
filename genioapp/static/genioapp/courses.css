@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+/*====Header section======*/
 .section-header {
   height: 90vh;
   color: white;
@@ -137,3 +138,37 @@
   width: 100%;
   margin-top: -1rem;
 }
+/*================================*/
+
+/*====Course catalogue section======*/
+.heading-secondary{
+  color: #AA082A;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.filters-container{
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.btn-text{
+  color: #88061b;
+  text-decoration: underline;
+  margin-top: 1.5rem;
+}
+
+.btn-primary--link{
+  width: fit-content;
+  padding: .5rem 2rem;
+  color: #88061b;
+  border: 1px solid #88061b;
+  background-color: transparent;
+  border-radius: 2rem;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
