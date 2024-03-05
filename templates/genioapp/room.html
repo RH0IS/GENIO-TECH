@@ -1,0 +1,43 @@
+{% extends 'genioapp/vapp_base.html' %}
+{% load static %}
+{% block content %}
+<body xmlns="http://www.w3.org/1999/html">
+    <main>
+        <section id="room-name-wrapper">
+            <p>Room Name: <span id="room-name"></span></p>
+        </section>
+
+        <div  class="screen-container" id="screen-container">
+
+        </div>
+        <section id="video-streams">
+
+
+        </section>
+
+
+        <section id="controls-wrapper">
+            <div class="icon-wrapper">
+                <img class="control-icon" id="mic-btn" src="{% static 'genioapp/images_vapp/microphone.svg' %}" />
+            </div>
+    
+            <div class="icon-wrapper">
+                <img class="control-icon" id="camera-btn" src="{% static 'genioapp/images_vapp/video.svg' %}" />
+            </div>
+    
+            <div class="icon-wrapper">
+                <img class="control-icon" id="leave-btn" src="{% static 'genioapp/images_vapp/leave.svg' %}" />
+            </div>
+            <div class ="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" class="control-icon" id="screen-btn"><path d="M0 1v17h24v-17h-24zm22 15h-20v-13h20v13zm-6.599 4l2.599 3h-12l2.599-3h6.802z"/></svg>
+            </div>
+        </section>
+    </main>
+</body>
+
+
+
+<script type = 'text/javascript' src="{% static 'genioapp/js/agora-sdk.js' %}" ></script>
+<script type="text/javascript" src="{% static 'genioapp/js/room.js' %}" ></script>
+{% endblock content %}
+

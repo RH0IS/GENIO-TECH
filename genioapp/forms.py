@@ -2,9 +2,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Student, IntructorAvailability, CourseLevels, Course, CourseSession, InstructorProfile
+from .models import Student, IntructorAvailability, CourseLevels, Course, CourseSession, InstructorProfile, ClassRoom
 
-from genioapp.models import Course, CourseLevels
+
 
 class LoginForm(AuthenticationForm):
     class Meta:
@@ -23,34 +23,43 @@ class CourseLevelForm(forms.ModelForm):
 
 class InstructorSignUpForm(UserCreationForm):
     #username = forms.CharField(max_length=100)
-    first_name = forms.CharField(required=True)
-    last_name = forms.CharField(required=True)
-    email = forms.EmailField(required=True)
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    email = forms.EmailField()
     bio = forms.CharField()
-    language = forms.CharField(required=True)
-    image = forms.ImageField()
+    language = forms.CharField()
     
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'bio', 'language','image','password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'email', 'bio', 'language','password1', 'password2']
         
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = '__all__'
 
+class ClassRoomForm(forms.ModelForm):
+    class Meta:
+        model = ClassRoom
+        fields = '__all__'
 
-class StudentForm(forms.ModelForm):
+
+class StudentForm(UserCreationForm):
     GENDER_CHOICES = [
         ('M', 'Male'),
         ('F', 'Female'),
         ('O', 'Other'),
     ]
+    name = forms.CharField()
+    email = forms.EmailField()
+    age = forms.IntegerField()
+    phone = forms.CharField()
+    country = forms.CharField()
 
     gender = forms.ChoiceField(choices=GENDER_CHOICES, widget=forms.Select(attrs={'class': 'form-input'}))
     class Meta:
-        model = Student
-        fields = ['name', 'email', 'age', 'gender', 'phone', 'country']
+        model = User
+        fields = ['username','password1', 'password2', 'name', 'age', 'email', 'phone','gender', 'country']
 
 
 
@@ -109,7 +118,7 @@ class CheckInstructorAvailability(forms.ModelForm):
     instructor = forms.ModelChoiceField(queryset=InstructorProfile.objects.all(), required=True, label='Instructor')
     class Meta:
         model = InstructorProfile
-        fields = ['instructor']
+        fields = ['id','first_name', 'last_name']
 
     def __init__(self, *args, **kwargs):
         super(CheckInstructorAvailability, self).__init__(*args, **kwargs)

@@ -1,0 +1,35 @@
+<!-- about.html -->
+{% extends 'genioapp/base0.html' %}
+{% block content %}
+<body>
+        <ul>
+            {% for room in rooms %}
+              <li id="room-{{ room.id }}">{{ room.room_name }} <br> 
+                  from {{ room.start_datetime }} to {{ room.end_datetime }}<br> 
+              <button name ="join" id="join" onclick="handleJoin({{ room.id }})">join</button></li>
+            {% endfor %}
+          </ul>
+
+    </body>
+
+    <script>
+
+    let handleJoin = async (id) => {
+        sessionStorage.setItem('room-id', id)
+        console.log(id)
+        let response = await fetch(`/get_token/${id}`)
+        let data = await response.json()
+
+        let UID = data.uid
+        let token = data.token
+
+        sessionStorage.setItem('UID', UID)
+        sessionStorage.setItem('token', token)
+        sessionStorage.setItem('room', data.room_name)
+        sessionStorage.setItem('name', data.user_name)
+
+        window.open('/room/', '_self')
+    }
+
+</script>
+{% endblock %}
