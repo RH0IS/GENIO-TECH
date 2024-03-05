@@ -94,77 +94,8 @@ def about(request):
     return render(request, "genioapp/about.html")
 
 
-def course_detail(request, course_id):
-    course = get_object_or_404(Course, id=course_id)
-    course_levels = CourseLevels.objects.filter(course=course)
-    instructor = course.instructor
-    instructor_profile = InstructorProfile.objects.get(id=instructor.id)
-
-    if request.method == 'POST':
-        form = GetSessionForm(course_id, request.POST)
-        print('Entering form validation')
-        if form.is_valid():
-            print('Validated form')
-            course_level = form.cleaned_data.get('course_level')
-            student = StudentProfile.objects.get(user=request.user)
-            course_sessions = CourseSession.objects.filter(course_level=course_level)
-            age_range = course.age_range
-            level_str = re.search(r'\d+', course_level.name)
-            if is_age_appropriate(student.age, age_range):
-                if level_str:
-                    level = int(level_str.group())
-                    level = level - 1
-                    if level != 0:
-                        prev_level = f"L{level}"
-
-                        # student = StudentProfile.objects.get(user=request.user)
-                        prev_level_order = StudentOrder.objects.filter(student=student,
-                                                                       course_level__name=prev_level).first()
-
-                        if prev_level_order and prev_level_order.completion_status == 'Completed':
-                            print(f"Student can enroll in {course_level}")
-                        else:
-                            # Send a message that the student needs to complete the previous level
-                            message = f"You need to complete {prev_level} before enrolling in {course_level}"
-                            print(message)
-                            course_sessions = CourseSession.objects.filter(course_level=course_level)
-                            return render(request, "genioapp/course_detail.html", {
-                                "course": course,
-                                "instructor_profile": instructor_profile,
-                                "course_levels": course_levels,
-                                "course_sessions": course_sessions,
-                                "form": form,
-                                "message": message
-                            })
-            else:
-                # Send a message that the student's age is not appropriate for the course
-                message = f"Sorry, this course is not suitable for your age."
-                return render(request, "genioapp/course_detail.html", {
-                    "course": course,
-                    "instructor_profile": instructor_profile,
-                    "course_levels": course_levels,
-                    "course_sessions": course_sessions,
-                    "form": form,
-                    "message": message
-                })
-            print(course_level)
-
-            return render(request, "genioapp/course_detail.html", {
-                "course": course,
-                "instructor_profile": instructor_profile,
-                "course_levels": course_levels,
-                "course_sessions": course_sessions,
-                "form": form,
-            })
-    else:
-        form = GetSessionForm(course_id)
-
-    return render(request, "genioapp/course_detail.html", {
-        "course": course,
-        "instructor_profile": instructor_profile,
-        "course_levels": course_levels,
-        "form": form,
-    })
+def course_detail(request):
+    return render(request, "genioapp/course_detail.html")
 
 
 def is_age_appropriate(student_age, age_range):

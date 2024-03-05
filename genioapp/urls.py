@@ -19,7 +19,7 @@ urlpatterns = [
     path("login/redirect/", views.instructorsignup, name="login/redirect/"),
     path("logout/", views.custom_logout, name="logout"),
     path("user_profile/", views.user_profile, name="user_profile"),
-    path("course/<int:course_id>/", views.course_detail, name="course_detail"),
+    path("course/", views.course_detail, name="course_detail"),
     path("student_form/", views.student_form, name="student_form"),
     path("admin_students_list/", views.admin_students_list, name="admin_students_list"),
     path(
