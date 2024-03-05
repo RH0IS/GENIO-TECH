@@ -1,5 +1,105 @@
 {% extends 'genioapp/base0.html' %} {% block content %} {% load static %}
-  <h1>All Courses</h1>
+
+<section class="section-hero">
+  <div class="hero-img-container">
+      <img src="{% static 'genioapp/img/courses-banner-1.png' %}" alt="hero" />
+      <img src="{% static 'genioapp/img/courses-banner-2.png' %}" alt="hero" />
+
+  </div>
+</section>
+
+
+
+
+
+
+
+     <section class="section--course-catalogue">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+            {% for item in courses_with_levels %}
+
+                <li class="nav-item" role="presentation">
+                    <button
+{#                            {% if cryptocurrency.volume_24h < 0 %}text-danger{% else %}text-success{% endif %}#}
+
+                        class="nav-link {% if forloop.first %}active{% endif %}"
+                        id="{{ item.course.title }}-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#{{ item.course.title }}"
+                        type="button"
+                        role="tab"
+                        aria-controls="{{ item.course.title }}"
+                        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                    >
+                        {{ item.course.title}}
+                    </button>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            {% for item in courses_with_levels %}
+                <div
+                    class="tab-pane fade show {% if forloop.first %}active{% endif %}"
+                    id="{{ item.course.title }}"
+                    role="tabpanel"
+                    aria-labelledby="{{ item.course.title }}-tab"
+                >
+                    <div  class="card-container">
+                        {% for level in item.levels %}
+                            <div class="card">
+                                <div class="card__side card__side--front">
+                                    <div class="card__picture card__picture--1">
+{#                                        <img src="{% static 'genioapp/img/video-games_jr_l1.png' %}" />#}
+                                        <img src="{{ item.course.image.url }}" alt="{{ item.course.title }}"/>
+                                        <video src="{{ item.course.video  }} "
+                                                type="video/mp4" muted class="vid {{ level.id }}-vid" id="course-vid"
+                                                loop style="width: 100%;">
+                                        </video>
+
+                                    </div>
+                                    <div class="card__details">
+                                        <span class="instructor">{{ item.course.instructor.name }}</span>
+                                        <h4 class="card__heading">
+                                            <span class="card__heading-span card__heading-span--1">
+                                                {{ level.name }}
+                                            </span>
+                                        </h4>
+                                        <p>
+                                            {{ level.description }}
+                                        </p>
+
+                                        <p>Jr &bull; L1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                <a href="{% url 'genioapp:course_detail' item.course.id %}" class="btn-primary btn-primary-small">Register Now!</a>
+
+                </div>
+            {% endfor %}
+        </div>
+
+
+    </ul>
+    </section> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <h1>All Courses</h1>
   <section class="section--course-catalogue">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
 
@@ -146,6 +246,6 @@
       </div>
 
     {% endfor %}
-  </nav>
+  </nav> -->
 
 {% endblock %}

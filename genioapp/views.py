@@ -429,6 +429,7 @@ def course_by_id(request, course_id):
 
 
 def courses(request):
+    
     courlist = Course.objects.all().order_by("id")
     return render(request, "genioapp/courses.html", {"courlist": courlist})
 
