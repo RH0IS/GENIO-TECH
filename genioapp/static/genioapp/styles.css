@@ -998,6 +998,45 @@
   font-weight: 900;
 }
 
+/*====== SECTION: AGEGROUP ======*/
+.section-age-groups {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 2rem;
+  height: auto;
+  text-align: center;
+}
+.age-groups-header {
+  margin-bottom: 2rem;
+  color: #aa082a;
+  font-family: "Inter-Bold", sans-serif;
+  font-weight: 700;
+}
+
+.age-groups-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.btn-CTA {
+  background-color: #aa082a;
+  border: none;
+  color: white;
+  padding: 1rem 2rem; 
+  border-radius: 100px; 
+  font-weight: 700;
+  text-decoration: none; 
+}
+
+.btn-CTA:hover {
+  background-color: #88061b; 
+}
+
+
+
+
 /*====== SECTION: POWER ======*/
 .section-power {
   display: flex;
