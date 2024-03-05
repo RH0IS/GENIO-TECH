@@ -26,7 +26,7 @@
                 <img
                   class="tag-icon tag-icon--video"
                   alt="flat orange video camera icon"
-                  src={% static 'genioapp/img/mdi_video.png' %}
+                  src={% static 'genioapp/img/mdi_video.svg' %}
                 />
                 <p class="tag-text">Live video chat sessions</p>
               </div>
@@ -92,6 +92,10 @@
         </div>
       </section>
       <img class="img-wave" src={% static 'genioapp/img/wave.png' %} />
+
+    <section class="course-catalogue">
+        <a class="btn-primary" href="{% url 'genioapp:course_detail' %}">Game Design</a>
+    </section>
     </main>
 
 {% endblock %}
