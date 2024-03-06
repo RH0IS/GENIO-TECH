@@ -176,3 +176,53 @@
   text-decoration: none;
   color: #88061b;
 }
+/*================================*/
+
+/*====CTA section======*/
+.section--cta{
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta--container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: auto;
+  padding: 4rem 5rem;
+  background-color: rgba(228, 225, 221, .5);
+  color: #AA082A;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.cta--heading{
+  font-size: 2.5rem;
+  width: 100%;
+}
+
+.cta-corner--top-left{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.cta-corner--bottom-right{
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.cta--list{
+  text-align: left;
+}
+
+.cta--list-item{
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
