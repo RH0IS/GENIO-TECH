@@ -172,3 +172,7 @@
 }
 
 
+.card__heading--link{
+  text-decoration: none;
+  color: #88061b;
+}
