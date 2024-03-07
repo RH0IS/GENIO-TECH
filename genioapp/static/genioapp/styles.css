@@ -11,6 +11,11 @@
   color: white;
 }
 
+.u-text-heading{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
 .u-mb-2 {
   margin-bottom: 2rem;
 }

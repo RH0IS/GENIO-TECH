@@ -95,12 +95,12 @@
 
 
     <section class="section--course-catalogue">
-        <div class="filters-container">
-            <button class="btn-primary btn-primary--link">Date <img  src="{% static 'genioapp/img/dropdown-arrow.svg' %}" /></button>
-            <button class="btn-primary btn-primary--link">Any Age <img  src="{% static 'genioapp/img/dropdown-arrow.svg' %}" /></button>
-            <button class="btn-primary btn-primary--link">Any Price <img  src="{% static 'genioapp/img/dropdown-arrow.svg' %}" /></button>
-            <a href="#" class="btn-text">Clear filters</a>
-        </div>
+      <div class="filters-container">
+        <button class="btn-primary btn-primary--link">Date <img  src="{% static 'genioapp/img/dropdown-arrow.svg' %}" /></button>
+        <button class="btn-primary btn-primary--link">Any Age <img  src="{% static 'genioapp/img/dropdown-arrow.svg' %}" /></button>
+        <button class="btn-primary btn-primary--link">Any Price <img  src="{% static 'genioapp/img/dropdown-arrow.svg' %}" /></button>
+        <a href="#" class="btn-text">Clear filters</a>
+      </div>
 
       <h2 class="heading-secondary">Popular Coding Courses</h2>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -238,7 +238,7 @@
                   <span class="instructor">Ryley Geir Daelman</span>
                   <h4 class="card__heading">
                     <span class="card__heading-span card__heading-span--1">
-                        <a class="card__heading--link" href="#">Video games</a>
+                      <a class="card__heading--link" href="#">Video games</a>
                     </span>
                   </h4>
                   <p>
@@ -292,17 +292,52 @@
     </section>
 
     <section class="section--cta">
-        <div class="cta--container">
-            <img class="cta-corner--top-left" src="{% static 'genioapp/img/Polygon 1.png' %}">
-            <h2 class="cta--heading heading-secondary">Follow along with a robot of your own!</h2>
-            <ul class="cta--list">
-                <li class="cta--list-item"><img alt="checked" class="cta--list-bullet" src="{% static 'genioapp/img/ph_check-fill.png' %}" /> Supports graphical programming and Python</li>
-                <li class="cta--list-item"><img alt="checked" class="cta--list-bullet" src="{% static 'genioapp/img/ph_check-fill.png' %}" /> More reliable and durable, more precise movement and higher sensor accuracy</li>
-                <li class="cta--list-item"><img alt="checked" class="cta--list-bullet" src="{% static 'genioapp/img/ph_check-fill.png' %}" /> Develops computational Thinking</li>
-            </ul>
-            <img class="cta-corner--bottom-right" src="{% static 'genioapp/img/Polygon 2.png' %}">
-            <button class="btn-CTA">Buy Now</button>
+      <div class="cta--container">
+        <img class="cta-corner--top-left" src="{% static 'genioapp/img/Polygon 1.png' %}">
+        <h2 class="cta--heading heading-secondary">Follow along with a robot of your own!</h2>
+        <ul class="cta--list">
+          <li class="cta--list-item"><img alt="checked" class="cta--list-bullet" src="{% static 'genioapp/img/ph_check-fill.png' %}" /> Supports graphical programming and Python</li>
+          <li class="cta--list-item"><img alt="checked" class="cta--list-bullet" src="{% static 'genioapp/img/ph_check-fill.png' %}" /> More reliable and durable, more precise movement and higher sensor accuracy</li>
+          <li class="cta--list-item"><img alt="checked" class="cta--list-bullet" src="{% static 'genioapp/img/ph_check-fill.png' %}" /> Develops computational Thinking</li>
+        </ul>
+        <img class="cta-corner--bottom-right" src="{% static 'genioapp/img/Polygon 2.png' %}">
+        <button class="btn-CTA">Buy Now</button>
+      </div>
+    </section>
+
+    <section class="section-contact">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2952.21045650713!2d-83.00066038836054!3d42.27403067108085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2c0bfb986e0b%3A0xea00596b212455b1!2s3201%20Marentette%20Ave%2C%20Windsor%2C%20ON%20N8X%204G3!5e0!3m2!1sen!2sca!4v1709843377528!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="contact-details-container">
+        <div class="contact-details-row">
+          <p class="u-text-heading">
+            Address
+          </p>
+          <p class="u-text-color-grey">
+            3201 Marentette Ave Unit 1, Windsor, ON N8X 4G1
+          </p>
         </div>
+
+        <div class="contact-details-row">
+          <p class="u-text-heading">
+            Phone
+          </p>
+          <p class="u-text-color-grey">
+            +1 (226) 260-3885
+          </p>
+        </div>
+        <div class="contact-details-row">
+          <p class="u-text-heading">
+            Email
+          </p>
+          <p class="u-text-color-grey">
+            info@geniotech.org
+          </p>
+        </div>
+
+
+      </div>
     </section>
   </main>
 

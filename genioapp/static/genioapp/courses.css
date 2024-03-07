@@ -226,3 +226,18 @@
   margin-bottom: 1rem;
   font-weight: bold;
 }
+
+/*===========================*/
+
+/*==========Section Contact===========*/
+.section-contact{
+  display: flex;
+  gap: 2rem;
+}
+
+.contact-details-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
