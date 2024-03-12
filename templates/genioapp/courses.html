@@ -252,7 +252,21 @@
                   </p>
               <!-- <span class="rating">4.5 stars &#9733;</span>
                   <span class="reviews">(2.5k reviews)</span> -->
-                  <p>Jr &bull; L3</p>
+{#                  <p>Jr &bull; L3</p>#}
+                    <div class="info-container">
+                        <div class="info-block">
+                            <span class="value">6-10</span>
+                            <span class="info">Age Group</span>
+                        </div>
+                        <div class="info-block">
+                            <span class="value">60 mins</span>
+                            <span class="info">Duration</span>
+                        </div>
+                        <div class="info-block">
+                            <span class="value">$25</span>
+                            <span class="info">Per Class</span>
+                        </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -341,6 +355,27 @@
 
       </div>
     </section>
+  <script>
+      function swapImg(){
+
+          el = document.getElementById("heart")
+          console.log(el.src)
+          {#const div1 = document.getElementById("div1");#}
+          const img = el.getAttribute("src");
+
+          console.log(img)
+          if (img == "{% static 'genioapp/img/heart_filled_false.png' %}") {
+
+            el.src = "{% static 'genioapp/img/heart_filled_true.png' %}";
+            console.log(el.src)
+          } else {
+            el.src = "{% static 'genioapp/img/heart_filled_false.png' %}";
+            console.log(el.src)
+
+
+          }
+    }
+  </script>
   </main>
 
 {% endblock %}
