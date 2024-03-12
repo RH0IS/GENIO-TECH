@@ -46,6 +46,9 @@ urlpatterns = [
     path("createClassRoom/", views.joinClassRoom, name="createClassRoom"),
     path('get_member/', views.getRoomMember),
     path('delete_member/', views.deleteRoomMember),
+    path('make_payment/', views.make_payment, name='make_payment'),
+    path('process-payment/', views.process_payment, name='process_payment'),
+    
     
 ]
 
