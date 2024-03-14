@@ -8,6 +8,7 @@ from .models import ClassRoom, Course, Student, InstructorProfile, StudentProfil
 from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
+import uuid
 import re
 import random
 import time
@@ -18,12 +19,47 @@ from .forms import InstructorSignUpForm, CourseForm, LoginForm, StudentForm, Stu
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
+from square.client import Client
+from pydantic import BaseModel
+#Adding Payment Structure
+CONFIG_TYPE = "SANDBOX"
+client = Client(
+    access_token='EAAAl1VNkfSytTIGt_pKmpV0v-1R4n9-cEDDqlfIRDdb9HhE1Q8QPoZjHaG-N9EF',
+    environment='sandbox')
+result = client.locations.list_locations()
+#print(result)
 
 
+APPLICATION_ID = 'sandbox-sq0idb-G7MnG3Syh1fvh5ltS8mLjw'
+ACCESS_TOKEN = 'EAAAl1VNkfSytTIGt_pKmpV0v-1R4n9-cEDDqlfIRDdb9HhE1Q8QPoZjHaG-N9EF'
+LOCATION_ID = 'L9CS1EC8GK5VG'
+PAYMENT_FORM_URL = (
+    "https://web.squarecdn.com/v1/square.js"
+    if CONFIG_TYPE == "PRODUCTION"
+    else "https://sandbox.web.squarecdn.com/v1/square.js"
+)
+location = client.locations.retrieve_location(location_id=LOCATION_ID).body["location"]
+ACCOUNT_CURRENCY = location["currency"]
+ACCOUNT_COUNTRY = location["country"]
+
+
+@csrf_exempt
+def make_payment(request):
+    idempotency_key=str(uuid.uuid4())
+    return render(request, "genioapp/card_payment.html", {
+        "PAYMENT_FORM_URL":PAYMENT_FORM_URL,
+        "APPLICATION_ID": APPLICATION_ID,
+        "LOCATION_ID": LOCATION_ID,
+        "ACCOUNT_CURRENCY": ACCOUNT_CURRENCY,
+        "ACCOUNT_COUNTRY": ACCOUNT_COUNTRY,
+        "idempotency_key":idempotency_key
+    })
+#Function to display classrooms
 @csrf_exempt
 def joinClassRoom(request):
     rooms=ClassRoom.objects.all()
     return render(request, "genioapp/join_classroom.html", {"rooms": rooms})
+
 
 @csrf_exempt
 def enterClassRoom(request):
@@ -40,6 +76,31 @@ def createRoomMember(request):
 
     return JsonResponse({'name': data['name']}, safe=False)
 
+class Payment(BaseModel):
+    token: str
+    idempotencyKey: str
+
+@csrf_exempt
+def process_payment(request):
+    data = json.loads(request.body)
+    # Charge the customer's card
+    create_payment_response = client.payments.create_payment(
+        body={
+            "source_id": data['token'],
+            "idempotency_key": data['idempotencyKey'],
+            "amount_money": {
+                "amount": 100,  # $1.00 charge
+                "currency": ACCOUNT_CURRENCY,
+            },
+        }
+    )
+    data=create_payment_response.body
+    #print(create_payment_response)
+    if create_payment_response.is_success():
+        print(data)
+        return JsonResponse(data)
+    elif create_payment_response.is_error():
+        return create_payment_response
 
 def getRoomMember(request):
     uid = request.GET.get('UID')
