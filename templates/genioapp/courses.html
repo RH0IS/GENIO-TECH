@@ -198,14 +198,30 @@
                       <a class="card__heading--link" href="#">Game Design</a>
                     </span>
                   </h4>
-                  <p>
-                    In this course kids will learn the concepts of game design, they
-                    will build their 3D world, create the characters and program
-                    them to follow their rules
-                  </p>
+                  <div class="course-description">
+                    <p >
+                      In this course kids will learn the concepts of game design, they
+                      will build their 3D world, create the characters and program
+                      them to follow their rules
+                    </p>
+                  </div>
+
               <!-- <span class="rating">4.5 stars &#9733;</span>
                   <span class="reviews">(2.5k reviews)</span> -->
-                  <p>Jr &bull; L1</p>
+                  <div class="info-container">
+                    <div class="info-block">
+                      <span class="value">6-10</span>
+                      <span class="info">Ages</span>
+                    </div>
+                    <div class="info-block">
+                      <span class="value">60</span>
+                      <span class="info">Mins</span>
+                    </div>
+                    <div class="info-block">
+                      <span class="value">$25</span>
+                      <span class="info">Per Class</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -222,14 +238,30 @@
                       <a class="card__heading--link" href="#">Robotic simulation</a>
                     </span>
                   </h4>
-                  <p>
-                    The imagination and creativity in this course has no limits. Your child will learn how to code robots  and apply their coding in a real robotic simulation. The first track kids will be using blocks programming.
-                    The second track they will be introduced to the world of Java programming.
-                    (Duration of the course 6 months, each track is 3 months)
-                  </p>
+                  <div class="course-description">
+                    <p >
+                      The imagination and creativity in this course has no limits. Your child will learn how to code robots  and apply their coding in a real robotic simulation. The first track kids will be using blocks programming.
+                      The second track they will be introduced to the world of Java programming.
+                      (Duration of the course 6 months, each track is 3 months)
+                    </p>
+                  </div>
+
               <!-- <span class="rating">4.5 stars &#9733;</span>
                   <span class="reviews">(2.5k reviews)</span> -->
-                  <p>Jr &bull; L2</p>
+                  <div class="info-container">
+                    <div class="info-block">
+                      <span class="value">6-10</span>
+                      <span class="info">Ages</span>
+                    </div>
+                    <div class="info-block">
+                      <span class="value">60</span>
+                      <span class="info">Mins</span>
+                    </div>
+                    <div class="info-block">
+                      <span class="value">$25</span>
+                      <span class="info">Per Class</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -247,26 +279,29 @@
                       <a class="card__heading--link" href="#">Python</a>
                     </span>
                   </h4>
-                  <p>
-                    Introduce your child to the world of artificial intelligence. With this course students will be learning this advanced programming language and the end of the course they will create a project using face detection and artificial intelligence.
-                  </p>
+                  <div class="course-description">
+                    <p>
+                      Introduce your child to the world of artificial intelligence. With this course students will be learning this advanced programming language and the end of the course they will create a project using face detection and artificial intelligence.
+                    </p>
+                  </div>
+
               <!-- <span class="rating">4.5 stars &#9733;</span>
                   <span class="reviews">(2.5k reviews)</span> -->
 {#                  <p>Jr &bull; L3</p>#}
-                    <div class="info-container">
-                        <div class="info-block">
-                            <span class="value">6-10</span>
-                            <span class="info">Age Group</span>
-                        </div>
-                        <div class="info-block">
-                            <span class="value">60 mins</span>
-                            <span class="info">Duration</span>
-                        </div>
-                        <div class="info-block">
-                            <span class="value">$25</span>
-                            <span class="info">Per Class</span>
-                        </div>
+                  <div class="info-container">
+                    <div class="info-block">
+                      <span class="value">6-10</span>
+                      <span class="info">Ages</span>
                     </div>
+                    <div class="info-block">
+                      <span class="value">60</span>
+                      <span class="info">Mins</span>
+                    </div>
+                    <div class="info-block">
+                      <span class="value">$25</span>
+                      <span class="info">Per Class</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -355,27 +390,27 @@
 
       </div>
     </section>
-  <script>
+    <script>
       function swapImg(){
 
-          el = document.getElementById("heart")
-          console.log(el.src)
+        el = document.getElementById("heart")
+        console.log(el.src)
           {#const div1 = document.getElementById("div1");#}
-          const img = el.getAttribute("src");
+        const img = el.getAttribute("src");
 
-          console.log(img)
-          if (img == "{% static 'genioapp/img/heart_filled_false.png' %}") {
+        console.log(img)
+        if (img == "{% static 'genioapp/img/heart_filled_false.png' %}") {
 
-            el.src = "{% static 'genioapp/img/heart_filled_true.png' %}";
-            console.log(el.src)
-          } else {
-            el.src = "{% static 'genioapp/img/heart_filled_false.png' %}";
-            console.log(el.src)
+          el.src = "{% static 'genioapp/img/heart_filled_true.png' %}";
+          console.log(el.src)
+        } else {
+          el.src = "{% static 'genioapp/img/heart_filled_false.png' %}";
+          console.log(el.src)
 
 
-          }
-    }
-  </script>
+        }
+      }
+    </script>
   </main>
 
 {% endblock %}

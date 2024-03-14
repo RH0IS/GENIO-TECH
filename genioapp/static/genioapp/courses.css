@@ -225,7 +225,7 @@
 /* =======course card======== */
 .card {
   width: 20rem;
-  height: fit-content;
+  height: 40rem;
   color: #aa082a;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -259,8 +259,9 @@
 }
 
 .card__details {
-  padding: 0.6rem 2rem;
+  padding: 0.6rem 1rem;
   position: relative;
+
 }
 
 .card__heading-span {
@@ -277,14 +278,22 @@
   border-radius: 10px 10px 0px 0px;
 }
 
+.course-description{
+  height: 9rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  /*text-overflow: ellipsis;*/
+
+}
+
 .info-container{
   display: flex;
   gap: 1rem;
 }
 
 .info-block{
-  width: fit-content;
-  height: fit-content;
+  width: 6rem;
+  height: 4rem;
   background-color: #E4E1DD;
   border-radius: 10px;
 
@@ -295,19 +304,22 @@
 
   text-align: center;
 
-  padding: 1rem;
+
+  padding: 1.5rem 1rem;
 }
 
 .value{
   font-weight: bold;
   font-size: 1.2rem;
+  font-family: "Inter-Bold", sans-serif;
   margin-bottom: 5px;
   width: 100%;
 }
 
 .info{
-  font-weight: lighter;
+  /*font-weight: lighter;*/
   font-size: .7rem;
+  font-family: "Inter", Helvetica, serif;
 }
 
 .rating {
