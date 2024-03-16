@@ -191,7 +191,7 @@
                 </div>
                 <div class="card__details">
                   <span class="instructor">Claudia Watts</span>
-                  <button class="btn-fav" id="btn-fav" ><img class="heart" id="heart" onclick="swapImg()" src="{% static 'genioapp/img/heart_filled=false.png' %}" /> </button>
+                  <button class="btn-fav" id="btn-fav" ><img class="heart" id="heart" onclick="swapImg()" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
 
                   <h4 class="card__heading">
                     <span class="card__heading-span card__heading-span--1">
@@ -222,11 +222,12 @@
                       <span class="info">Per Class</span>
                     </div>
                   </div>
+                  <form method="post" action="{% url 'genioapp:make_payment' %}">
+                    <button class='btn-CTA' type="submit">Check Available Times</button>
+                  </form>
                 </div>
-                
-                <form method="post" action="{% url 'genioapp:make_payment' %}">
-                  <button class='btn-CTA' type="submit">Buy Now</button>
-              </form>
+
+
               </div>
             </div>
             <div class="card">
@@ -236,7 +237,7 @@
                 </div>
                 <div class="card__details">
                   <span class="instructor">Victoria Irons</span>
-                  <button class="btn-fav" id="btn-fav" onclick="swapImg()"><img class="heart" src="{% static 'genioapp/img/heart_filled=false.png' %}" /> </button>
+                  <button class="btn-fav" id="btn-fav" onclick="swapImg()"><img class="heart" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
                   <h4 class="card__heading">
                     <span class="card__heading-span card__heading-span--1">
                       <a class="card__heading--link" href="#">Robotic simulation</a>
@@ -266,7 +267,10 @@
                       <span class="info">Per Class</span>
                     </div>
                   </div>
+                  <button class="btn-CTA">Check Available Times</button>
+
                 </div>
+
               </div>
             </div>
             <div class="card">
@@ -276,7 +280,7 @@
                 </div>
                 <div class="card__details">
                   <span class="instructor">Ryley Geir Daelman</span>
-                  <button class="btn-fav" id="btn-fav" onclick="swapImg()"><img class="heart" src="{% static 'genioapp/img/heart_filled=false.png' %}" /> </button>
+                  <button class="btn-fav" id="btn-fav" onclick="swapImg()"><img class="heart" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
 
                   <h4 class="card__heading">
                     <span class="card__heading-span card__heading-span--1">
@@ -304,6 +308,78 @@
                     <div class="info-block">
                       <span class="value">$25</span>
                       <span class="info">Per Class</span>
+                    </div>
+                  </div>
+{#                  <button class="btn-CTA">Check Available Times</button>#}
+                    <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-CTA" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Check Available Times
+                  </button>
+
+<!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3 class="modal-title" id="exampleModalLabel">Available Times</h3>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+
+
+                            <div class="col">
+                              <h5>Tuesday</h5><p>9:00am-11:00am</p>
+
+                            </div>
+                            <div class="col">
+                              <p>Taught by: </p>
+                              <p>Atishay Khanna</p>
+                            </div>
+                            <div class="col">
+                              <p>Seats remaining: 2</p>
+
+                            </div>
+                            <div class="col">
+                              <form method="post" action="{% url 'genioapp:make_payment' %}">
+                                <button class='btn-primary' type="submit">Subscribe</button>
+                              </form>
+                            </div>
+
+
+                          </div>
+                          <hr/>
+                            <div class="row">
+
+
+                            <div class="col">
+                              <h5>Thursday</h5><p>1:00pm-3:00pm</p>
+
+                            </div>
+                            <div class="col">
+                              <p>Taught by: </p>
+                              <p>Zayed Ullah</p>
+                            </div>
+                            <div class="col">
+                              <p>Seats remaining: 1</p>
+
+                            </div>
+                            <div class="col">
+                              <form method="post" action="{% url 'genioapp:make_payment' %}">
+                                <button class='btn-primary' type="submit">Subscribe</button>
+                              </form>
+                            </div>
+
+
+                          </div>
+                          <hr/>
+
+                        </div>
+{#                        <div class="modal-footer">#}
+{#                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
+{#                          <button type="button" class="btn btn-primary">Save changes</button>#}
+{#                        </div>#}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -356,7 +432,6 @@
           <li class="cta--list-item"><img alt="checked" class="cta--list-bullet" src="{% static 'genioapp/img/ph_check-fill.png' %}" /> Develops computational Thinking</li>
         </ul>
         <img class="cta-corner--bottom-right" src="{% static 'genioapp/img/Polygon 2.png' %}">
-        <button class="btn-CTA">Buy Now</button>
       </div>
     </section>
 

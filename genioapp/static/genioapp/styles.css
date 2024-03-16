@@ -935,14 +935,16 @@
   background-color: #aa082a;
   border: none;
   color: white;
-  padding: 1rem 2rem; 
-  border-radius: 100px; 
+  padding: 1rem 2rem;
+  border-radius: 10px;
   font-weight: 700;
-  text-decoration: none; 
+  text-decoration: none;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .btn-CTA:hover {
-  background-color: #88061b; 
+  background-color: #88061b;
 }
 
 
@@ -959,16 +961,16 @@
   text-align: center;
 }
 
-.row {
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    margin-bottom: auto;
-    width: 100%;
-    margin: 2rem 6rem;
-    gap: 10rem;
-    justify-content: center;
-}
+/*.row {*/
+/*    display: flex;*/
+/*    !* justify-content: space-between; *!*/
+/*    align-items: center;*/
+/*    margin-bottom: auto;*/
+/*    width: 100%;*/
+/*    margin: 2rem 6rem;*/
+/*    gap: 10rem;*/
+/*    justify-content: center;*/
+/*}*/
 
 .power-header {
   margin-bottom: 2rem;
@@ -1022,19 +1024,7 @@
   font-weight: 700;
 }
 
-.btn-CTA {
-  background-color: #aa082a;
-  border: none;
-  color: white;
-  padding: 1rem 2rem; 
-  border-radius: 100px; 
-  font-weight: 700;
-  text-decoration: none; 
-}
 
-.btn-CTA:hover {
-  background-color: #88061b; 
-}
 
 
 

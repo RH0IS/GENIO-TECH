@@ -4,3 +4,4 @@ Django
 agora_token_builder
 psycopg2
 squareup
+pydantic

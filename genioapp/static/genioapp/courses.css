@@ -225,7 +225,7 @@
 /* =======course card======== */
 .card {
   width: 20rem;
-  height: 40rem;
+  height: fit-content;
   color: #aa082a;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -261,7 +261,9 @@
 .card__details {
   padding: 0.6rem 1rem;
   position: relative;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card__heading-span {
@@ -279,7 +281,7 @@
 }
 
 .course-description{
-  height: 9rem;
+  height: 7rem;
   margin-bottom: 1rem;
   overflow: hidden;
   /*text-overflow: ellipsis;*/
@@ -289,6 +291,8 @@
 .info-container{
   display: flex;
   gap: 1rem;
+
+  margin-bottom: 1rem;
 }
 
 .info-block{
