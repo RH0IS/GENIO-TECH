@@ -1,10 +1,24 @@
 {% extends 'genioapp/base0.html' %}
 {% load static %}
 {% block content %}
-<section class="detail-header">
-<h1>Course title</h1>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<section class="course-section">
+    <div class="container">
+        <h1>{{course.title}}</h1>
+<p>{{course.price}}.</p>
+{% for list in session_list %}
+<tr>
+    <td>
+    {{list.level}}
+    {% for item in list.sessions%}
+
+    <p>Session:{{item.session}}</p>
+    {% endfor %}
+    </td>
+<tr>
+{% endfor %}
 <a class="btn-primary" href="#">Subscribe</a>
+    </div>
+
 </section>
 {% endblock %}
 

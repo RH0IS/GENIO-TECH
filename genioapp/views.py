@@ -44,15 +44,18 @@ ACCOUNT_COUNTRY = location["country"]
 
 
 @csrf_exempt
-def make_payment(request):
+def make_payment(request, price):
     idempotency_key=str(uuid.uuid4())
+    amtprice=100*float(price)
     return render(request, "genioapp/card_payment.html", {
         "PAYMENT_FORM_URL":PAYMENT_FORM_URL,
         "APPLICATION_ID": APPLICATION_ID,
         "LOCATION_ID": LOCATION_ID,
         "ACCOUNT_CURRENCY": ACCOUNT_CURRENCY,
         "ACCOUNT_COUNTRY": ACCOUNT_COUNTRY,
-        "idempotency_key":idempotency_key
+        "idempotency_key":idempotency_key,
+        "amount":int(amtprice)
+        
     })
 #Function to display classrooms
 @csrf_exempt
@@ -83,13 +86,15 @@ class Payment(BaseModel):
 @csrf_exempt
 def process_payment(request):
     data = json.loads(request.body)
+    #price=request.data['amount']
     # Charge the customer's card
+    amount=data['amount']
     create_payment_response = client.payments.create_payment(
         body={
             "source_id": data['token'],
             "idempotency_key": data['idempotencyKey'],
             "amount_money": {
-                "amount": 100,  # $1.00 charge
+                "amount": int(amount),  # $1.00 charge
                 "currency": ACCOUNT_CURRENCY,
             },
         }
@@ -97,7 +102,6 @@ def process_payment(request):
     data=create_payment_response.body
     #print(create_payment_response)
     if create_payment_response.is_success():
-        print(data)
         return JsonResponse(data)
     elif create_payment_response.is_error():
         return create_payment_response
@@ -411,19 +415,38 @@ def index(request):
 
 
 def course_by_id(request, course_id):
-    courses = Course.objects.get(id=course_id)
-
+    course = Course.objects.get(id=course_id)
+    courselevels = []
+    courselevels=CourseLevels.objects.filter(course=course)
+    session_list=[]
+    for level in courselevels:
+        sessions=CourseSession.objects.filter(course_level=level)
+        session_list.append({"level":level,"sessions":sessions})
+    print(session_list)
     return render(
         request,
         "genioapp/course_detail.html",
-        {"course": courses},
+        {"course": course,
+         "levels":courselevels,
+         "session_list":session_list},
     )
 
 
 def courses(request):
     
-    courlist = Course.objects.all().order_by("id")
-    return render(request, "genioapp/courses.html", {"courlist": courlist})
+    courses_with_levels = []
+    # if is_student(request.user):
+    courses = Course.objects.all()
+    # courses_with_levels = []
+    for course in courses:
+        levels = course.courselevels_set.all()
+        sessions=[]
+        for level in levels:
+            sessionlist=level.coursesession_set.all()
+            sessions.append({"level": level, "sessions":sessionlist})
+        name=course.instructor.user.first_name+ " "+course.instructor.user.last_name
+        courses_with_levels.append({"course": course, "levels": levels, "sessions":sessions, "name":name})
+    return render(request, "genioapp/courses.html", {"courses_with_levels": courses_with_levels})
 
 
 def custom_logout(request):

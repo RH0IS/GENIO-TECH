@@ -222,7 +222,7 @@
                       <span class="info">Per Class</span>
                     </div>
                   </div>
-                  <form method="post" action="{% url 'genioapp:make_payment' %}">
+                  <form method="post" action="">
                     <button class='btn-CTA' type="submit">Check Available Times</button>
                   </form>
                 </div>
@@ -317,64 +317,63 @@
                   </button>
 
 <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h3 class="modal-title" id="exampleModalLabel">Available Times</h3>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div class="row">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Available Times</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
 
 
-                            <div class="col">
-                              <h5>Tuesday</h5><p>9:00am-11:00am</p>
+          <div class="col">
+            <h5>Tuesday</h5><p>9:00am-11:00am</p>
 
-                            </div>
-                            <div class="col">
-                              <p>Taught by: </p>
-                              <p>Atishay Khanna</p>
-                            </div>
-                            <div class="col">
-                              <p>Seats remaining: 2</p>
+          </div>
+          <div class="col">
+            <p>Taught by: </p>
+            <p>Atishay Khanna</p>
+          </div>
+          <div class="col">
+            <p>Seats remaining: 2</p>
 
-                            </div>
-                            <div class="col">
-                              <form method="post" action="{% url 'genioapp:make_payment' %}">
-                                <button class='btn-primary' type="submit">Subscribe</button>
-                              </form>
-                            </div>
-
-
-                          </div>
-                          <hr/>
-                            <div class="row">
+          </div>
+          <div class="col">
+            <form method="post" action="">
+              <button class='btn-primary' type="submit">Subscribe</button>
+            </form>
+          </div>
 
 
-                            <div class="col">
-                              <h5>Thursday</h5><p>1:00pm-3:00pm</p>
-
-                            </div>
-                            <div class="col">
-                              <p>Taught by: </p>
-                              <p>Zayed Ullah</p>
-                            </div>
-                            <div class="col">
-                              <p>Seats remaining: 1</p>
-
-                            </div>
-                            <div class="col">
-                              <form method="post" action="{% url 'genioapp:make_payment' %}">
-                                <button class='btn-primary' type="submit">Subscribe</button>
-                              </form>
-                            </div>
+        </div>
+        <hr/>
+          <div class="row">
 
 
-                          </div>
-                          <hr/>
+          <div class="col">
+            <h5>Thursday</h5><p>1:00pm-3:00pm</p>
 
-                        </div>
+          </div>
+          <div class="col">
+            <p>Taught by: </p>
+            <p>Zayed Ullah</p>
+          </div>
+          <div class="col">
+            <p>Seats remaining: 1</p>
+
+          </div>
+          <div class="col">
+            <form method="post" action="">
+              <button class='btn-primary' type="submit">Subscribe</button>
+            </form>
+          </div>
+
+
+        </div>
+        <hr/>
+      </div>
 {#                        <div class="modal-footer">#}
 {#                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
 {#                          <button type="button" class="btn btn-primary">Save changes</button>#}
@@ -422,6 +421,86 @@
       </div>
     </section>
 
+    <section class="section--course-catalogue">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+          {% for item in courses_with_levels %}
+
+              <li class="nav-item" role="presentation">
+                  <button
+{#                            {% if cryptocurrency.volume_24h < 0 %}text-danger{% else %}text-success{% endif %}#}
+
+                      class="nav-link {% if forloop.first %}active{% endif %}"
+                      id="{{ item.course.title }}-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#{{ item.course.title }}"
+                      type="button"
+                      role="tab"
+                      aria-controls="{{ item.course.title }}"
+                      aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                  >
+                      {{ item.course.title}}
+                  </button>
+              </li>
+          {% endfor %}
+      </ul>
+      <div class="tab-content" id="myTabContent">
+          {% for item in courses_with_levels %}
+              <div
+                  class="tab-pane fade show {% if forloop.first %}active{% endif %}"
+                  id="{{ item.course.title }}"
+                  role="tabpanel"
+                  aria-labelledby="{{ item.course.title }}-tab"
+              >
+                  <div  class="card-container">
+                      {% for level in item.levels %}
+                          <div class="card">
+                              <div class="card__side card__side--front">
+                                  <div class="card__picture card__picture--1">
+                                      <img src="{% static 'genioapp/img/video-games_jr_l1.png' %}"alt="{{ item.course.title }}"/>
+                                  </div>
+                                  <div class="card__details">
+                                      <span class="instructor">{{ item.name }}</span>
+                                      <button class="btn-fav" id="btn-fav" ><img class="heart" id="heart" onclick="swapImg()" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
+
+                                      <h4 class="card__heading">
+                                          <span class="card__heading-span card__heading-span--1">
+                                              {{ level.name }}
+                                          </span>
+                                      </h4>
+                                      <p>
+                                          {{ level.description }}
+                                      </p>
+                                  </div>
+                                  <div class="info-container">
+                                    <div class="info-block">
+                                      <span class="value">6-10</span>
+                                      <span class="info">Ages</span>
+                                    </div>
+                                    <div class="info-block">
+                                      <span class="value">60</span>
+                                      <span class="info">Mins</span>
+                                    </div>
+                                    <a class="info-block" href="{% url 'genioapp:make_payment' item.course.price %}">
+                                      <span class="value" value={{ item.course.price }} id='price'>${{ item.course.price }}</span>
+                                      <span class="info">Per Class</span>
+                                    </a>
+                                  </div>
+                                  <button type="button" class="btn btn-CTA" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Check Available Times
+                                  </button>
+                              </div>
+                          </div>
+                      {% endfor %}
+
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+
+
+  </ul>
+  </section>
     <section class="section--cta">
       <div class="cta--container">
         <img class="cta-corner--top-left" src="{% static 'genioapp/img/Polygon 1.png' %}">

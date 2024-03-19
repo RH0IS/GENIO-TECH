@@ -10,7 +10,7 @@ urlpatterns = [
     # path("123/", views.index, name="index"),
     path("about/", views.about, name="about"),
     path("courses/", views.courses, name="courses"),
-    path("category/<int:category_no>/", views.course_by_id, name="category_detail"),
+    path("course/<int:course_id>/", views.course_by_id, name="course_detail"),
     path("instructorsignup/", views.instructorsignup, name="instructorsignup"),
     path("courseregistration/", views.courseregistration, name="courseregistration"),
     path("login/", views.custom_login, name="login"),
@@ -46,7 +46,7 @@ urlpatterns = [
     path("createClassRoom/", views.joinClassRoom, name="createClassRoom"),
     path('get_member/', views.getRoomMember),
     path('delete_member/', views.deleteRoomMember),
-    path('make_payment/', views.make_payment, name='make_payment'),
+    path('make_payment/<str:price>/', views.make_payment, name='make_payment'),
     path('process-payment/', views.process_payment, name='process_payment'),
     
     

@@ -32,9 +32,10 @@ window.showError = function (message) {
 window.createPayment = async function (token) {
   const dataJsonString = JSON.stringify({
     token,
-    idempotencyKey: window.idempotencyKey
+    idempotencyKey: window.idempotencyKey,
+    amount: window.amount,
   });
-
+  console.log(window.amount)
   try {
     const response = await fetch('/process-payment/', {
       method: 'POST',

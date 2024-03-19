@@ -52,18 +52,23 @@
                     </a>
                 </div>
                 <div class="NavText">
-                <div class="text-wrapper-15">
-                        <a href="{% url 'genioapp:createClassRoom' %}"> Create ClassRoom </a>
-                    </div>
+                    
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:index' %}"> HOME </a>
                     </div>
+                    {% if user.is_authenticated %}
+                        {% if is_instructor  or is_student%}
+                    <div class="text-wrapper-15">
+                        <a href="{% url 'genioapp:createClassRoom' %}"> View Classes </a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
                     <div class="text-wrapper-15">
 
                         <a href="{% url 'genioapp:lobby' %}"> Video Call </a>
                     </div>
                     <div class="text-wrapper-15">
-                        <a href="{% url 'genioapp:courses' %}"> COURSE </a>
+                        <a href="{% url 'genioapp:course_detail' course_id=7%}"> COURSE </a>
 
                     </div>
                     {% if user.is_authenticated %}
