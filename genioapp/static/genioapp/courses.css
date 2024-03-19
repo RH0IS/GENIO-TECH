@@ -273,6 +273,7 @@
 
 .instructor {
   text-decoration: underline;
+  margin-bottom: .5rem;
 }
 
 .card__picture--1 img {

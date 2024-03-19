@@ -191,7 +191,7 @@
                 </div>
                 <div class="card__details">
                   <span class="instructor">Claudia Watts</span>
-                  <button class="btn-fav" id="btn-fav" ><img class="heart" id="heart" onclick="swapImg()" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
+                  <button class="btn-fav" id="btn-fav" ><img class="heart" id="heart" onclick="swapImg(this)" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
 
                   <h4 class="card__heading">
                     <span class="card__heading-span card__heading-span--1">
@@ -222,9 +222,9 @@
                       <span class="info">Per Class</span>
                     </div>
                   </div>
-                  <form method="post" action="">
-                    <button class='btn-CTA' type="submit">Check Available Times</button>
-                  </form>
+                  <button type="button" class="btn btn-CTA" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Check Available Times
+                  </button>
                 </div>
 
 
@@ -237,14 +237,14 @@
                 </div>
                 <div class="card__details">
                   <span class="instructor">Victoria Irons</span>
-                  <button class="btn-fav" id="btn-fav" onclick="swapImg()"><img class="heart" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
+                  <button class="btn-fav" id="btn-fav" ><img class="heart" id="heart" onclick="swapImg(this)" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
                   <h4 class="card__heading">
                     <span class="card__heading-span card__heading-span--1">
                       <a class="card__heading--link" href="#">Robotic simulation</a>
                     </span>
                   </h4>
                   <div class="course-description">
-                    <p >
+                    <p>
                       The imagination and creativity in this course has no limits. Your child will learn how to code robots  and apply their coding in a real robotic simulation. The first track kids will be using blocks programming.
                       The second track they will be introduced to the world of Java programming.
                       (Duration of the course 6 months, each track is 3 months)
@@ -267,8 +267,9 @@
                       <span class="info">Per Class</span>
                     </div>
                   </div>
-                  <button class="btn-CTA">Check Available Times</button>
-
+<button type="button" class="btn btn-CTA" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Check Available Times
+                  </button>
                 </div>
 
               </div>
@@ -280,7 +281,7 @@
                 </div>
                 <div class="card__details">
                   <span class="instructor">Ryley Geir Daelman</span>
-                  <button class="btn-fav" id="btn-fav" onclick="swapImg()"><img class="heart" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
+                  <button class="btn-fav" id="btn-fav" ><img class="heart" id="heart" onclick="swapImg(this)" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
 
                   <h4 class="card__heading">
                     <span class="card__heading-span card__heading-span--1">
@@ -363,17 +364,18 @@
           <div class="col">
             <p>Seats remaining: 1</p>
 
-          </div>
-          <div class="col">
-            <form method="post" action="">
-              <button class='btn-primary' type="submit">Subscribe</button>
-            </form>
-          </div>
+                            </div>
+                            <div class="col">
+                              <form method="post" action="{% url 'genioapp:make_payment' %}">
+                                <button class='btn-primary' type="submit">Subscribe</button>
+                              </form>
+                            </div>
 
 
-        </div>
-        <hr/>
-      </div>
+                          </div>
+                          <hr/>
+
+                        </div>
 {#                        <div class="modal-footer">#}
 {#                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
 {#                          <button type="button" class="btn btn-primary">Save changes</button>#}
@@ -549,23 +551,12 @@
       </div>
     </section>
     <script>
-      function swapImg(){
-
-        el = document.getElementById("heart")
-        console.log(el.src)
-          {#const div1 = document.getElementById("div1");#}
+      function swapImg(el){
         const img = el.getAttribute("src");
-
-        console.log(img)
         if (img == "{% static 'genioapp/img/heart_filled_false.png' %}") {
-
           el.src = "{% static 'genioapp/img/heart_filled_true.png' %}";
-          console.log(el.src)
         } else {
           el.src = "{% static 'genioapp/img/heart_filled_false.png' %}";
-          console.log(el.src)
-
-
         }
       }
     </script>

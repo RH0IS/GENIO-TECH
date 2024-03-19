@@ -940,11 +940,12 @@
   font-weight: 700;
   text-decoration: none;
   margin-bottom: 1rem;
-  width: 100%;
+  /*width: 100%;*/
 }
 
 .btn-CTA:hover {
   background-color: #88061b;
+    color: white;
 }
 
 
