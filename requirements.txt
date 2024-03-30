@@ -8,5 +8,5 @@ psycopg2-binary==2.9.9
 sqlparse==0.4.4
 square==0.0.3
 squareup==22.0.0.20220921
-uvicorn==0.28.0
+uvicorn
 whitenoise==6.6.0
