@@ -9,4 +9,4 @@ sqlparse==0.4.4
 square==0.0.3
 squareup==22.0.0.20220921
 uvicorn
-whitenoise==6.6.0
+whitenoise
