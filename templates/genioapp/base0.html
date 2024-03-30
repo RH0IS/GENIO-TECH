@@ -56,13 +56,13 @@
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:index' %}"> HOME </a>
                     </div>
-                    {% comment %} {% if user.is_authenticated %}
-                        {% if is_instructor  or is_student%} {% endcomment %}
+                    {% if user.is_authenticated %}
+                      {% comment %}   {% if is_instructor  or is_student%} {% endcomment %}
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:createClassRoom' %}"> View Classes </a>
                     </div>
-                    {% comment %} {% endif %}
-                    {% endif %} {% endcomment %}
+                     {% endif %}
+                    {% comment %}{% endif %} {% endcomment %}
                     <div class="text-wrapper-15">
 
                         <a href="{% url 'genioapp:lobby' %}"> Video Call </a>
