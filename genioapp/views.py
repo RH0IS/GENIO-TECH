@@ -141,8 +141,8 @@ def deleteRoomMember(request):
 
 
 def getAgoraToken(request, id):
-    appId = "9668f778f64048d494a10d36ab11e203"
-    appCertificate = "a8411d32d4f54dd4b6cd9a6dca80cfb9"
+    #appId = "9668f778f64048d494a10d36ab11e203"
+    #appCertificate = "a8411d32d4f54dd4b6cd9a6dca80cfb9"
     #room_id= request.GET.get('id')
     channelName = ClassRoom.objects.get(id=id).room_name
     uid = request.user.id
@@ -152,7 +152,8 @@ def getAgoraToken(request, id):
     privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
     role = 1
 
-    token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
+    token = "token"
+    #RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
 
     return JsonResponse({'token': token, 'uid': uid, 'room_name':channelName, 'user_name':user_name}, safe=False)
 
