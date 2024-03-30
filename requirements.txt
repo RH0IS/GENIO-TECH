@@ -2,7 +2,7 @@ agora_token_builder==1.0.0
 django
 django-extensions==3.2.3
 gunicorn==21.2.0
-pillow==10.2.0
+pillow
 psycopg==3.1.18
 psycopg2-binary==2.9.9
 sqlparse==0.4.4
