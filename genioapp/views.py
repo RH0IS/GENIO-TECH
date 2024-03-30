@@ -71,13 +71,23 @@ def enterClassRoom(request):
 @csrf_exempt
 def createRoomMember(request):
     data = json.loads(request.body)
-    member, created = ClassRoom.objects.get_or_create(
-        name=data['name'],
+    user = User.objects.get(id=data['UID'])
+    if is_instructor(user):
+        member, created = ClassRoom.objects.get_or_create(
+        name=user.first_name + user.last_name,
         uid=data['UID'],
-        room_name=data['room_name']
-    )
-
-    return JsonResponse({'name': data['name']}, safe=False)
+        room_name=data['room_name'],
+        user_role='Instructor')
+    else:
+        member, created = ClassRoom.objects.get_or_create(
+            name=user.first_name + user.last_name,
+            uid=data['UID'],
+            room_name=data['room_name']
+        )
+    #print(member.user_role)
+    return JsonResponse({
+        'name': data['name'],
+        'role':member.user_role}, safe=False)
 
 class Payment(BaseModel):
     token: str
@@ -115,7 +125,7 @@ def getRoomMember(request):
         room_name=room_name,
     )
     name = member.name
-    return JsonResponse({'name': member.name}, safe=False)
+    return JsonResponse({'name': name}, safe=False)
 
 
 @csrf_exempt
@@ -131,8 +141,8 @@ def deleteRoomMember(request):
 
 
 def getAgoraToken(request, id):
-    appId = "6b8b1f511c3b46958111cac2bec48fd8"
-    appCertificate = "a5f8fa4d7a2f471f88ae7cecfed923e9"
+    appId = "9668f778f64048d494a10d36ab11e203"
+    appCertificate = "a8411d32d4f54dd4b6cd9a6dca80cfb9"
     #room_id= request.GET.get('id')
     channelName = ClassRoom.objects.get(id=id).room_name
     uid = request.user.id
@@ -152,7 +162,7 @@ def lobby(request):
 
 
 def room(request):
-    return render(request, "genioapp/room.html")
+    return render(request, "genioapp/videoApp/classRoom.html")
 
 
 def about(request):

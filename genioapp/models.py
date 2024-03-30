@@ -16,6 +16,7 @@ class ClassRoom(models.Model):
     name = models.CharField(max_length=200, default='user')
     uid = models.CharField(max_length=1000, default='0')
     room_name = models.CharField(max_length=200, default='classroom')
+    user_role = models.CharField(max_length=200, default='Student', null=True)
     insession = models.BooleanField(default=False)
     def __str__(self):
         return self.name

@@ -16,7 +16,6 @@
 
     let handleJoin = async (id) => {
         sessionStorage.setItem('room-id', id)
-        console.log(id)
         let response = await fetch(`/get_token/${id}`)
         let data = await response.json()
 

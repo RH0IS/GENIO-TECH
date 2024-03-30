@@ -31,13 +31,21 @@ let joinAndDisplayLocalStream = async () => {
 
     let member = await createMember()
 
-    let player = `<div  class="video-container" id="user-container-${UID}">
+    if (member.role === 'Instructor') {
+        let player = `<div class="screen-player" id="screen-player"></div>`
+        document.getElementById('screen-container').insertAdjacentHTML('beforeend', player)
+        localTracks[1].play(`screen-player`)
+    }
+    else {
+        let player = `<div  class="video-container" id="user-container-${UID}">
                      <div class="video-player" id="user-${UID}"></div>
                      <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
                   </div>`
 
-    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
-    localTracks[1].play(`user-${UID}`)
+        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+        localTracks[1].play(`user-${UID}`)
+    }
+
     await client.publish([localTracks[0], localTracks[1]])
 }
 
@@ -140,7 +148,7 @@ let switchToCamera = async () => {
     let player = `<div class="video__container" id="user-container-${UID}">
                     <div class="video-player" id="user-${UID}"></div>
                  </div>`
-    //document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
 
     await localTracks[0].setMuted(true)
     await localTracks[1].setMuted(true)
@@ -152,34 +160,32 @@ let switchToCamera = async () => {
     await client.publish([localTracks[1]])
 }
 
-let toggleScreen = async (e) =>
-{
+let toggleScreen = async (e) => {
     console.log('hello world')
     let screenButton = e.currentTarget
     let cameraButton = document.getElementById('camera-btn')
 
 
-    if(!sharingScreen){
+    if (!sharingScreen) {
         sharingScreen = true
         screenButton.classList.add('active')
         cameraButton.classList.remove('active')
         cameraButton.style.display = 'block'
         localScreenTracks = await AgoraRTC.createScreenVideoTrack()
-    let player = `<div class="screen-player" id="screen-player"></div>
-                   </div>`
-    document.getElementById('screen-container').insertAdjacentHTML('beforeend', player)
+        let player = `<div class="screen-player" id="screen-player"></div>`
+        document.getElementById('screen-container').insertAdjacentHTML('beforeend', player)
         localScreenTracks.play(`screen-player`)
 
         await client.unpublish([localTracks[1]])
         await client.publish([localScreenTracks])
     }
-    else{
+    else {
         sharingScreen = false
-        //cameraButton.style.display = 'block'
-        //document.getElementById(`user-container-${UID}`).remove()
+        cameraButton.style.display = 'block'
+        document.getElementById(`user-container-${UID}`).remove()
         await client.unpublish([localScreenTracks])
 
-        //switchToCamera()
+        switchToCamera()
     }
 
 

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,9 +28,9 @@ SECRET_KEY = "django-insecure-%u4_5*agghbyh_if67a3-)i(i@%+jxg+wtba!@u)8+(=2l46#=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
-
+CSRF_TRUSTED_ORIGINS =['https://geniotech.azurewebsites.net']
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     'genioapp.apps.GenioappConfig',
     
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "GENIO.urls"
@@ -89,10 +92,10 @@ DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'genio-db',
-#         'USER': 'username',
-#         'PASSWORD': 'password',
-#         'HOST': 'hostname',
-#         'PORT': '5432',  # Default PostgreSQL port
+#         'USER': '{env.DB_USERNAME}',
+#         'PASSWORD': '{env.DB_PASSWORD}',
+#         'HOST': '{env.DB_URL}',
+#         'PORT': '{env.DB_PORT}',  # Default PostgreSQL port
 #     }
 # }
 
@@ -133,6 +136,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
