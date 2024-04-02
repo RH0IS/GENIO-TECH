@@ -24,15 +24,15 @@ from pydantic import BaseModel
 #Adding Payment Structure
 CONFIG_TYPE = "SANDBOX"
 client = Client(
-    access_token='EAAAl1VNkfSytTIGt_pKmpV0v-1R4n9-cEDDqlfIRDdb9HhE1Q8QPoZjHaG-N9EF',
+    access_token='EAAAl8jGCWT2vmMOKKsTZy2m91S1jMkOrV2cIjL8ZXuFSFy_sEO2v94hR0dEEO-W',
     environment='sandbox')
 result = client.locations.list_locations()
 #print(result)
 
 
-APPLICATION_ID = 'sandbox-sq0idb-G7MnG3Syh1fvh5ltS8mLjw'
-ACCESS_TOKEN = 'EAAAl1VNkfSytTIGt_pKmpV0v-1R4n9-cEDDqlfIRDdb9HhE1Q8QPoZjHaG-N9EF'
-LOCATION_ID = 'L9CS1EC8GK5VG'
+APPLICATION_ID = 'sandbox-sq0idb-O716r2ozEg1jrkgkFFszag'
+ACCESS_TOKEN = 'EAAAl8jGCWT2vmMOKKsTZy2m91S1jMkOrV2cIjL8ZXuFSFy_sEO2v94hR0dEEO-W'
+LOCATION_ID = 'LTXKVQTY01TSR'
 PAYMENT_FORM_URL = (
     "https://web.squarecdn.com/v1/square.js"
     if CONFIG_TYPE == "PRODUCTION"
