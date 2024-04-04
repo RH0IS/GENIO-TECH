@@ -55,6 +55,7 @@ window.createPayment = async function (token) {
       }
     } else {
       window.showSuccess('Payment Successful!');
+      window.location.replace("/user_profile/")
     }
   } catch (error) {
     console.error('Error:', error);
