@@ -63,10 +63,12 @@
                     </div>
                      {% endif %}
                     {% comment %}{% endif %} {% endcomment %}
+                    {% if is_student %}
                     <div class="text-wrapper-15">
 
-                        <a href="{% url 'genioapp:lobby' %}"> Video Call </a>
+                        <a href="{% url 'genioapp:user_profile' %}"> User Profile </a>
                     </div>
+                    {% endif %}
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:course_detail' course_id=7%}"> COURSE </a>
 

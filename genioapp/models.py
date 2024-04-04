@@ -56,7 +56,7 @@ class Course(models.Model):
 class CourseLevels(models.Model):
     name = models.CharField(max_length=100)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    # students = models.ManyToManyField(Student, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2,null=True, default=25)
     description = models.CharField(max_length=100)
 
     def __str__(self):
@@ -137,7 +137,7 @@ class StudentOrder(models.Model):
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     course_level = models.ForeignKey(CourseLevels, on_delete=models.CASCADE)
     completion_status = models.CharField(max_length=10, choices=COMPLETION_CHOICES, default='On-going')
-
+    payment_id=models.CharField(max_length=100, null=True, default="id")
     class Meta:
         unique_together = ('student', 'course_level')
 
