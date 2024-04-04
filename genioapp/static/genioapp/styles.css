@@ -980,6 +980,10 @@
   font-weight: 700;
 }
 
+.power-brow{
+  display:flex;
+  gap:6rem;
+}
 .power-icon-container {
   display: flex;
   flex-wrap: wrap;

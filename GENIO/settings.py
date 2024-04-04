@@ -97,6 +97,7 @@ DATABASES = {
 #         'HOST': 'genio-postgres-db.postgres.database.azure.com',
 #         'PORT': '5432',  # Default PostgreSQL port
 #     }
+
 #}
 
 
