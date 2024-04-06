@@ -38,7 +38,7 @@ urlpatterns = [
     path("get_course_levels/", views.get_course_levels, name="get_course_levels"),
     path("get_instructor/", views.get_instructor, name="get_instructor"),
     path("add_availability/", views.add_availability, name="add_availability"),
-    path("createorder/<int:course_level_id>", views.createorder, name="createorder"),
+    path("createorder/<int:course_level_id>/", views.createorder, name="createorder"),
     path("lobby/", views.lobby, name="lobby"),
     path('get_token/<int:id>', views.getAgoraToken),
     path("room/", views.room, name="room"),
@@ -46,7 +46,7 @@ urlpatterns = [
     path("createClassRoom/", views.joinClassRoom, name="createClassRoom"),
     path('get_member/', views.getRoomMember),
     path('delete_member/', views.deleteRoomMember),
-    path('make_payment/<str:price>/', views.make_payment, name='make_payment'),
+    path('make_payment/<int:id>/', views.make_payment, name='make_payment'),
     path('process-payment/', views.process_payment, name='process_payment'),
     
     

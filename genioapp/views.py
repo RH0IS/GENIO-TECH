@@ -44,9 +44,13 @@ ACCOUNT_COUNTRY = location["country"]
 
 
 @csrf_exempt
-def make_payment(request, price):
-    idempotency_key=str(uuid.uuid4())
-    amtprice=100*float(price)
+def make_payment(request, id):
+    idempotency_key=id
+    #order = StudentOrder.objects.get(id=id)
+    amtprice=4300
+    #courselevels = CourseLevels.
+    print("Course level price:",amtprice)
+    #*float(price)
     return render(request, "genioapp/card_payment.html", {
         "PAYMENT_FORM_URL":PAYMENT_FORM_URL,
         "APPLICATION_ID": APPLICATION_ID,
@@ -99,19 +103,28 @@ def process_payment(request):
     #price=request.data['amount']
     # Charge the customer's card
     amount=data['amount']
+    #print(data['token'])
+    id=data['idempotencyKey']
     create_payment_response = client.payments.create_payment(
         body={
             "source_id": data['token'],
             "idempotency_key": data['idempotencyKey'],
             "amount_money": {
-                "amount": int(amount),  # $1.00 charge
+                "amount": int(amount),
                 "currency": ACCOUNT_CURRENCY,
             },
         }
     )
     data=create_payment_response.body
-    #print(create_payment_response)
+    #data['payment']['status']
+
     if create_payment_response.is_success():
+        order=StudentOrder.objects.get(id=id)
+        order.completion_status="completed"
+        payment_data=data["payment"]
+        print(payment_data['id'])
+        order.payment_id=payment_data['id']
+        order.save()
         return JsonResponse(data)
     elif create_payment_response.is_error():
         return create_payment_response
@@ -207,7 +220,7 @@ def custom_login(request):
                 # Example: return redirect('home')
                 print(username)
                 print(password)
-                response = redirect("/user_profile/")
+                response = redirect("/")
                 return response  # Redirect to the desired URL after successful login
     else:
         form = LoginForm()
@@ -559,11 +572,23 @@ def createorder(request, course_level_id):
 
     if request.method == "POST" and not student_already_enrolled:
         # If no order exists, create a new StudentOrder
-        order = StudentOrder(student=student, course_level=courselevels)
+        order = StudentOrder(student=student, course_level=courselevels, completion_status='ongoing')
         order.save()
-        return redirect("/")
-
-    return render(request, 'genioapp/order.html', {'course': course, 'courselevels': courselevels,
+        idempotency_key=order.id
+        amtprice=order.course_level.price*100
+        print("Course level price:",amtprice)
+        return render(request, "genioapp/card_payment.html", {
+            "PAYMENT_FORM_URL":PAYMENT_FORM_URL,
+            "APPLICATION_ID": APPLICATION_ID,
+            "LOCATION_ID": LOCATION_ID,
+            "ACCOUNT_CURRENCY": ACCOUNT_CURRENCY,
+            "ACCOUNT_COUNTRY": ACCOUNT_COUNTRY,
+            "idempotency_key":idempotency_key,
+            "amount":int(amtprice)
+        })
+        #return redirect("/")
+    else:
+        return render(request, 'genioapp/order.html', {'course': course, 'courselevels': courselevels,
                                                    'student_already_enrolled': student_already_enrolled})
 
 

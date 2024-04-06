@@ -355,8 +355,8 @@
                                       <span class="value">60</span>
                                       <span class="info">Mins</span>
                                     </div>
-                                    <a class="info-block" href="{% url 'genioapp:make_payment' item.course.price %}">
-                                      <span class="value" value={{ item.course.price }} id='price'>${{ item.course.price }}</span>
+                                    <a class="info-block" href="{% url 'genioapp:createorder' level.id %}">
+                                      <span class="value" value={{ level.price }} id='price'>${{ level.price }}</span>
                                       <span class="info">Per Class</span>
                                     </a>
                                   </div>
