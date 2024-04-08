@@ -102,14 +102,12 @@
                         <a href="{% url 'genioapp:admin_students_list' %}">Add Students</a>
                     </div>
                     {% endif %}
-                    <div class="text-wrapper-15">
-                        <a href="{% url 'genioapp:user_profile' %}">Profile</a>
-                    </div>
-                    <div class="text-wrapper-15">
-                        <span class="navbar-text">Logged in as {{user.username}}</span>
-                        <br />
-                        <a href="{% url 'genioapp:logout' %}">Logout</a>
-                    </div>
+
+{#                    <div class="text-wrapper-15">#}
+{#                        <span class="navbar-text">Logged in as {{user.username}}</span>#}
+{#                        <br />#}
+{#                        <a href="{% url 'genioapp:logout' %}">Logout</a>#}
+{#                    </div>#}
                 </div>
                 {% endif %}
             </div>
