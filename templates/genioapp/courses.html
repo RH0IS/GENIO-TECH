@@ -103,204 +103,9 @@
 
       <h2 class="heading-secondary">Popular Coding Courses</h2>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link active"
-            id="kodu-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#kodu"
-            type="button"
-            role="tab"
-            aria-controls="kodu"
-            aria-selected="true"
-          >
-            Game design
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="scratch-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#scratch"
-            type="button"
-            role="tab"
-            aria-controls="scratch"
-            aria-selected="false"
-          >
-            Advanced Java
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="ev3-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#ev3"
-            type="button"
-            role="tab"
-            aria-controls="ev3"
-            aria-selected="false"
-          >
-            Robotic Simulation
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="tetrix-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#tetrix"
-            type="button"
-            role="tab"
-            aria-controls="tetrix"
-            aria-selected="false"
-          >
-            Mobile Apps
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="comp-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#comp"
-            type="button"
-            role="tab"
-            aria-controls="comp"
-            aria-selected="false"
-          >
-            Artificial Intelligence
-          </button>
-        </li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-        <div
-          class="tab-pane fade show active"
-          id="kodu"
-          role="tabpanel"
-          aria-labelledby="kodu-tab"
-        >
-          <div class="card-container">
-            <div class="course-card">
-              <div class="course-card--img-container">
-                <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="course-card--img" alt="course-img" />
-              </div>
-              <div class="course-card--info">
-                <h1 class="course-card--title">Game Design</h1>
-                <p class="course-card--desc">Empower your child's imagination with our exciting game design course for kids, using a software that is designed by Microsoft. Creating levels and different missions by your child to play and then share it with their friends to join the game.
-                </p>
-                <div class="course-card__meta-container">
-                  <div class="course-card__meta-info">
-                    <img src="{% static 'genioapp/img/tabler_school.png' %}" class="course-card__meta--icon" />
-                    <p class="course-card__meta--text">Ages: 6-10</p>
-                  </div>
-                  <div class="course-card__meta-info">
-                    <img src="{% static 'genioapp/img/carbon_skill-level-beginner.png' %}" class="course-card__meta--icon" />
-                    <p class="course-card__meta--text">Level: Beginner</p>
-                  </div>
-                  <div class="course-card__meta-info">
-                    <img src="{% static 'genioapp/img/mingcute_time-line.png' %}" class="course-card__meta--icon" />
-                    <p class="course-card__meta--text">Duration: 3 months</p>
-                  </div>
-                </div>
-              </div>
-              <div class="price-card">
-                <div class="price-card--heading-container">
-                  <span class="price-card--span-heading-main">
-                    <h2 class="price-card--heading">
-                      CA$24
-                    </h2>
-                    <p class="price-card--text">weekly or</p>
-                  </span>
-                  <span class="price-card--span-heading-sub">
-                    <p class="price-card--subheading">
-                      CA$350 for 8 classes
-                    </p>
-                  </span>
-                </div>
-
-
-                <div class="price-card--meta-container">
-                  <div class="price-card--meta">
-                    <img src="{% static 'genioapp/img/mingcute_time-line-orange.png' %}" class="price-card--meta-icon" />
-                    <p class="price-card--meta-text">
-                      60 mins per class
-                    </p>
-                  </div>
-                  <div class="price-card--meta">
-                    <img src="{% static 'genioapp/img/ph_calendar-bold.png' %}" class="price-card--meta-icon" />
-                    <p class="price-card--meta-text">
-                      1x per week
-                    </p>
-                  </div>
-                  <hr class="divider">
-                  <div class="price-card--meta">
-                    <img src="{% static 'genioapp/img/live.png' %}" class="price-card--meta-icon" />
-                    <p class="price-card--meta-text">
-                      Live video chat sessions
-                    </p>
-                  </div>
-                  <div class="price-card--meta">
-                    <img src="{% static 'genioapp/img/clarity_group-solid.png' %}" class="price-card--meta-icon" />
-                    <p class="price-card--meta-text">
-                      3-10 learners per class
-                    </p>
-                  </div>
-                </div>
-
-                <button class="btn-primary price-card--btn">
-                  See All Available Times
-                </button>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="scratch"
-          role="tabpanel"
-          aria-labelledby="scratch-tab"
-        >
-          Scratch
-        </div>
-        <div
-          class="tab-pane fade"
-          id="ev3"
-          role="tabpanel"
-          aria-labelledby="ev3-tab"
-        >
-          EV 3
-        </div>
-        <div
-          class="tab-pane fade"
-          id="tetrix"
-          role="tabpanel"
-          aria-labelledby="tetrix-tab"
-        >
-          Tetrix
-        </div>
-        <div
-          class="tab-pane fade"
-          id="comp"
-          role="tabpanel"
-          aria-labelledby="comp-tab"
-        >
-          Competition training
-        </div>
-      </div>
-    </section>
-
-    <section class="section--course-catalogue">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-
         {% for item in courses_with_levels %}
-
           <li class="nav-item" role="presentation">
             <button
-{#                            {% if cryptocurrency.volume_24h < 0 %}text-danger{% else %}text-success{% endif %}#}
 
               class="nav-link {% if forloop.first %}active{% endif %}"
               id="{{ item.course.title }}-tab"
@@ -314,6 +119,7 @@
               {{ item.course.title}}
             </button>
           </li>
+
         {% endfor %}
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -324,54 +130,93 @@
             role="tabpanel"
             aria-labelledby="{{ item.course.title }}-tab"
           >
-            <div  class="card-container">
-              {% for level in item.levels %}
-                <div class="card">
-                  <div class="card__side card__side--front">
-                    <div class="card__picture card__picture--1">
-                      <img src="{% static 'genioapp/img/video-games_jr_l1.png' %}"alt="{{ item.course.title }}"/>
+            <div class="card-container">
+                {% for level in item.levels %}
+                <div class="course-card">
+                <div class="course-card--img-container">
+                  <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="course-card--img" alt="course-img" />
+                </div>
+                <div class="course-card--info">
+                  <h1 class="course-card--title">{{ level.name }}</h1>
+                  <p class="course-card--desc">{{ level.description }}</p>
+                  <div class="course-card__meta-container">
+                    <div class="course-card__meta-info">
+                      <img src="{% static 'genioapp/img/tabler_school.png' %}" class="course-card__meta--icon" />
+                      <p class="course-card__meta--text">Ages: 6-10</p>
                     </div>
-                    <div class="card__details">
-                      <span class="instructor">{{ item.name }}</span>
-                      <button class="btn-fav" id="btn-fav" ><img class="heart" id="heart" onclick="swapImg()" src="{% static 'genioapp/img/heart_filled_false.png' %}" /> </button>
-
-                      <h4 class="card__heading">
-                        <span class="card__heading-span card__heading-span--1">
-                          {{ level.name }}
-                        </span>
-                      </h4>
-                      <p>
-                        {{ level.description }}
-                      </p>
+                    <div class="course-card__meta-info">
+                      <img src="{% static 'genioapp/img/carbon_skill-level-beginner.png' %}" class="course-card__meta--icon" />
+                      <p class="course-card__meta--text">Level: Beginner</p>
                     </div>
-                    <div class="info-container">
-                      <div class="info-block">
-                        <span class="value">6-10</span>
-                        <span class="info">Ages</span>
-                      </div>
-                      <div class="info-block">
-                        <span class="value">60</span>
-                        <span class="info">Mins</span>
-                      </div>
-                      <a class="info-block" href="{% url 'genioapp:createorder' level.id %}">
-                        <span class="value" value={{ level.price }} id='price'>${{ level.price }}</span>
-                        <span class="info">Per Class</span>
-                      </a>
+                    <div class="course-card__meta-info">
+                      <img src="{% static 'genioapp/img/mingcute_time-line.png' %}" class="course-card__meta--icon" />
+                      <p class="course-card__meta--text">Duration: 3 months</p>
                     </div>
-                    <button type="button" class="btn btn-CTA" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Check Available Times
-                    </button>
                   </div>
                 </div>
-              {% endfor %}
+                <div class="price-card">
+                  <div class="price-card--heading-container">
+                    <span class="price-card--span-heading-main">
+                      <h2 class="price-card--heading">
+                        ${{ level.price }}
+                      </h2>
+                      <p class="price-card--text">weekly or</p>
+                    </span>
+                    <span class="price-card--span-heading-sub">
+                      <p class="price-card--subheading">
+                        CA$350 for 8 classes
+                      </p>
+                    </span>
+                  </div>
+
+
+                  <div class="price-card--meta-container">
+                    <div class="price-card--meta">
+                      <img src="{% static 'genioapp/img/mingcute_time-line-orange.png' %}" class="price-card--meta-icon" />
+                      <p class="price-card--meta-text">
+                        60 mins per class
+                      </p>
+                    </div>
+                    <div class="price-card--meta">
+                      <img src="{% static 'genioapp/img/ph_calendar-bold.png' %}" class="price-card--meta-icon" />
+                      <p class="price-card--meta-text">
+                        1x per week
+                      </p>
+                    </div>
+                    <hr class="divider">
+                    <div class="price-card--meta">
+                      <img src="{% static 'genioapp/img/live.png' %}" class="price-card--meta-icon" />
+                      <p class="price-card--meta-text">
+                        Live video chat sessions
+                      </p>
+                    </div>
+                    <div class="price-card--meta">
+                      <img src="{% static 'genioapp/img/clarity_group-solid.png' %}" class="price-card--meta-icon" />
+                      <p class="price-card--meta-text">
+                        3-10 learners per class
+                      </p>
+                    </div>
+                  </div>
+
+                  <a href="{% url 'genioapp:createorder' level.id %}" class="btn-primary price-card--btn">
+                  Enroll
+                </a>
+                </div>
+
+
+              </div>
+
+                {% endfor %}
+
 
             </div>
+
+
           </div>
         {% endfor %}
       </div>
-
-
     </section>
+
     <section class="section--cta">
       <div class="cta--container">
         <img class="cta-corner--top-left" src="{% static 'genioapp/img/Polygon_1.png' %}">
