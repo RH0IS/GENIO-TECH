@@ -5,9 +5,9 @@
         <div class="login-form-container">
 
     <h1>Order Details</h1>
-    <h3>{{ course.title }}</h3>
-    <h3>{{ courselevels.name }}</h3>
-    <h3>{{ course.price }}</h3>
+    <h3>Course Name: {{ course.title }}</h3>
+    <h3>Level: {{ courselevels.name }}</h3>
+    <h3>Price ${{ course.price }} CAD</h3>
 
     {% if not ordercompleted %}
         <form method="POST">
