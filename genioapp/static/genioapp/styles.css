@@ -917,6 +917,7 @@
 }
 
 .age-groups-container {
+  margin-top: 1rem;
   display: flex;
   border: Box;
   flex-direction: row;
@@ -963,19 +964,29 @@
   object-fit: cover;
 }
 
-.btn-CTA {
+.age-group-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.age-group-card:hover {
+  transform: scale(1.1);
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
+}
+
+.btn-C {
   background-color: #aa082a;
   border: none;
   color: white;
   padding: 1rem 2rem;
   border-radius: 10px;
   font-weight: 700;
+  font-size: 2rem;
   text-decoration: none;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
   /*width: 100%;*/
 }
 
-.btn-CTA:hover {
+.btn-C:hover {
   background-color: #88061b;
   color: white;
 }
@@ -990,17 +1001,6 @@
   height: auto;
   text-align: center;
 }
-
-/*.row {*/
-/*    display: flex;*/
-/*    !* justify-content: space-between; *!*/
-/*    align-items: center;*/
-/*    margin-bottom: auto;*/
-/*    width: 100%;*/
-/*    margin: 2rem 6rem;*/
-/*    gap: 10rem;*/
-/*    justify-content: center;*/
-/*}*/
 
 .power-header {
   margin-bottom: 4rem;
@@ -1040,22 +1040,65 @@
 
 /*====== SECTION: ENROLL ======*/
 .section-enroll {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8rem;
+}
+
+.enroll-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Inter-Bold", sans-serif;
-  font-size: 100%;
-  padding: 2rem 4rem;
-  margin-bottom: 4rem;
-  background-color: #d9d9d9;
-  border-radius: 20px;
+  justify-content: center;
+  width: 90%;
+  height: auto;
+  padding: 4rem 5rem;
+  background-color: rgba(228, 225, 221, 0.5);
+  color: #aa082a;
+  border-radius: 1rem;
+  text-align: center;
 }
 
-.enroll-header {
-  margin-bottom: 2rem;
+.enroll-heading {
+  font-size: 2.5rem;
+  width: 100%;
   color: #aa082a;
   font-family: "Inter-Bold", sans-serif;
   font-weight: 700;
+}
+
+.enroll-top-left {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.enroll-bottom-right {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.btn-CTA {
+  background-color: #aa082a;
+  color: white;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-CTA:hover {
+  background-color: #88061b;
+  color: white;
 }
 
 /*--------SECTION: GALLERY-------*/
@@ -1137,6 +1180,17 @@
   margin: 0 auto;
 }
 
+/*==========Section Contact===========*/
+.section-contact {
+  display: flex;
+  gap: 2rem;
+}
+
+.contact-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 /*========FOOTER==========*/
 
 .navbarfooter {
