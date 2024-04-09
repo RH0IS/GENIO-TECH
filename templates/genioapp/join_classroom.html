@@ -6,8 +6,7 @@
 <body>
         <ul>
             {% for room in rooms %}
-              <li id="room-{{ room.id }}">{{ room.room_name }} <br> 
-                  from {{ room.start_datetime }} to {{ room.end_datetime }}<br> 
+              <li id="room-{{ room.id }}">{{room.name}} {{ room.room_name }} <br>
               <button name ="join" id="join" class="btn-primary" onclick="handleJoin({{ room.id }})">Join Class</button></li>
             {% endfor %}
           </ul>

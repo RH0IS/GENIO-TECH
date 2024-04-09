@@ -9,11 +9,11 @@
     <h3>{{ courselevels.name }}</h3>
     <h3>{{ course.price }}</h3>
 
-    {% if not student_already_enrolled %}
+    {% if not ordercompleted %}
         <form method="POST">
             {% csrf_token %}
             <div class="form-group">
-            <button class="btn-primary type="submit">Enroll and Make Payment</button></div>
+            <button class="btn-primary" type="submit">Enroll and Make Payment</button></div>
         </form>
     {% else %}
         <p>You are already enrolled in this course level.</p>
