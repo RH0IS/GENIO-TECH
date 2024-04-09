@@ -56,13 +56,14 @@
                     <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:index' %}"> HOME </a>
                     </div>
-                    {% if user.is_authenticated %}
+                    {% if not is_student %}
                       {% comment %}   {% if is_instructor  or is_student%} {% endcomment %}
-                    <div class="text-wrapper-15">
+                      <div class="text-wrapper-15">
                         <a href="{% url 'genioapp:createClassRoom' %}"> View Classes </a>
                     </div>
                      {% endif %}
                     {% comment %}{% endif %} {% endcomment %}
+                    
                     {% if is_student %}
                     <div class="text-wrapper-15">
 
@@ -70,7 +71,7 @@
                     </div>
                     {% endif %}
                     <div class="text-wrapper-15">
-                        <a href="{% url 'genioapp:course_detail' course_id=7%}"> COURSE </a>
+                        <a href="{% url 'genioapp:courses' %}"> COURSE </a>
 
                     </div>
                     {% if user.is_authenticated %}
@@ -102,14 +103,6 @@
                         <a href="{% url 'genioapp:admin_students_list' %}">Add Students</a>
                     </div>
                     {% endif %}
-                    <div class="text-wrapper-15">
-                        <a href="{% url 'genioapp:user_profile' %}">Profile</a>
-                    </div>
-                    <div class="text-wrapper-15">
-                        <span class="navbar-text">Logged in as {{user.username}}</span>
-                        <br />
-                        <a href="{% url 'genioapp:logout' %}">Logout</a>
-                    </div>
                 </div>
                 {% endif %}
             </div>
