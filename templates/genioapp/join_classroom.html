@@ -1,12 +1,14 @@
 <!-- about.html -->
 {% extends 'genioapp/base0.html' %}
+
 {% block content %}
-{% load static%}
+{% load static %}
 <body>
         <ul>
             {% for room in rooms %}
-              <li id="room-{{ room.id }}">{{room.name}} {{ room.room_name }} <br>
-              <button name ="join" id="join" class="btn-primary btn-primary--link" onclick="handleJoin({{ room.id }})">join</button></li>
+              <li id="room-{{ room.id }}">{{ room.room_name }} <br> 
+                  from {{ room.start_datetime }} to {{ room.end_datetime }}<br> 
+              <button name ="join" id="join" class="btn-primary" onclick="handleJoin({{ room.id }})">Join Class</button></li>
             {% endfor %}
           </ul>
 
