@@ -88,22 +88,22 @@ WSGI_APPLICATION = "GENIO.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'genio-db',
-        'USER': 'user123',
-        'PASSWORD': 'admin@123',
-        'HOST': 'genio-postgres-db.postgres.database.azure.com',
-        'PORT': '5432',  # Default PostgreSQL port
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'genio-db',
+#         'USER': '',
+#         'PASSWORD': '',
+#         'HOST': 'genio-postgres-db.postgres.database.azure.com',
+#         'PORT': '5432',  # Default PostgreSQL port
+#     }
+# }
 
 
 
