@@ -258,6 +258,8 @@
   width: 30%;
   /*gap: 2rem;*/
   color: #AA082A;
+  justify-content: space-between;
+    height: 20rem;
 }
 
 .course-card--title{
