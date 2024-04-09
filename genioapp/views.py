@@ -648,7 +648,6 @@ def user_profile(request):
             'email': instructor_profile.email,
             'bio': instructor_profile.bio,
             'language': instructor_profile.language,
-            'image': instructor_profile.image.url,
             'courses_taught': instructor_course_levels,
             'session_details': session_details,
             # Add other instructor-specific data
