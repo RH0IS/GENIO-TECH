@@ -555,7 +555,7 @@ def create_credentials(request, student_id):
 
 
 # def get_instructor_availability(request):
-@login_required(login_url="/login/")
+@login_required(login_url="/student_form/")
 def createorder(request, course_level_id):
     courselevels = CourseLevels.objects.get(id=course_level_id)
     student = StudentProfile.objects.get(user=request.user)
@@ -623,7 +623,6 @@ def user_profile(request):
             'age': student.age,
             'email': student.email,
             'gender': student.gender,
-            'country': student.country,
             'phone': student.phone,
             'stu_course_levels': stu_course_levels
         }

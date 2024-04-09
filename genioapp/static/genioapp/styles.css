@@ -1110,15 +1110,19 @@
 /*========SIGNUP PAGE==========*/
 .section-register {
   padding: 2rem 4rem;
-  height: 120vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /*-------student form--------*/
 .student-form-container {
   /*margin: 2rem auto !important;*/
   /*background-color: red;*/
   width: 50%;
-  display: block;
-  margin: 0 auto;
+  display: flex;
+  margin-bottom: 2rem auto;
+  justify-content: center;
+  align-items: grid;
 }
 
 .form-label {

@@ -60,7 +60,7 @@ class CourseLevels(models.Model):
     description = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.course.title+" "+self.name
 
 
 class Student(models.Model):
@@ -70,7 +70,6 @@ class Student(models.Model):
     age = models.IntegerField(blank=True, null=True)
     gender = models.CharField(max_length=10, blank=True)
     phone = models.CharField(max_length=15, blank=True)
-    country = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.name
@@ -84,7 +83,6 @@ class StudentProfile(models.Model):
     age = models.IntegerField(blank=True, null=True)
     gender = models.CharField(max_length=10, blank=True)
     phone = models.CharField(max_length=15, blank=True)
-    country = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.name

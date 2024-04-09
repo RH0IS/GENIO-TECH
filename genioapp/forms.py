@@ -54,12 +54,11 @@ class StudentForm(UserCreationForm):
     email = forms.EmailField()
     age = forms.IntegerField()
     phone = forms.CharField()
-    country = forms.CharField()
 
     gender = forms.ChoiceField(choices=GENDER_CHOICES, widget=forms.Select(attrs={'class': 'form-input'}))
     class Meta:
         model = User
-        fields = ['username','password1', 'password2', 'name', 'age', 'email', 'phone','gender', 'country']
+        fields = ['username','password1', 'password2', 'name', 'age', 'email', 'phone','gender']
 
 
 
