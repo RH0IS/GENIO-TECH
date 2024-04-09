@@ -481,30 +481,28 @@ def custom_logout(request):
 def student_form(request):
     if request.method == "POST":
         form = StudentForm(request.POST)
-        if form.is_valid():
+        if form.is_bound:
             user = form.save()
             name = form.cleaned_data.get('name')
             email = form.cleaned_data.get('email')
             age = form.cleaned_data.get('age')
             phone = form.cleaned_data.get('phone')
-            country = form.cleaned_data.get('country')
             gender = form.cleaned_data.get('gender')
 
-            student = Student(
+            student = StudentProfile(
                 user=user,
                 name=name,
                 email=email,
                 age=age,
                 gender=gender,
                 phone=phone,
-                country=country,
             )
             student.save()
             # student.delete()
 
             student_group = Group.objects.get(name="Students")
             user.groups.add(student_group)
-            return redirect("/admin_students_list/")  # Redirect to the admin view
+            return redirect("/")  # Redirect to the admin view
     else:
         form = StudentForm()
 
@@ -523,7 +521,6 @@ def create_credentials(request, student_id):
     age = student.age
     gender = student.gender
     phone = student.phone
-    country = student.country
 
     if request.method == "POST":
         form = StudentCred(request.POST)
@@ -536,7 +533,6 @@ def create_credentials(request, student_id):
                 age=age,
                 gender=gender,
                 phone=phone,
-                country=country,
             )
             studentProfile.save()
             student.delete()
