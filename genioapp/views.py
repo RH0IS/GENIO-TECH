@@ -455,7 +455,7 @@ def course_by_id(request, course_id):
          "session_list":session_list},
     )
 
-
+#@login_required(login_url="/login/")
 def courses(request):
     
     courses_with_levels = []
@@ -476,11 +476,6 @@ def courses(request):
 def custom_logout(request):
     logout(request)
     return redirect("/login/")
-
-
-@login_required(login_url="/login/")
-def user_profile(request):
-    return render(request, "genioapp/user_profile.html")
 
 
 def student_form(request):
@@ -560,20 +555,22 @@ def create_credentials(request, student_id):
 
 
 # def get_instructor_availability(request):
-
+@login_required(login_url="/login/")
 def createorder(request, course_level_id):
     courselevels = CourseLevels.objects.get(id=course_level_id)
     student = StudentProfile.objects.get(user=request.user)
     course = courselevels.course
     # Check if a StudentOrder already exists for the given course_level and student
-    existing_order = StudentOrder.objects.filter(course_level=courselevels, student=student).first()
-
-    student_already_enrolled = existing_order is not None
-
-    if request.method == "POST" and not student_already_enrolled:
-        # If no order exists, create a new StudentOrder
+    order = StudentOrder.objects.filter(course_level=courselevels, student=student).first()
+    if not order:
         order = StudentOrder(student=student, course_level=courselevels, completion_status='ongoing')
         order.save()
+    ordercompleted = False
+    if order.completion_status == 'completed':
+        ordercompleted = True
+    #print(existing_order.completion_status)
+    if request.method == "POST":
+        # If no order exists, create a new StudentOrder
         idempotency_key=order.id
         amtprice=order.course_level.price*100
         print("Course level price:",amtprice)
@@ -589,7 +586,7 @@ def createorder(request, course_level_id):
         #return redirect("/")
     else:
         return render(request, 'genioapp/order.html', {'course': course, 'courselevels': courselevels,
-                                                   'student_already_enrolled': student_already_enrolled})
+                                                   'ordercompleted': ordercompleted})
 
 
 def user_profile(request):
@@ -600,18 +597,25 @@ def user_profile(request):
 
         stu_course_levels = []
         for student_order in student_orders:
+            if student_order.completion_status == 'ongoing':
+                continue
             course_level = student_order.course_level
             course = course_level.course
             sessions = CourseSession.objects.filter(course_level=course_level)
-
+            classrooms = []
+            for sess in sessions:
+                room = ClassRoom.objects.filter(coursesession=sess)
+                classrooms.append(room)
+                #print(room)
             stu_course_lvl = {
                 "course_title": course.title,
                 "course_level": course_level.name,
                 "sessions": sessions,
+                "classrooms":classrooms,
             }
 
             stu_course_levels.append(stu_course_lvl)
-
+            
         profile_data = {
             'username': user.username,
             'group': 'Student',
@@ -623,6 +627,7 @@ def user_profile(request):
             'phone': student.phone,
             'stu_course_levels': stu_course_levels
         }
+        #print(stu_course_levels)
     elif is_instructor(user):
         instructor_profile = InstructorProfile.objects.get(user=user)
 

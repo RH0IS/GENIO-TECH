@@ -5,15 +5,15 @@
         <div class="login-form-container">
 
     <h1>Order Details</h1>
-    <h3>{{ course.title }}</h3>
-    <h3>{{ courselevels.name }}</h3>
-    <h3>{{ course.price }}</h3>
+    <h3>Course Name: {{ course.title }}</h3>
+    <h3>Level: {{ courselevels.name }}</h3>
+    <h3>Price ${{ course.price }} CAD</h3>
 
-    {% if not student_already_enrolled %}
+    {% if not ordercompleted %}
         <form method="POST">
             {% csrf_token %}
             <div class="form-group">
-            <button class="btn-primary type="submit">Enroll and Make Payment</button></div>
+            <button class="btn-primary" type="submit">Enroll and Make Payment</button></div>
         </form>
     {% else %}
         <p>You are already enrolled in this course level.</p>

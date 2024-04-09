@@ -40,10 +40,21 @@
                 <h4 class="u-text-color-primary">Sessions</h4>
                 <ul>
                     {% for session in stu_course_lvl.sessions %}
-                        <li class="u-text-color-grey">Session: {{ session.session }}</li>
-                        <li class="u-text-color-grey">Start Time: {{ session.start_datetime }}</li>
-                        <li class="u-text-color-grey">End Time: {{ session.end_datetime }}</li>
+                    <li class="u-text-color-grey">Session: {{ session.session }}</li>
+                    <li class="u-text-color-grey">Start Time: {{ session.start_datetime }}</li>
+                    <li class="u-text-color-grey">End Time: {{ session.end_datetime }}</li>
+                    {% for classrooms in stu_course_lvl.classrooms %}
+                    {% for room in classrooms %}
+                    
+                        {% if room.id == session.class_room.id%}
+                        <li class="u-text-color-grey">
+                            Class room name:{{ room.name }} + {{ room.room_name }}
+                             <button name ="join" id="{{ room.room_name }}" class="btn-primary btn-primary--link" onclick="handleJoin({{ session.class_room.id }})">Join</button>
                         <!-- Add other session details as needed -->
+                    </li>
+                    {%endif%}
+                    {% endfor %}
+                    {% endfor %}
                     {% endfor %}
                 </ul>
             {% endfor %}
@@ -109,4 +120,24 @@
     }
 </style>
     </body>
+
+    <script>
+
+        let handleJoin = async (id) => {
+            sessionStorage.setItem('room-id', id)
+            let response = await fetch(`/get_token/${id}`)
+            let data = await response.json()
+    
+            let UID = data.uid
+            let token = data.token
+    
+            sessionStorage.setItem('UID', UID)
+            sessionStorage.setItem('token', token)
+            sessionStorage.setItem('room', data.room_name)
+            sessionStorage.setItem('name', data.user_name)
+    
+            window.open('/room/', '_self')
+        }
+    
+    </script>
 {% endblock %}

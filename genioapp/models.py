@@ -19,7 +19,7 @@ class ClassRoom(models.Model):
     user_role = models.CharField(max_length=200, default='Student', null=True)
     insession = models.BooleanField(default=False)
     def __str__(self):
-        return self.name
+        return self.name+" "+self.room_name
 
 class InstructorProfile(models.Model):
     user = models.OneToOneField("auth.User", on_delete=models.CASCADE)
@@ -128,15 +128,17 @@ class CourseSession(models.Model):
     session = models.IntegerField(choices=YOUR_CHOICES)
     start_datetime = models.CharField(max_length=50, blank=True)#models.DateTimeField(default = timezone.now)
     end_datetime = models.CharField(max_length=50, blank=True)#models.DateTimeField(default = timezone.now)
+    def __str__(self):
+        return self.course_level.course.title+" "+self.course_level.name+" Session-"+str(self.session)
 
 class StudentOrder(models.Model):
     COMPLETION_CHOICES = [
-        ('completed', 'Completed'),
-        ('ongoing', 'On-going'),
+        (0, 'On-going'),
+        (1, 'Completed'),
     ]
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     course_level = models.ForeignKey(CourseLevels, on_delete=models.CASCADE)
-    completion_status = models.CharField(max_length=10, choices=COMPLETION_CHOICES, default='On-going')
+    completion_status = models.CharField(max_length=10, choices=COMPLETION_CHOICES, default=0)
     payment_id=models.CharField(max_length=100, null=True, default="id")
     class Meta:
         unique_together = ('student', 'course_level')
